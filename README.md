@@ -1,16 +1,104 @@
 # Version control with Git
 
-A 2-days course providing a
-**comprehensive overview of the [Git version control](https://git-scm.com)**
-system.
+Welcome to the home page of the **Version control with Git** SIB course.
 
-**Table of Content:**
-
-[[_TOC_]]
+This two-day course provides a **comprehensive overview** of the
+**[Git version control](https://git-scm.com)** system. Please see the
+[course description](#course-description-) section for details.
 
 <br>
 
-## Course Description :owl:
+## Setting-up your environment 🐣
+
+* Please complete the [environment setup instructions](doc/environment_setup.md)
+  **before** the start of the course.  
+* In particular, make sure to communicate us your
+  **GitHub user name at least 2 days before** the start of the course via
+  the course shared online document (link will be sent by email before the
+  course).
+
+<br>
+
+## Course material 📚
+
+**Please note** that the definitive course material (slides and exercises)
+will be made available on the first day of the course. Until then files do not
+necessarily correspond to their final version (but are in principle very close
+to it).
+
+✨ **Tip:** to download the entire course material in one go, you can clone
+this repository by running the git command:
+
+```sh
+git clone https://github.com/sib-swiss/git-training.git
+```
+
+### Course slides
+
+* Day 1: [First steps with Git](slides/slides_git_first_steps.pdf)
+* Day 2: [Git advanced topics](slides/slides_git_advanced_topics.pdf)
+* Git commands: a summary of all commands seen during the course. Available
+  as [PDF document](doc/git_command_summary.pdf),
+  and [markdown](doc/git_command_summary.md) for online viewing.
+* [Git optional modules](slides/slides_git_optional_modules.pdf). These are
+  more specialized Git commands and features that go beyond the scope of the
+  course and will not be covered in class but can be discussed upon request.
+
+### Exercise instructions
+
+Exercise instructions are best viewed in a web browser. Simply click on the
+link below to display them.
+
+* Day 1: [exercises first steps](exercises/exercises_first_steps.md)
+* Day 2: [exercises advanced topics](exercises/exercises_advanced_topics.md)
+* Optional modules (not covered in class):
+  * [optional exercise CI/CD](exercises/exercises_optional_cicd.md)
+  * [optional exercise submodules](exercises/exercises_optional_submodules.md)
+  * [optional exercise Git LFS](exercises/exercises_optional_LFS.md)
+
+### Exercise material
+
+Please download the following `.zip` files and decompress them on your local
+machine.
+
+* Day 1: [exercises_first_steps.zip](exercises/exercises_first_steps.zip)
+* Day 2: [exercises_advanced.zip](exercises/exercises_advanced.zip)
+* Optional modules (not covered in class):
+  [exercises_optional_modules.zip](exercises/exercises_optional_modules.zip)
+
+### Exercise solutions
+
+The solutions to all exercises are provided here. Nevertheless, we encourage
+you to **not look at the solutions too quickly**, and try to solve the
+exercises without them. Remember that you can always ask the course teachers
+for help.
+
+* Day 1: [solutions first steps](exercises/solutions_first_steps.md)
+* Day 2: [solutions advanced topics](exercises/solutions_advanced_topics.md)
+* Optional modules:
+  * Solutions CI/CD - solutions are integrated in the exercise instructions.
+  * [Solutions submodules](exercises/solutions_optional_submodules.md)
+  * [Solutions Git LFS](exercises/solutions_optional_LFS.md)
+
+<br>
+
+## Useful references and tutorials 🔮
+
+* [Pro Git - free Git book](https://git-scm.com/book/en/v2)
+* [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials)
+
+<br>
+
+## Course schedule ⏳
+
+* **Day 1 and 2:** 9h00 - 17h30.
+* 1 hour **lunch break**, usually 12h00 - 13h00.
+* 15 minutes breaks in each half-day session.
+
+<br>
+<br>
+
+## Course Description 🦉
 
 ### Overview
 
@@ -85,7 +173,7 @@ institutions.
 
 <br>
 
-## Course prerequisites :sunrise:
+## Course prerequisites 🌅
 
 ### Knowledge/competencies
 
@@ -114,78 +202,7 @@ that you either:
 
 <br>
 
-## Setting-up your environment :hatching_chick:
-
-* Please complete the [environment setup instructions](environment_setup.md)
-  **before** the start of the course.  
-* In particular, make sure to communicate us your GitHub user name
-  **at least 2 days before** the start of the course.
-
-<br>
-
-## Course material :books:
-
-:fire:
-**Please note:** the definitive course material (slides and exercises) will be
-made available on the first day of the course. Until then files do not
-necessarily correspond to the final version (but are in principle very close
-to it).
-
-### Course slides
-
-* [First steps with Git](slides_git_first_steps.pdf)
-* [Git advanced topics](slides_git_advanced_topics.pdf)
-* Git commands summary:
-  [PDF document summarizing all commands seen during the course](git_command_summary.pdf)
-* [Git optional modules](slides_git_optional_modules.pdf)
-
-### Exercises
-
-**Exercise instructions:** these instructions are best viewed in a web browser.
-Simply click on the link below to display them.
-
-* Day 1: [exercises first steps](exercises_first_steps.md)
-* Day 2: [exercises advanced topics](exercises_advanced_topics.md)
-* Optional modules:
-  * [optional exercise CI/CD](exercises_optional_cicd.md)
-  * [optional exercise submodules](exercises_optional_submodules.md)
-  * [optional exercise Git LFS](exercises_optional_LFS.md)
-
-**Exercise material:** please download the following `.zip` files and
-  decompress them on your local machine:
-
-* Day 1: [`exercises_first_steps.zip`](exercises_first_steps.zip)
-* Day 2: [`exercises_advanced.zip`](exercises_advanced.zip)
-* Optional modules:
-  * [`exercises_optional_modules.zip`](exercises_optional_modules.zip)
-
-**Exercise solutions**:
-
-* Day 1: [solutions first steps](solutions_first_steps.md)
-* Day 2: [solutions advanced topics](solutions_advanced_topics.md)
-* Optional modules:
-  * Solutions CI/CD - solutions are integrated in exercise instructions.
-  * [Solutions submodules](solutions_optional_submodules.md)
-  * [Solutions Git LFS](solutions_optional_LFS.md)
-
-<br>
-
-## Course schedule :hourglass_flowing_sand:
-
-* **Day 1 and 2:** 9h00 - 17h00.
-* 1 hour **lunch break** (usually 12h00-13h00).
-* 15 minutes breaks in each half-day session.
-
-<br>
-
-## Useful references and tutorials :crystal_ball:
-
-* [Pro Git - free Git book](https://git-scm.com/book/en/v2)
-* [Atlassian Git tutorials](https://www.atlassian.com/git/tutorials)
-
-<br>
-
-## Acknowledgments and funding :euro:
+## Acknowledgments and funding 💸
 
 ### Funding
 
