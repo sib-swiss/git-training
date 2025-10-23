@@ -1,0 +1,15 @@
+
+# Line length settings.
+MD013:
+  #line_length: 80
+  code_block_line_length: 100
+
+
+# Ignore "no-blanks-blockquote: Blank line inside blockquote" rule.
+MD028: false
+
+# Ordered list item prefix
+MD029: false
+
+MD033:
+  allowed_elements: ["br", "details", "summary", "b", "p"]
