@@ -1176,7 +1176,7 @@ In your quests throughout this exercise, you will be asked to follow a
 
 <br>
 
-### B) Create a shared Git repo on GitHub/GitLab
+### B) Create a shared repo on GitHub
 
 The first thing you need to do before embarking on your quest is to
 **setup a remote repository** for your crew on [GitHub](https://github.com).
@@ -1234,11 +1234,11 @@ setup on GitHub.
 
 <br>
 
-### C) Treasure hunt part one: sign the pirate code
+### C) Treasure hunt part one: the pirate code 📜
 
-Even pirates have rules ! To avoid disputes at sea, you and your fellow pirates
+Even pirates have rules! To avoid disputes at sea, you and your fellow pirates
 should start your journey by carrying-out a little paperwork: signing the
-[pirate code](https://en.wikipedia.org/wiki/Pirate_code) 📜.
+[pirate code](https://en.wikipedia.org/wiki/Pirate_code).
 
 Signing the **pirate code**, and thereby officializing your participation and
 rank in the treasure hunt, is done by adding your name next to your role at the
@@ -1301,7 +1301,7 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
 
 4. It's now time to **make a new "release"** of your work by adding a **tag**:
     * The **Quartermaster** should add a **tag** named **`contract-signed`**
-      on the latest commit of `main`, then push the tag to the remote with:
+      on the latest commit of `main`, then push the tag to the remote:
 
         ```sh
         git push --tags
@@ -1323,7 +1323,7 @@ That's it, the paperwork is done! Let's get on that ship and sail 🏴‍☠️ 
 
 <br>
 
-### D) Treasure hunt part two: gear-up
+### D) Treasure hunt part two: gear-up 🏴‍☠️
 
 Wait... did I just say "get on that ship" ? Well, the problem is that...
 there is no ship... yet! And we will need a flag too! And rum of course, lots
@@ -1401,8 +1401,7 @@ This is how you should proceed:
 7. If everyone got a success message, it's time to **make a new release** of
    your work:
     * The **First-mate** should add a **tag** named **`ready-to-sail`** on the
-      latest commit of `main`, then push the tag to the remote with the
-      command:
+      latest commit of `main`, then push the tag to the remote:
 
         ```sh
         git push --tags
@@ -1423,61 +1422,70 @@ _gitventure_: finding **the treasure** ! 🐳
 
 <br>
 
-### E) Treasure hunt part three: Skull Rock island
+### E) Treasure hunt part three: Skull Rock island 🏝️
 
-We're setting sail on `skull-rock-island` (i.e. switch to the branch). The
-island was home to **John Longsilver** - a fearsome pirate with a healthy
-appetite for treasures. Unfortunately, pirate lives do sometimes take a turn
-for the shorter, and so did Longsilver's.
+We're setting sail on `skull-rock-island` ! The island was home to
+**John Longsilver** - a fearsome pirate with a healthy appetite for treasures.
+Unfortunately, pirate lives do sometimes take a turn for the shorter, and so
+did Longsilver's.
 
 While Longsilver is no more, his **trusty parrot** - a talkative bird if there
 ever was one 🦜! - is still very much alive. Maybe that bird has some
-recollection of where Longsilver has been hiding his treasure ?
+recollection of where Longsilver has hidden his treasure ?
 
-To hear what the parrot has to say, run the following command in your shell:
-
-```sh
-./listen_to_parrot.sh
-```
-
-As you can see for yourself, the parrot isn't being helpful... but we can
-change this, with a little... rebasing!
-
-Proceed as follows:
-
-1. **Switch** to the branch `work-in-progress`.
-2. **Squash the commit** `Update the parrot's talking` into the commit
-   `Make the parrot more cooperative` using **interactive rebase**: these
-   two commits should become a single commit (use the **`fixup`** instruction
-   to squash the commits).
-3. **Rebase** the `work-in-progress` branch on `skull-rock-island`. If a
-   conflict arises during the rebase, keep the version coming from the
-   `work-in-progress` branch (the version that starts with the line
-   `# Parrot remembers stuff...`).
-4. After the rebase is completed, run again:
+1. **Switch** to the `skull-rock-island` branch and hear what the parrot has
+   to say:
 
     ```sh
     ./listen_to_parrot.sh
     ```
 
-   The bird should now be more cooperative and give you some hints on where to
-   look for **the keys to unlock the treasure chest** 🗝️.
+2. As you can see, the parrot isn't being helpful... But this is Git, we
+   can **rewrite history** and make the bird more cooperative with a
+   little... **rebasing !** 😀
 
-5. In addition, you should now also have a new directory named
-   `treasure_chest` at the root of your working tree (i.e. working directory).
-   You can verify this by running the command `ls -l` in your working
-   directory.
+   Run an **interactive rebase** on the last 4 commits of `skull-rock-island`,
+   and make the following changes:
+   * Squash the commit `Parrot remembers more things` into the commit
+     `Parrot remembers John Longsilver` (they should become a single commit).
+     Use the **`fixup`** instruction to squash them.
+   * Delete the commit `Parrot forgets`.
+
+   <br>
+
+    > 🎯 **Hint:** after the rebase, the part of the `skull-rock-island`
+    > branch diverging from `main` should look like this (commit IDs will
+    > differ):
+    >
+    > ```txt
+    > 34633d4 Parrot finds treasure chest
+    > db1c6ed Parrot remembers John Longsilver
+    > 1f4c68e Longsilver's parrot speaks
+    > ```
+
+3. Let's see whether the parrot has recovered its memory:
+
+    ```sh
+    ./listen_to_parrot.sh
+    ```
+
+   The bird should now give you some hints on where to look for
+   **the keys to unlock the treasure chest**.
 
 <br>
+
+And there is more good news: in addition to giving you hints, the parrot has
+also brought you to Longsilver's treasure chest! You now have a new directory
+named `treasure_chest` at the root of the repo's working tree. To verify,
+you run `ls -l` to list the content of the current directory.
 
 To bring the treasure chest aboard your ship, the **First-mate** should do the
 following:
 
- > 🔥 **Important:** only the **First-mate** should perform this task, not
- > the other pirates. Otherwise you will get diverging versions on the `main`
- > branch:
+ > 🔥 **Important:** only one pirate should perform this task (we suggest
+ > the **First-mate**). Otherwise your `main` branch will diverge.
 
- 1. **Merge `work-in-progress` into `main`**. This will add the treasure chest
+ 1. **Merge `skull-rock-island` into `main`**. This will add the treasure chest
     to the `main` branch - along with your new friend the parrot !
  2. **Push the changes** on branch `main` to the remote.
 
@@ -1485,16 +1493,35 @@ The **Captain** and **Quartermaster** can now update their local repos with the
 changes that the **First-mate** just pushed to `main`. At this point everyone
 should be synchronized on their `main` branch and have the treasure onboard.
 
+> 🌟 **Bonus:** if you want, you can sync the `skull-rock-island` branch
+> across the team:
+>
+> * The pirate who did the merge (**First-mate**) should push their changes
+>   on `skull-rock-island` to the remote. Note that, because of the rebase,
+>   the local and remote version of the branch have diverged, and therefore
+>   you need to add the **`--force`** option:
+>
+>   ```sh
+>   git push --force
+>   ```
+>
+> * The other pirates can then **reset** their local copy of
+>   `skull-rock-island` to the version from the remote (the version
+>   pushed by the First-mate).
+>
+>   ```sh
+>   git fetch                                  # Download new changes from remote.
+>   git switch skull-rock-island               # Make sure to be on the correct branch.
+>   git reset --hard origin/skull-rock-island  # Reset the local branch.
+>   ```
+
+<br>
+
 Congratulations, you're _almost_ there! Let's celebrate this with a
-**new release** 🎉:
+**new release**: 🎉
 
 * The **Captain** should add a tag named **`treasure-found`** and push it to
-  the remote with:
-
-    ```sh
-    git push origin --tags
-    ```
-
+  the remote: `git push --tags`
 * Everyone else can then run `git fetch` to get the new tag.
 
 <br>
@@ -1515,17 +1542,17 @@ _Shiver me timbers!_ We are missing **the keys** to open the lock !
 
 <br>
 
-### F) Treasure hunt final part: opening the treasure
+### F) Treasure hunt final part: opening the treasure 🗝️
 
-We are now looking for the **3 keys to open the 3 locks of the chest**. 🗝️
+We are now looking for the **3 keys to open the 3 locks of the chest**.
 
 As before, this can be done as teamwork and each pirate retrieves one of the
 keys.
 
 > 🦜 **Note:** for this last quest, to save time (and because we believe that
 > by now you have understood the principle), you may add your commits directly
-> to the `main` branch, without creating a temporary working branch
-> (_crazy !_ - I know 😎).
+> to the `main` branch, without creating a temporary working branch -
+> _crazy !_ , I know 😎.
 >
 > Make sure to check that your `main` branch is up-to-date before you add a
 > commit to it: you don't want any divergence in the `main` branch among the
@@ -1606,12 +1633,12 @@ local Git repo copies (everyone has the 3 keys), you can try to
 ./open_chest.sh
 ```
 
-If the keys are the correct files, have been placed in the correct lock, and
-have been correctly renamed, **the treasure should open** ! 🎉 💰 🎆
+If the keys are the correct files, are placed in the correct lock, and have
+been correctly renamed, **the treasure should open !** 🎉
 
 <br>
 
-### For people doing this exercise as an exam 👩‍🎓
+### For people doing this exercise as exam 👩‍🎓
 
 If you would like to receive credits for the course:
 
@@ -1630,8 +1657,8 @@ If you would like to receive credits for the course:
       > 🦜 **Note:** the instructor's email address can be found at the top of
         the shared document used for the class.
 
-4. **Make sure you have signed-up for the exam** on the Google doc of the
-   course by highlighting your name in green.
+4. **Make sure you have signed-up for the exam** on the shared online document
+   of the course by highlighting your name in green.
 
 <br>
 <br>
