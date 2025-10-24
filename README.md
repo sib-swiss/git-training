@@ -68,13 +68,13 @@ machine.
 
 ### Exercise solutions
 
-The solutions to all exercises are provided here. Nevertheless, we encourage
-you to **not look at the solutions too quickly**, and try to solve the
-exercises without them. Remember that you can always ask the course teachers
+While the solutions to all exercises are provided, we encourage you
+to **not look at the solutions too quickly**. Try to solve the exercises
+without them, and remember that you can always ask the course instructors
 for help.
 
-* Day 1: [solutions first steps](exercises/solutions_first_steps.md)
-* Day 2: [solutions advanced topics](exercises/solutions_advanced_topics.md)
+* Day 1: solutions are integrated in the exercise instructions.
+* Day 2: solutions are integrated in the exercise instructions.
 * Optional modules:
   * Solutions CI/CD - solutions are integrated in the exercise instructions.
   * [Solutions submodules](exercises/solutions_optional_submodules.md)
