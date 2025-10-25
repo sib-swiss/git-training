@@ -1459,7 +1459,7 @@ git log --all --decorate --oneline --graph
 ## Exercise 4 - The Awesome Animal Awareness Project [60 min]
 
 🚀 **Objective:** learn to collaborate with others on a project hosted on
-GitHub or GitLab.
+a remote (e.g. on GitHub or GitLab).
 
 Congratulations! Your improving Git skills have not gone unnoticed, and you are
 now hired by our agile startup to work on the
@@ -1478,8 +1478,8 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 > * Please follow the **naming convention for branches** tightly,
 >   as our company's internal Git policies are **very strict**.
 > * **Before you start:** make sure that you created a
->   **personal access token (PAT)** on GitHub/GitLab. This will be needed in
->   order to allow you to push changes to GitHub/GitLab. Please refer to the
+>   **personal access token (PAT)** on GitHub. This will be needed in
+>   order to allow you to push changes to the remote. Please refer to the
 >   course slides for instructions on how to create the token (a demo might
 >   also be made in the class before the exercise).
 
@@ -1488,7 +1488,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 ### A) Organize your team
 
 1. **Get together:** check the shared online document to see which team you
-   belong to (the **Team** column in the GitHub/GitLab user names table).
+   belong to (the **Team** column in the GitHub user names table).
     * **On-site course:** locate your other team members in the classroom and
       sit together so you can communicate.
     * **Online course:** you will be placed in a breakout-room with your
@@ -1507,7 +1507,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 
 3. Among your group, **one person** should **create a new team branch**
    named after your animal's name followed by `-dev`, and then
-   **push it to the remote** on GitHub/GitLab.
+   **push it to the remote** on GitHub.
 
    Example branch names: `tiger-dev`, `yeti-dev`, `sunfish-dev`,
    `pallas-cat-dev`, ...
@@ -1564,8 +1564,8 @@ git clone https://github.com/sibgit/sibgit.github.io.git
 cd sibgit.github.io
 ```
 
-One person creates the team branch and pushes it to the remote on
-GitHub/GitLab. The example here is for the team `yeti`.
+One person creates the team branch and pushes it to the remote. The example
+here is for team `yeti`.
 
   > `-u` is the short option for `--set-upstream`. This option is needed
   > because, at this point, the local `yeti-dev` branch is not associated
@@ -1601,7 +1601,7 @@ animal.
 2. On your personal branch, **edit the HTML file** corresponding to your
    animal.
    * The topics that each member of the team has to work on are listed in the
-     Google doc - see the **Task** column of the table.
+     shared online document - see the **Task** column of the table.
    * In the HTML file, the `??` mark the positions where you have to add your
      content (make sure to remove the `??` after you are done editing).
    * For the team member with the **task "Animal name"**, make sure to include
@@ -1646,11 +1646,8 @@ git commit -m "Yeti: add habitat and distribution info"
 
 Each team member should now merge the commit(s) made on their personal branch
 (e.g. `tiger-sandra`) into the team's main development branch (e.g.
-`tiger-dev`), and then push the changes back to the remote repo on
-GitHub/GitLab.
-
-This is **best done as a coordinated, iterative, process**, where each member
-will in turn:
+`tiger-dev`), and then push the changes back to the remote. This is best done
+as a **coordinated iterative process**, where each member will in turn:
 
 1. **Do a `git pull`** on the team's main development branch to make sure their
    local copy is up-to-date.
@@ -1675,8 +1672,8 @@ will in turn:
 3. **Merge the changes** from their personal branch into the team's main
    development branch.
 
-4. **Push the changes** back to the remote repo on GitHub/GitLab. Then let the
-   next team member know that they can proceed.
+4. **Push the changes** back to the remote on GitHub. Then let the next team
+   member know that they can proceed.
 
 <br>
 
@@ -1805,8 +1802,8 @@ branch and personal branches (since they have been merged).
     git push origin --delete <team branch name>
     ```
 
-   Alternatively, the team branch can also be deleted via the web interface of
-   GitHub/GitLab.
+   Alternatively, the team branch can also be deleted via the GitHub web
+   interface.
 
 3. Finally, each team member can **delete the remote-tracking branch** for
    the team branch (`origin/team-branch-name`) from their local repo.
