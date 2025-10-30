@@ -2,33 +2,32 @@
 
 <br>
 
-## Before you start
+## Before you start 📣
 
 * 📚 **Exercise material setup:** download the
   [exercises_first_steps.zip](../exercises/exercises_first_steps.zip) file to
   your local computer and unzip it.
 
-* ✏️ **Additional Tasks:** at the end of exercises, you will sometimes find a
-  section named **Additional Tasks**. These sections contain tasks to complete
-  **if you have the time and after having completed the main exercise**.
-  Additional tasks sections will not be corrected in class, but their solution
-  is given in this document.
+* 🔮 **Additional Tasks:** some exercises have **Additional Task** sections
+  that you can complete if you still have time after having completed the main
+  part of the exercise. These will in principle _not_ be corrected in class,
+  but their solution is given in this document.
 
-* ✅ **Exercise solutions:** all exercises and additional tasks section have
-  their solution embedded in this document. Solutions are hidden by default,
-  but you can reveal them by clicking on them. Here is an example:
+* ✅ **Exercise solutions:** all exercises have their solution embedded in this
+  document. You can reveal them by clicking on the drop-down menu, as shown
+  below.
 
   <details><summary><b>Solution (click to reveal)</b></summary>
-  🌈 This reveals the answer 🌈
+  🌟 This reveals the answer 🌟
   </details>
 
-  We encourage you to **not look at the solutions too quickly**, and try to
-  solve the exercises without them. Remember that you can always ask the
-  course teachers for help.
+  We encourage you to **not look at the solution too quickly**, and try to
+  solve the exercise without it. Remember you can always ask the course
+  instructors for help.
 
-* ✨ **Tip:** if you are viewing these instructions on GitHub, you can display
-  a table of content (outline) of this page by clicking on the small icon that
-  looks like a bulleted list near the top-right of this page.
+* ✨ **Table of content:** when viewing this document on GitHub, you can
+  display a table of content by clicking on the "Outline" button at the top
+  right.
 
 <br>
 
@@ -480,7 +479,7 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
 
 <br>
 
-### Additional Tasks (if you have time) ✏️
+### 🔮 Additional Tasks
 
 For some of the next steps, we will need an additional file named
 `personal_notes.md`, as well as a change in the `script.py` file.
@@ -971,7 +970,7 @@ you want to learn everything about Git!
 </details>
 <br>
 
-### B) Additional Tasks: add new links ✏️
+### B) 🔮 Additional Task: add new links
 
 In this second part of the exercise, you are tasked with adding a couple of new
 links to the Git reference page.
@@ -1025,7 +1024,7 @@ between the git index and the latest commit.
 </details>
 <br>
 
-### C) Additional Tasks: add a logo ✏️
+### C) 🔮 Additional Task: add a logo
 
 In this last part of the exercise, we further improve our webpage by adding
 a logo.
@@ -1789,7 +1788,7 @@ git pull
 </details>
 <br>
 
-### E) Additional Tasks: branch cleanup ✏️
+### E) 🔮 Additional Task: branch cleanup
 
 Now that your team branch is merged into `main`, you can delete your team
 branch and personal branches (since they have been merged).

@@ -2,33 +2,32 @@
 
 <br>
 
-## Before you start
+## Before you start 📣
 
 * 📚 **Exercise material setup:** download the
   [exercises_advanced.zip](../exercises/exercises_advanced.zip) file to
   your local computer and unzip it.
 
-* ✏️ **Additional Tasks:** at the end of exercises, you will sometimes find a
-  section named **Additional Tasks**. These sections contain tasks to complete
-  **if you have the time and after having completed the main exercise**.
-  Additional tasks sections will not be corrected in class, but their solution
-  is given in this document.
+* 🔮 **Additional Tasks:** some exercises have **Additional Task** sections
+  that you can complete if you still have time after having completed the main
+  part of the exercise. These will in principle _not_ be corrected in class,
+  but their solution is given in this document.
 
-* ✅ **Exercise solutions:** all exercises and additional tasks section have
-  their solution embedded in this document. Solutions are hidden by default,
-  but you can reveal them by clicking on them. Here is an example:
+* ✅ **Exercise solutions:** all exercises have their solution embedded in this
+  document. You can reveal them by clicking on the drop-down menu, as shown
+  below.
 
   <details><summary><b>Solution (click to reveal)</b></summary>
-  🌈 This reveals the answer 🌈
+  🌟 This reveals the answer 🌟
   </details>
 
-  We encourage you to **not look at the solutions too quickly**, and try to
-  solve the exercises without them. Remember that you can always ask the
-  course teachers for help.
+  We encourage you to **not look at the solution too quickly**, and try to
+  solve the exercise without it. Remember you can always ask the course
+  instructors for help.
 
-* ✨ **Tip:** if you are viewing these instructions on GitHub, you can display
-  a table of content (outline) of this page by clicking on the small icon that
-  looks like a bulleted list near the top-right of this page.
+* ✨ **Table of content:** when viewing this document on GitHub, you can
+  display a table of content by clicking on the "Outline" button at the top
+  right.
 
 <br>
 <br>
@@ -54,7 +53,7 @@
 
 <br>
 
-### Part A) Re-ordering commits in history
+### A) Re-ordering commits in history
 
 Believe it or not, you have just been hired for a clean-up job 🕵️! No, not
 the movie kind, but don't worry, this will still be great.
@@ -195,7 +194,7 @@ git switch main
 </details>
 <br>
 
-### Part B) Squashing/merging commits
+### B) Squashing/merging commits
 
 All things considered, our repo history would look cleaner if, for each file,
 we had a **single commit** rather than having multiple small and incremental
@@ -270,7 +269,7 @@ To merge and rename the commits 2 and 3, there are two possibilities:
 </details>
 <br>
 
-### Part C) Rebase and remove duplicated commits
+### C) Rebase and remove duplicated commits
 
 If you **display the history** of your repo:
 
@@ -362,7 +361,7 @@ git log --all --decorate --oneline --graph
 </details>
 <br>
 
-### Additional Tasks: fixup commits and `--autosquash` ✏️
+### 🔮 Additional Task: fixup commits
 
 Since we are cleaning things up, let's also **fix a small bug** in the
 `README.md` and `normal_mode.md` files. Proceed as follows:
@@ -491,16 +490,14 @@ git commit --amend -m "Add xkcd comic image file"
 
 ## Exercise 2 - The big reset [40 min]
 
-🚀 **Objective:** get familiar with `git reset` and its `--mixed`, `--soft` and
-`--hard` options.
+🚀 **Objective:** get familiar with `git reset --hard`.
 
 > **Command summary**  
 > Here are the main commands you will need for this exercise.
 >
 > ```sh
+> git commit --amend            # Amend the latest commit.
 > git commit --amend --no-edit  # Amend the latest commit, without changing its commit message.
-> git reset --soft              # Reset while preserving the index and working tree.
-> git reset --mixed             # Reset while preserving only the working tree. `--mixed` is the default
 > git reset --hard              # Reset everything: HEAD, index and the working tree.
 > ```
 
@@ -511,137 +508,158 @@ git commit --amend -m "Add xkcd comic image file"
 
 <br>
 
-### Part A)
-
 In this exercise, we will build a Git repo to keep track of our favorite
 [Chuck Norris](https://en.wikipedia.org/wiki/Chuck_Norris) quotes. 🎉
 
-Will this really be as useless as it sounds ? Let's find out:
+Will this really be as useless as it sounds ? Let's find out!
 
-1. Enter the `exercise_2/the_big_reset` directory and initialize a new Git
-   repository.
+<br>
 
-2. Stage the file `README.md`, then make a first commit with the commit message
-   `"First commit"` (or any other message you like).
+### A) Create a new repo on GitHub
 
-3. Stage the file `my_quotes.md`, and make a new commit with the message
-   `"Add a file to keep track of quotes"`.
+A common way to start a new Git repo is to create it directly on GitHub/GitLab
+and then clone it to our local computer. This is what we will do here:
 
-4. Wait, that last commit message is not nearly dramatic enough for what is
-   about to unfold in this exercise. Let's change it to:
-   `"Starting The Big Reset"`.
+1. **Go to [GitHub](https://github.com)** and login to your user account.
 
-   > 🌈 **Note:** while the optimal way to do this is using
-   > `git commit --amend`, we here suggest that you try to use **`git reset`**
-   > (with either the **`--soft`** or **`--mixed`** option).
-
-5. Actually, there's still a thing we forgot: there is a
-   `chuck_norris_quotes.txt` file in the repo - but we will not track it. So
-   let's put that file on the list of files to be ignored by Git and make this
-   change **part of the very first commit of the history** (in other words, the
-   file you create to ignore `chuck_norris_quotes.txt` should be part of the
-   first commit).
-
-   > 🎯 **Hint:** you will need to use a combination of **reset** and
-   > **amending**, and then re-do the second commit.
-
-   > ✨ **Tip:** instead of re-doing the second commit, you could also delete
-   > the `my_quotes.md` file and then **cherry-pick** the
-   > `Starting The Big Reset!` commit you made earlier. This commit will be
-   > orphaned after you reset your `HEAD` to the first commit, but it can
-   > still be cherry-picked ! 👻
-   >
-   > If you can't find the commit ID of the commit to cherry-pick displayed
-   > somewhere in your shell, you can use the **`git reflog`** command to find
-   > it.
+2. **Create a new repository**, with the following settings:
+   * **Repository name:** the-big-reset
+   * **Description:** A test repo with Chuck Norris quotes
+   * **Visibility:** Private (only you will be able to read and write to it).
+   * **Add README:** On (enable the setting).
+   * All other settings can be left at their default values.
 
    <br>
 
-<br>
+   > 🌈 **Note:** since we enabled the **Add README** option, GitHub will
+   > directly initialize a new Git repo and add a first commit that contains
+   > a `README.md` file. This allows us to immediately clone the repo.
+
+3. Enter the `exercise_2/` directory and **Clone your newly created repo**.
+   Note that, because we set the visibility of the repo to **private**, you
+   will already be asked for your GitHub/GitLab credentials (username and
+   access token) at the time when you clone the repo (because read access is
+   private).
+
+   > 🦉 **Reminder:** the command to clone a repo is `git clone` followed by
+   > the URL of your repository on GitHub/GitLab.
+
+4. You should now have a directory named **`the-big-reset`** in your working
+   directory. Move the files `my_quotes.md` and `chuck_norris_quotes.txt` into
+   that directory with the following shell command:
+
+     ```sh
+     mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
+     ```
+
 <details><summary><b>✅ Solution</b></summary>
 
-1-3. Initialize a new Git repo and make the first 2 commits:
-
 ```sh
-# 1. Initialize a new Git repo.
-cd exercise_2/the_big_reset
-git init
+# Clone the repo.
+cd exercise_2
+git clone https://...
 
-# 2. Make a first commit with the `README.md` file.
-git add README.md
-git commit -m "First commit"
-
-# 3. Make a second commit with the `my_quotes.md` file.
-git add my_quotes.md
-git commit -m "Add a file to keep track of quotes"
-```
-
-4. Amend the commit message of the last commit using "git reset":
-
-```sh
-git reset --soft HEAD~1
-git commit -m "Starting The Big Reset!"
-git log --pretty=oneline                 # To check the commits message was changed.
-```
-
-> 🌈 **Notes**
->
-> * Since we want to change the commit message (but not the actual content), we
->   use the **`--soft`** option of `git reset`: this resets the `HEAD` to the
->   specified position (in this case `HEAD~1` - the parent of the last commit),
->   but does not modify the git index. As a result, the staged content is
->   already there and we can simply commit.
->
-> * Comparing the commit ID values of the second commit before and after having
->   amended its commit message, we can see that they are different, despite the
->   two commits having the same content and commit message.
->
->   The reason is because they were made at a different time, and since time is
->   part of the commit metadata used to compute the commits' SHA-1 hash value,
->   the commit ID values differ.
->
-> * In principle the best solution for this task would be to use:
->
->    ```sh
->    git commit --amend -m "Starting The Big Reset"
->    ```
->
->   But the idea of the exercise was to train the **`git reset`** command.
-
-<br>
-
-5. Ignore the `chuck_norris_quotes.txt` file.
-
-```sh
-# Create a .gitignore file and add the name of the file to ignore to it.
-echo "chuck_norris_quotes.txt" > .gitignore
-
-# Add the .gitignore file to the first commit. We do this by resetting the
-# HEAD to the first commit, then amending that first commit.
-git reset --mixed HEAD~1   # This is the same as "git reset HEAD~1",
-                           # since "--mixed" is the default option.
-git add .gitignore
-git commit --amend --no-edit
-
-# Display the content of the amended commit to verify that the
-# .gitignore file is now part of it.
-git show HEAD
-
-# Redo the second commit.
-git add my_quotes.md
-git commit -m "Starting The Big Reset!"
-
-# Alternatively, we can cherry-pick our initial commit number 2.
-rm my_quotes.md              # Needs to be deleted to avoid conflict.
-git cherry-pick <commit ID>
+# Move files inside the newly cloned repo.
+mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
 ```
 
 </details>
 <br>
 
-### Part B) Add Chuck Norris quotes
+### B) Amending a commit
 
-Alright, fixing stuff is fun, but let's try to get some real work done here.
+1. **Enter your newly cloned `the-big-reset` directory** and look at its
+   history and status. You should see that:
+   * The repo already contains 1 commit: the one made by GitHub/GitLab when
+     it initialized the repo with the `README` file.
+   * There are 2 untracked files: `my_quotes.md` and `chuck_norris_quotes.txt`.
+
+2. Stage `my_quotes.md`, and **make a new commit** with the message:
+   > `Add a file to keep track of quotes`.
+
+3. Wait, that last commit message is not nearly dramatic enough for what is
+   about to unfold in this exercise. Let's change it to:
+   `"Starting The Big Reset"`.
+
+   **Compare your commit ID (hash)** before and after the amending of the
+   commit: you should see that the value has changed, because amending a
+   commit creates a new one. In our case, the new commit has a different
+   commit message and was made at a different time.
+
+   > 🌈 **Note:** the optimal way to do this is using `git commit --amend`.
+   > But if you want, you can also experiment with `git reset --soft` and
+   > `git reset --mixed`.
+
+4. Oh, one more thing: let's also add the `chuck_norris_quotes.txt` to our
+   last commit (do _not_ create a new commit but _amend_ the last one).
+
+   > ✨ **Tip:** when amend a commit but don't want to modify its commit
+   > message, you can add the `--no-edit` option so that Git does not ask
+   > you for a new commit message.
+
+5. Push the changes to the `main` branch to your remote. Go to the webpage
+   of your repo to verify the changes are really there.
+
+<br>
+<details><summary><b>✅ Solution</b></summary>
+
+```sh
+# 1. Enter the repo and check its history and status.
+cd the-big-reset
+git log --all --decorate --oneline --graph
+git status
+
+# 2. Make a commit with the `my_quotes.md` file.
+git add my_quotes.md
+git commit -m "Add a file to keep track of quotes"
+
+# 3. Amend the commit message of the last commit.
+git commit --amend -m "Starting The Big Reset"
+git log --all --decorate --oneline --graph      # To check the commits message was changed.
+
+# 4. Amend the commit again, this time to add a new file.
+git add chuck_norris_quotes.txt
+git commit --amend --no-edit
+git show   # You should not see the chuck_norris_quotes.txt file being part of the commit.
+
+# 5. Push your changes on `main` to the remote.
+git push
+```
+
+> 🌈 **Note:** to amend the last commit, we could also have used
+> `git reset --soft` or `git reset --mixed`.
+>
+> Since we want to change the commit message (but not the actual content), we
+> use `git reset --soft`: this resets the `HEAD` to the specified position
+> (in this case `HEAD~1`, the parent of the last commit), but does not modify
+> the Index. As a result, the staged content is already there and we can
+> simply commit.
+>
+> ```sh
+>  # Reset the HEAD (and the branch) 1 commit before the current commit.
+>  git reset --soft HEAD~1
+>  # Redo the commit, but with a different message.
+>  git commit -m "Starting The Big Reset"
+> ```
+>
+> With `git reset --mixed`, we would have to do:
+>
+> ```sh
+>  # Reset the HEAD (and the branch) 1 commit before the current commit.
+>  git reset --mixed HEAD~1  # Or "git reset HEAD~1", since --mixed in the default option.
+>
+>  # Re-stage the file to commit.
+>  git add my_quotes.md
+>  # Redo the commit, but with a different message.
+>  git commit -m "Starting The Big Reset"
+> ```
+
+</details>
+<br>
+
+### B) Add Chuck Norris quotes
+
+Alright, amending stuff is fun, but let's try to get some real work done here.
 
 * **Open the `chuck_norris_quotes.txt` file** and chose your 3 favorite
   quotes.
@@ -677,7 +695,7 @@ git commit -m "Add 3rd favorite quote" my_quotes.md
 With so many epic quotes to chose from, it a real shame we can chose only 3...
 But wait - Git has a solution for us: **branches** ! 🌱
 
-1. Create an alternate branch named `second_choice` at the point in history
+1. Create an alternate branch named `second-choice` at the point in history
    where the `my_quotes.md` file was still empty and switch to it. Verify that
    `my_quotes.md` does indeed not contain any quotes.
 
@@ -702,7 +720,7 @@ But wait - Git has a solution for us: **branches** ! 🌱
    You should see that your 2 branches have diverged, like so:
 
     ```txt
-    * 23c0462 (HEAD -> second_choice) Add alternate favorite quotes
+    * 23c0462 (HEAD -> second-choice) Add alternate favorite quotes
     | * 5560a53 (main) Add 3rd favorite quote
     | * e78e2ab Add 2nd favorite quote
     | * 70c65be Add 1st favorite quote
@@ -717,7 +735,7 @@ But wait - Git has a solution for us: **branches** ! 🌱
 ```sh
 # 1. Create a new branch at the second commit. Note that with `switch -c` we
 #    create the branch and check it out at the same time.
-git switch -c second_choice HEAD~3
+git switch -c second-choice HEAD~3
 cat my_quotes.md                    # Verify there are no quotes in the file.
 
 # 3. Add 3 other quotes in a single commit.
@@ -734,103 +752,219 @@ git log --all --decorate --oneline --graph
 </details>
 <br>
 
-### Part C) Hard reset
+### C) Hard reset
 
 Upon reflection, why not put all of our favorite quotes (who said we could
 have only 3!) into the `my_quotes.md` file on the `main` branch.
 
-1. **Merge the branch `second_choice` into `main`**. This will be a
-   **3-way merge** (i.e. a non-fast-forward merge) - so get ready for some
-   possible **conflict resolution** action.
+* **Merge the branch `second-choice` into `main`**. This will be a
+  **3-way merge** (i.e. a non-fast-forward merge) - so get ready for some
+  possible **conflict resolution** action.
+* After the merge is done, **look at the history** of your Git repo
+  (`git log --all --decorate --oneline --graph`) and then **push your changes**
+  on `main` to the remote.
 
-    <details><summary><b>✅ Solution</b></summary>
+<details><summary><b>✅ Solution</b></summary>
 
-    ```sh
-     # Start the merge...
-     git switch main
-     git merge second_choice
+```sh
+# Start the merge...
+git switch main
+git merge second-choice
 
-     # ... but there is a conflict, so we need to solve it manually...
-     vim my_quotes.md
+# ... but there is a conflict, so we need to solve it manually...
+vim my_quotes.md
 
-     # ... after the conflict is solved, we stage the modifications and run
-     # `git commit` to finish the merge.
-     git add my_quotes.md
-     git commit
+# ... after the conflict is solved, we stage the modifications and run
+# `git commit` to finish the merge.
+git add my_quotes.md
+git commit
 
-     # Display history of repo.
-     git log --all --decorate --oneline --graph
-    ```
+# Display history of repo.
+git log --all --decorate --oneline --graph
 
-    </details>
+# Push changes on main.
+git push
+```
 
-2. After the merge is done, let's look at the history of our Git repo again
-   with `git log --all --decorate --oneline --graph`.
+</details>
+<br>
 
-   You should see that, as expected, the 3-way merge introduced an
-   additional **merge commit** (the commit `c6b02ce` in the example below).
-   As a result our history is not as clean as could be.
+As expected, doing a 3-way merge introduced an additional **merge commit**
+(`c6b02ce` in the example below). As a result our history is not as clean
+as could be.
 
-    ```txt
-    *   c6b02ce (HEAD -> main) Merge branch 'second_choice'
-    |\
-    | * 23c0462 (second_choice) Add alternate favorite quotes
-    * | 5560a53 Add 3rd favorite quote
-    * | e78e2ab Add 2nd favorite quote
-    * | 70c65be Add 1st favorite quote
-    |/
-    * c3d7850 Starting the Big Reset
-    * e044feb First commit
-    ```
+```txt
+*   c6b02ce (HEAD -> main) Merge branch 'second-choice'
+|\
+| * 23c0462 (second-choice) Add alternate favorite quotes
+* | 5560a53 Add 3rd favorite quote
+* | e78e2ab Add 2nd favorite quote
+* | 70c65be Add 1st favorite quote
+|/
+* c3d7850 Starting the Big Reset
+* e044feb First commit
+```
 
-    Can we fix it? _Yes, we can !_
-     * Reset the repository to its state before the merge.
-       > 🎯 **Hint:** time to put that `--hard` option to good use !
-     * Rebase `second_choice` on `main`, before merging `second_choice` into
-       `main`.
-    <br>
+Can we fix it? _Yes, we can !_
 
-    When you are done, run `git log --all --decorate --oneline --graph` and
-    marvel at your perfectly clean history (commit IDs will differ). 😻
+* Reset the repository to its state before the merge.
+  > 🎯 **Hint:** time to put that `--hard` option to good use !
+* Rebase `second-choice` on `main`, before merging `second-choice` into
+  `main`.
+<br>
 
-    ```txt
-    * 9f554ad (HEAD -> main, second_choice) Add alternate favorite quotes
-    * 5560a53 Add 3rd favorite quote
-    * e78e2ab Add 2nd favorite quote
-    * 70c65be Add 1st favorite quote
-    * c3d7850 Starting the Big Reset
-    * e044feb First commit
-    ```
+When you are done, run `git log --all --decorate --oneline --graph` and
+marvel at your perfectly clean history (commit IDs will differ). 😻
 
-    <details><summary><b>✅ Solution</b></summary>
+```txt
+* 9f554ad (HEAD -> main, second-choice) Add alternate favorite quotes
+* 5560a53 Add 3rd favorite quote
+* e78e2ab Add 2nd favorite quote
+* 70c65be Add 1st favorite quote
+* c3d7850 Starting the Big Reset
+* e044feb First commit
+```
 
-    ```sh
-     # Revert the "main" branch to its state as before the merge.
-     git reset --hard HEAD~1
+<details><summary><b>✅ Solution</b></summary>
 
-     # Now we can rebase "second_choice" on "main" to get a cleaner history...
-     git switch second_choice
-     git rebase main
+```sh
+# Revert the "main" branch to its state as before the merge.
+git reset --hard HEAD~1
 
-     # ... but there is a conflict that we need to solve manually...
-     vim my_quotes.md
+# Now we can rebase "second-choice" on "main" to get a cleaner history...
+git switch second-choice
+git rebase main
 
-     # ... after the conflict is solved, we stage the modifications and
-     # continue the rebase.
-     git add my_quotes.md
-     git rebase --continue
+# ... but there is a conflict that we need to solve manually...
+vim my_quotes.md
 
-     # Merge "second_choice" into "main". This is now fast-forward => no conflicts.
-     git switch main
-     git merge second_choice
+# ... after the conflict is solved, we stage the modifications and
+# continue the rebase.
+git add my_quotes.md
+git rebase --continue
 
-     # Display history of repo:
-     git log --all --decorate --oneline --graph
-    ```
+# Merge "second-choice" into "main". This is now fast-forward => no conflicts.
+git switch main
+git merge second-choice
 
-    </details>
+# Display history of repo:
+git log --all --decorate --oneline --graph
+```
+
+</details>
+<br>
+
+### D) Force push
+
+Finally, we would like to **push our changes on `main`** to the remote once
+more.
+
+* Let's first try with a regular push:
+
+  ```sh
+  git push
+  ```
+
+* ❓ **Question:** you should see that this does _not_ work 💥 ! Why is that ?
+
+  <details><summary><b>✅ Answer</b></summary>
+  The problem is that the branch we are trying to push (here `main`) has
+  diverged from its counterpart on the remote. In other words, the history
+  of the two branches is no longer the same, and therefore the changes made
+  locally to `main` cannot be pushed with a regular `git push` any longer.
+
+  When there is a divergence, Git by default refuses to overwrite the remote
+  history to prevent accidental data loss. We must then either:
+  
+  * Locally reconcile the histories of the local and remote branch.
+  * Or - and this is what we will do here next - **overwrite** the history
+    of the branch on the remote.
+
+  </details>
 
 <br>
+
+To get the push to complete, we must allow Git to overwrite the history of
+the `main` branch on the remote by doing a **force** push:
+
+  ```sh
+  git push --force-with-lease
+  ```
+
+> 🌈 **Note:** since you are working on this repo alone, there is in principle
+> no risk for you to overwrite by mistake new commits added to `main` by
+> someone else (unless you work on the repo from multiple machines).
+>
+> For this reason, you could here also safely use `git push --force` instead
+> of `git push --force-with-lease`.
+
+<br>
+
+### 🔮 Additional Task: delete branches on the remote
+
+* **Push the branch `second-choice`** to the remote.
+  > 🎯 **Hint:** remember that the first time you push a branch to a remote,
+  > you must set its upstream branch with the `-u / --set-upstream` option.
+
+* **Go to the GitHub/GitLab page** of your repo, and check that the branch has
+  been pushed: you should see it listed if you click on "Branches".
+
+* **Delete the branch** via the GitHub/GitLab interface, then update your local
+  repo to reflect this deletion. Try the following 2 commands:
+
+  ```sh
+  git fetch
+  git fetch --prune
+  ```
+
+  ❓ **Question:** what does the `--prune` option do ?
+
+  <details><summary><b>✅ Answer</b></summary>
+  `--prune` tells Git to **remove remote-tracking branches** that no longer
+  exist on the remote. In other words, if a branch was deleted on the remote,
+  `git fetch --prune` will clean up your local references to that branch.
+
+  When working on a repo used by multiple people, its good to run
+  `git fetch --prune` from time to time to cleanup the remote tracking
+  branches in your local copy of the repo.
+  </details>
+
+* **Push `second-choice`** to the remote again (re-create it on the remote).
+  
+  Verify that you now again have a tracking branch `origin/second-choice`
+  by looking at your repo's full history:
+  `git log --all --decorate --oneline --graph` (`git adog`).
+
+* **Delete `second-choice`** from the remote again, but this time via the Git
+  **command line** (not via the web interface).
+
+  Run `git log --all --decorate --oneline --graph` (`git adog`) to verify
+  that the remote-tracking branch is deleted.
+
+  > ✨ **Note:** when deleting a remote branch via the command line, git
+  > automatically also deletes the remote tracking branch. There is thus no
+  > need to run `git fetch --prune`.
+
+<br>
+<details><summary><b>✅ Solution</b></summary>
+
+```sh
+# Push the branch to the remote.
+git push -u origin second-choice
+git push --set-upstream origin second-choice  # Same, but using the long form.
+
+# Delete the remote tracking branch "origin/second-choice".
+git fetch --prune
+
+# Push the branch to the remote again.
+git push -u origin second-choice
+
+# Delete the branch from the remote in command line:
+git push origin --delete second-choice
+```
+
+</details>
+
 <br>
 <br>
 
@@ -1030,7 +1164,7 @@ a problem never comes alone, they need this _right now_ !
 
 <br>
 
-### Additional Tasks ✏️
+### 🔮 Additional Task: update main
 
 Update the `main` branch with the new commits from `dev`:
 
@@ -1477,37 +1611,44 @@ recollection of where Longsilver has hidden his treasure ?
 And there is more good news: in addition to giving you hints, the parrot has
 also brought you to Longsilver's treasure chest! You now have a new directory
 named `treasure_chest` at the root of the repo's working tree. To verify,
-you run `ls -l` to list the content of the current directory.
+you can run `ls -l` to list the content of the current directory.
 
-To bring the treasure chest aboard your ship, the **First-mate** should do the
-following:
+To bring the treasure chest aboard your ship, **one person in the team**
+should do the following:
 
- > 🔥 **Important:** only one pirate should perform this task (we suggest
- > the **First-mate**). Otherwise your `main` branch will diverge.
+> 🔥 **Important:** only one pirate should perform this task, otherwise your
+> `main` branch will diverge.
 
  1. **Merge `skull-rock-island` into `main`**. This will add the treasure chest
-    to the `main` branch - along with your new friend the parrot !
+    to the `main` branch - along with your new friend the parrot !  
+    Since `skull-rock-island` and `main` diverge, you can either:
+    * Perform a 3-way merge. In this case, use the message
+      `Bring treasure onboard ship` as merge commit message.
+    * Or, if you want to keep your history more linear, do a rebase of
+      `skull-rock-island` onto `main` before merging it.
  2. **Push the changes** on branch `main` to the remote.
 
-The **Captain** and **Quartermaster** can now update their local repos with the
-changes that the **First-mate** just pushed to `main`. At this point everyone
-should be synchronized on their `main` branch and have the treasure onboard.
+<br>
 
-> 🌟 **Bonus:** if you want, you can sync the `skull-rock-island` branch
+The other team members can now update their local repos with the changes to
+`main`. At this point everyone should be synchronized on their `main` branch
+and have the treasure onboard.
+
+> 🌟 **Bonus:** if you want, you can also sync the `skull-rock-island` branch
 > across the team:
 >
-> * The pirate who did the merge (**First-mate**) should push their changes
->   on `skull-rock-island` to the remote. Note that, because of the rebase,
->   the local and remote version of the branch have diverged, and therefore
->   you need to add the **`--force`** option:
+> * The pirate who did the merge should push their changes to
+>   `skull-rock-island` to the remote. Note that, because of the rebase we did
+>   on that branch earlier, the local and remote version of the branch have
+>   diverged, and therefore you need to add the **`--force`** option when
+>   pushing it to the remote:
 >
 >   ```sh
 >   git push --force
 >   ```
 >
 > * The other pirates can then **reset** their local copy of
->   `skull-rock-island` to the version from the remote (the version
->   pushed by the First-mate).
+>   `skull-rock-island` to the version from the remote.
 >
 >   ```sh
 >   git fetch                                  # Download new changes from remote.
@@ -1542,7 +1683,7 @@ _Shiver me timbers!_ We are missing **the keys** to open the lock !
 
 <br>
 
-### F) Treasure hunt final part: opening the treasure 🗝️
+### F) Grand finale: opening the treasure 🗝️
 
 We are now looking for the **3 keys to open the 3 locks of the chest**.
 
@@ -1644,19 +1785,16 @@ If you would like to receive credits for the course:
 
 1. **Take a screenshot** of the output of your Git repo's full history (use
    `git log --all --decorate --oneline --graph`) at the end of your quest.
-2. **Create a new branch** named `exam-YOUR_FULL_NAME` rooted on the latest
-   commit of `main` (replace `YOUR_FULL_NAME` with your actual name). Add a
-   commit with your screenshot to this new branch and push it to the remote.
-3. **Send an email** with subject "Git course exam - your name" to the
+2. **Create a new branch** named `exam-FIRST_NAME` rooted on the latest commit
+   of `main` (replace `FIRST_NAME` with your first name, e.g. `exam-alice`).
+3. **Add a commit with your screenshot** to the `exam-FIRST_NAME` branch, and
+   push it to the remote.
+4. **Send an email** with subject "Git course exam - your name" to the
    course instructor with the following information:
     * Your **full name**.
     * The **URL of the remote repo** that you have used for this exercise. The
       repo must be public.
     * The **secret code** you found when opening the chest.
-
-      > 🦜 **Note:** the instructor's email address can be found at the top of
-        the shared document used for the class.
-
 4. **Make sure you have signed-up for the exam** on the shared online document
    of the course by highlighting your name in green.
 
