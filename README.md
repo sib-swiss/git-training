@@ -50,7 +50,7 @@ Exercise instructions are best viewed in a web browser. Simply click on the
 link below to display them.
 
 * Day 1: [exercises first steps](exercises/exercises_first_steps.md)
-* Day 2: [exercises advanced topics](exercises/exercises_advanced_topics.md)
+* Day 2: [exercises advanced topics](exercises/exercises_advanced.md)
 * Optional modules (not covered in class):
   * [optional exercise CI/CD](exercises/exercises_optional_cicd.md)
   * [optional exercise submodules](exercises/exercises_optional_submodules.md)
