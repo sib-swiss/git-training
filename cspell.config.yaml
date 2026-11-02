@@ -1,0 +1,29 @@
+version: "0.2"
+language: en-US
+dictionaryDefinitions: []
+dictionaries: []
+words:
+  - adog
+  - autosquash
+  - blockquotes
+  - Dahus
+  - dary
+  - filemode
+  - gitventure
+  - Longsilver
+  - manul
+  - octocat
+  - officializing
+  - oneline
+  - Otocolobus
+  - reflog
+  - rhum
+  - Scamazone
+  - SERI
+  - sibgit
+  - unstaging
+  - YGYG
+ignoreWords:
+  - enate
+  - opex
+import: []
