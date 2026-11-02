@@ -1,19 +1,5 @@
-# Exercise solutions - Optional Git modules - Git LSF
+# Exercise solutions - Optional Git modules - Git LFS
 
-**Table of Content:**
-
-[[_TOC_]]
-
-<br>
-
-:pushpin:  
-**Note:** in these corrections, `git switch` is used to checkout/switch
-branches. If you are using a Git version older than `2.23`, `git checkout`
-should be used instead.
-Similarly, `git switch -c` (create + switch branch) must be replaced by
-`git checkout -b`.
-
-<br>
 <br>
 
 ## Exercise 1 - Create a new Git repository from scratch with Git LFS file tracking
@@ -32,7 +18,7 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    all files and commit:
 
     ```sh
-    # Tell Git LFS which files its should track.
+    # Tell Git LFS which files it should track.
     git lfs track logo.png "*.fasta" "db/db_file.txt"
 
     # Stage all files and commit.
@@ -47,25 +33,22 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
     ```sh
     git lfs ls-files
-    #  d6c210aeaf * db/db_file.txt
+    #  0076e40fd3 * db/db_file.txt
     #  34804bc7cb * logo.png
-    #  6f0a4add2f * sequences/sample_A.fasta
-    #  efdc76ef2a * sequences/sample_B.fasta
+    #  7db8ae7435 * sequences/sample_A.fasta
+    #  bda5d8e934 * sequences/sample_B.fasta
     ```
 
-   :pushpin:
-   **Note:** to display the actual files in the LFS object store, we can use
+   **🌈 Note:** to display the actual files in the LFS object store, we can use
    `ls -l .git/lfs/objects/*/*` or `tree .git/lfs/objects/`
 
-4. :question:
-   **Question answer:** since only a pointer/placeholder of the files tracked
+4. **❓ Question answer:** since only a pointer/placeholder of the files tracked
    by Git LFS is stored in the Git database (the actual files are in the Git
    LFS cache), the `git show` command only shows the content of the pointer
    file, and not the content of the actual file.
 
-5. :question:
-   **Question answer:** for files tracked by Git LFS, `git diff` only shows the
-   difference between the two versions of the pointer file, not the two
+5. **❓ Question answer:** for files tracked by Git LFS, `git diff` only shows
+   the difference between the two versions of the pointer file, not the two
    versions of the file. Therefore it only displays the difference in hash
    value and in size between the two versions of a file.
 
@@ -84,18 +67,17 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
     ```
 
    Are there any files that are not currently tracked by Git in the working
-   tree?  
+   tree?
+
    We answer this question using **`git status`**, and find that our working
    tree is clean (and there is no `.gitignore` file either, so no files are
    ignored).
 
-   What are the respective sizes of the `.git` and `.git/objects` repositories?
+   What are the respective sizes of the `.git` and `.git/objects` directories?
 
     ```sh
-    du -sh .git/
-    #    61M  .git/
-    du -sh .git/objects/
-    #    61M  .git/objects/
+    du -sh .git/          # -> 24M
+    du -sh .git/objects/  # -> 24M
     ```
 
 2. Migrate all `.tif` and `.jpg` files to Git LFS throughout the entire history
@@ -106,7 +88,7 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
     # to the history after the migration.
     git log --all --decorate --oneline --graph
 
-    # Migrate all `.tif` and `.jpg` files to Git LFS.
+    # Migrate all ".tif" and ".jpg" files to Git LFS.
     git lfs migrate import --include="*.tif,*.jpg" --everything
 
     # Compare the history with what we had before the "git lfs migrate" command.
@@ -120,8 +102,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
     ```txt
     version https://git-lfs.github.com/spec/v1
-    oid sha256:3e45f949e2234094fd2946875a7e8b3a0ff9b182f85f0e4538471e59a00b5c81
-    size 7994968
+    oid sha256:50303f139c94a6eaa0537b4f06b2b68c1240de7b2d088917058192a7a439ee82
+    size 4356928
     ```
 
    To restore the files in the working tree, we run:
@@ -133,41 +115,44 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    Now the walrus image is back!
 
    To list all files that are tracked by Git LFS, we use:
-   `git lfs ls-files --all`.  
+   `git lfs ls-files --all`.
+
    The files with a `*` are those that are currently checked-out.
 
     ```sh
     git lfs ls-files --all
-    ea67d4f8a5 * birds/animal_atlantic_puffin.tif
-    8c92a37ac7 * birds/animal_snowy_owl.jpg
-    6b58d6ac09 - fish/animal_pink_salmon.tif
-    1aa9297470 * mammals/animal_arctic_fox.jpg
-    2519e9a194 - mammals/animal_blue_whale.tif
-    47f090bd68 - mammals/animal_muskox.jpg
-    3e45f949e2 * mammals/animal_walrus.tif
-    4cf1383168 - birds/animal_emperor_penguin.tif
-    642c1360fe - birds/animal_gentoo_penguin.jpg
+    #  0e7aca8749 * birds/animal_atlantic_puffin.tif
+    #  488f476526 * birds/animal_snowy_owl.jpg
+    #  024051c09d * fish/animal_pink_salmon.tif
+    #  510d5b477b * logo.jpg
+    #  bc487358a7 * mammals/animal_arctic_fox.jpg
+    #  456948bde4 * mammals/animal_blue_whale.tif
+    #  33ae6e09cb * mammals/animal_muskox.jpg
+    #  50303f139c * mammals/animal_walrus.tif
+    #  2392081802 - birds/animal_emperor_penguin.tif
+    #  770c018a15 - birds/animal_gentoo_penguin.jpg
     ```
 
    Finally, let's have a look at the size of the `.git/objects`, `.git/lfs` and
    `.git/` directories again.
    As can be seen below, the size of the `.git` directory has actually
-   increased (doubled!), because we now have a copy of all files both in the
-   Git LFS object store [`.git/lfs/objects`] and in the Git database
+   increased (more than doubled!), because we now have a copy of all files both
+   in the Git LFS object store [`.git/lfs/objects`] and in the Git database
    [`.git/objects`].
 
     ```sh
     du -sh .git
-    #    133M  .git
+    #    52M  .git
     du -sh .git/objects
-    #    61M  .git/objects
+    #    24M  .git/objects
     du -sh .git/lfs
-    #    73M  .git/lfs
+    #    29M  .git/lfs
     ```
 
    However, this is only temporary. At some point Git will do garbage
    collection of all the commits from the old history, and the copy of the
-   files present in `.git/objects` will be removed.  
+   files present in `.git/objects` will be removed.
+
    To force immediate removal of the files, you can run:
 
     ```sh
@@ -176,14 +161,14 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
     ```
 
    The garbage collection has now reduced the size of the Git object store down
-   to 40 KB !!
+   to about 32 KB !!
 
     ```sh
     du -sh .git/objects/
-    #    28K  .git/objects/
+    #    32K  .git/objects/
     ```
 
-4. Adding the humpback whale image as a LFS-tracked file. Since the humpback
+4. Adding the humpback whale image as an LFS-tracked file. Since the humpback
    whale is a mammal, we store it in the `mammals` sub-directory.
 
     ```sh
@@ -205,7 +190,7 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    the content of our local repo to it. First we add the URL of the remote,
    then we push our two branches.
 
-   **Note:** the URL in the solution below depends on your GitHub username.
+   **🌈 Note:** the URL in the solution below depends on your GitHub username.
 
     ```sh
     git remote add origin https://github.com/<GitHub user name>/arctic_animals.git
@@ -217,23 +202,24 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
 7. To clear the local Git LFS cache [`.git/lfs/objects`], we use the
    `git lfs prune` command. As can be seen below, there are 2 files that can
-   be deleted, allowing us to reclaim 14 MB of disk space (83 - 69 = 14 MB).
-   After clearing of the cache, the size of the local LFS cache is 69 MB.
+   be deleted (the two penguin images, which are no longer part of any
+   branch), allowing us to reclaim about 3 MB of disk space (34 - 31 = 3 MB).
+   After clearing of the cache, the size of the local LFS cache is 31 MB.
 
     ```sh
     git lfs prune --dry-run
-    #    prune: 10 local object(s), 8 retained, done.
-    #    prune: 2 file(s) would be pruned (8.4 MB), done.
+    #    prune: 11 local objects, 9 retained, done.
+    #    prune: 2 files would be pruned (3.3 MB), done.
 
     du -sh .git/lfs/       # Display the size of the local LFS cache.
-    #    83M  .git/lfs/
+    #    34M  .git/lfs/
 
     git lfs prune --verify-remote
-    #    prune: 9 local object(s), 8 retained, 1 verified with remote, done.
-    #    prune: Deleting objects: 100% (1/1), done.
+    #    prune: 11 local objects, 9 retained, 2 verified with remote, done.
+    #    prune: Deleting objects: 100% (2/2), done.
 
     du -sh .git/lfs/       # Display the size of the local LFS cache.
-    #    69M  .git/lfs/
+    #    31M  .git/lfs/
     ```
 
 8. Let's clone our `arctic_animals` repository at a different location, and see
@@ -245,16 +231,16 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
     git clone https://github.com/<GitHub user name>/arctic_animals.git arctic_animals_COPY
     cd arctic_animals_COPY
 
-     # Display the size of the local Git object store and LFS cache.
+    # Display the size of the local Git object store and LFS cache.
     du -sh .git/objects
-    #    32K  .git/objects
+    #    28K  .git/objects
     du -sh .git/lfs
-    #    32M  .git/lfs
+    #    14M  .git/lfs
     ```
 
    As can be seen above, the size of the Git object store [`.git/objects`] is
-   now only 32 KB, and the size of the Git LFS cache [`.git/lfs`] is 32 MB.
-   The Git LFS cache size is smaller than in the original repo (69 MB), because
+   now only 28 KB, and the size of the Git LFS cache [`.git/lfs`] is 14 MB.
+   The Git LFS cache size is smaller than in the original repo (31 MB), because
    the `git clone` operation has only downloaded the files that are necessary
    for the latest commit of the `main` branch (the branch that is checked-out
    by default).  
@@ -262,17 +248,17 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    files needed for the `dev` branch will only be downloaded when doing a
    `git switch dev`.
 
-9. On branch `main`, we edit the file `birds/birds_list.txt` and remove its 2
+9. On branch `main`, we edit the file `birds/bird_list.txt` and remove its 2
    last lines which contain the entries for the penguins. After this, we stage
-   the modified `birds/birds_list.txt` file, and since the commit we wish to
+   the modified `birds/bird_list.txt` file, and since the commit we wish to
    modify is the latest one on the current branch, we can simply use the
    `--amend --no-edit` options of `git commit`.
 
     ```sh
     git switch main
 
-    # Edit file birds/birds_list.txt: remove the last 2 lines.
-    git add birds/birds_list.txt
+    # Edit file birds/bird_list.txt: remove the last 2 lines.
+    git add birds/bird_list.txt
     git commit --amend --no-edit
     ```
 
@@ -288,7 +274,7 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
     ```
 
     Finally we can do the same `--force-with-lease` push on branch `main`, so
-    that our local and remote repo are perfectly synchronized.
+    that our local and remote repos are perfectly synchronized.
 
     ```sh
     git switch main

@@ -1,20 +1,20 @@
 # Optional module exercises - Git submodules
 
-**Table of Content:**
-
-[[_TOC_]]
-
-<br>
 <br>
 
 ## Exercise 1 - The Git reference web page gets better with submodules [45 min]
-**Objective:** introduction to git submodule.
+
+**🚩 Objective:** introduction to Git submodules.
+
+<br>
 
 In this exercise, we will implement some improvements to two web pages using
-Git **submodules**.  
+Git **submodules**.
+
 The projects for these web pages are the following:
+
 * The [git resource webpage](https://github.com/sibgit/git_resources_webpage),
-  which you might remember from the *Version Control with Git – First Steps*
+  which you might remember from the _Version Control with Git - First Steps_
   exercises.
 * The [useful tools webpage](https://github.com/sibgit/useful-tools), a page
   that shows a list of useful tools for the part of our lives that does not
@@ -24,16 +24,16 @@ The projects for these web pages are the following:
 
 ### A) Clone the projects - including their submodule
 
-1. Change into the `exercise_submodules` directory - it should be empty.
+1. Change into the `exercise_submodule/` directory - it should be empty.
 2. Clone the repositories for the 2 web pages (links above). These repositories
    contain submodules, so **make sure to also download the submodule content**.
 3. Display the two web-pages `references.html` and `useful-tools.html` in your
-   local browser (one is in each of the repo you just cloned). They should both
-   show a *glitter effect* when moving the mouse pointer.
+   local browser (one is in each of the repos you just cloned). They should
+   both show a _glitter effect_ when moving the mouse pointer.
 4. Have a look at `.gitmodules` to see what submodules are in these projects.
 
-:question:
-**Questions**:
+**❓ Questions:**
+
 * Which command would you use to update the content of the
   `git_resources_webpage` and `useful-tools` repositories (so that changes
   also affect submodules)?
@@ -54,10 +54,9 @@ The projects for these web pages are the following:
    will be able to push commits to it (which you don't have permission to do on
    the original project).
 
-2. Add the **forked** *great-style* repo as a new submodule to both
+2. Add the **forked** _great-style_ repo as a new submodule to both
    `git_resources_webpage` and `useful-tools`.  
-   :fire:
-   **Important:** make sure to use the **forked** project, and *not* the
+   **🔥 Important:** make sure to use the **forked** project, and _not_ the
    original project!
 
 3. **Refresh the two web pages** in your browser, they should now have another
@@ -71,6 +70,7 @@ The projects for these web pages are the following:
 <br>
 
 ### C) Improve the great-style submodule
+
 If you look at your web pages, you can notice that the colors of the hyperlinks
 change rather quickly, to the point where we cannot enjoy this fabulous great
 style to its full extent. So let's slow that down a bit.
@@ -84,43 +84,41 @@ and then pull the latest version of the submodule in `useful-tools`.
    Reload the web page `references.html` in your browser, and verify that the
    colors now change more slowly.
 
-   Wait... did we just make a great style even greater? *Yes, we did !* :rainbow:
+   Wait... did we just make a great style even greater? _Yes, we did !_ 🌈
 
 2. Let's keep these changes for posterity by committing them to the
-   `great_style` submodule and then pushing them to the remote (your forked
-   *great-style* remote).  
+   `great-style` submodule and then pushing them to the remote (your forked
+   _great-style_ remote).
 
-   :bomb:
-   **Pitfall:** if you get a message telling you that you are not allowed to
-   push, then it's probably because you have added the original *great-style*
-   project as a remote, and not your forked version.
+   **⚠️ Warning:** if you get a message telling you that you are not allowed
+   to push, then it's probably because you have added the original
+   _great-style_ project as a submodule, and not your forked version.
 
-3. Almost done! All that is left to is to update the *git_resources_webpage*
-   repository (the super-project) so that it points at the new version of
-   *great-style* that we just committed.
+3. Almost done! All that is left to do is to update the
+   _git_resources_webpage_ repository (the super-project) so that it points at
+   the new version of _great-style_ that we just committed.
 
    Go back to the root of `git_resources_webpage`, and commit the changes (the
-   update in the version of the *great-style* submodule) with the message
-   `"Update great-style submodule with slowed-down color changes"`  
+   update in the version of the _great-style_ submodule) with the message
+   `"Update great-style submodule with slowed-down color changes"`.
 
-   :question:
-   **Question**: in the current setup, you cannot push the changes in
+   **❓ Question:** in the current setup, you cannot push the changes in
    `git_resources_webpage` to the remote repo because you do not have write
    permission on it. However, if you did, what would be the command to push
-   your changes in both *git-resources* and its submodules all at once?
+   your changes in both _git_resources_webpage_ and its submodules all at
+   once?
 
 <br>
 
-### Additional tasks (if you have time)
+### 🔮 Additional task - Update the submodule in useful-tools
 
-4. Finally, you should now update the *great-style* submodule also in your
+4. Finally, you should now update the _great-style_ submodule also in your
    local `useful-tools` repository:
     * Enter the `useful-tools` repo and get the new version of the
-      *great-style* submodule.
-    * Reload the page *useful-tools.html* in your browser and verify that the
+      _great-style_ submodule.
+    * Reload the page _useful-tools.html_ in your browser and verify that the
       colors now also change more slowly.
     * Commit your changes.
-
 
 <br>
 <br>
