@@ -4,16 +4,16 @@
 
 ## Before you start 📣
 
-* 📚 **Exercise material setup:** download the
+* **📚 Exercise material setup:** download the
   [exercises_advanced.zip](../exercises/exercises_advanced.zip) file to
   your local computer and unzip it.
 
-* 🔮 **Additional Tasks:** some exercises have **Additional Task** sections
+* **🔮 Additional Tasks:** some exercises have **Additional Task** sections
   that you can complete if you still have time after having completed the main
   part of the exercise. These will in principle _not_ be corrected in class,
   but their solution is given in this document.
 
-* ✅ **Exercise solutions:** all exercises have their solution embedded in this
+* **✅ Exercise solutions:** all exercises have their solution embedded in this
   document. You can reveal them by clicking on the drop-down menu, as shown
   below.
 
@@ -25,7 +25,7 @@
   solve the exercise without it. Remember you can always ask the course
   instructors for help.
 
-* ✨ **Table of content:** when viewing this document on GitHub, you can
+* **✨ Table of content:** when viewing this document on GitHub, you can
   display a table of content by clicking on the "Outline" button at the top
   right.
 
@@ -34,7 +34,7 @@
 
 ## Exercise 1 - The vim cheat-sheet [40 min]
 
-🚀 **Objective:** learn to use **interactive rebase**.
+**🚩 Objective:** learn to use **interactive rebase**.
 
 > **Command summary**  
 > Here are the main commands you will need for this exercise.
@@ -45,7 +45,7 @@
 > git switch                 # Switch to a different branch.
 > ```
 
-> 💡 **Disclaimer**
+> **💡 Disclaimer:**
 >
 > In this exercise we will be **rewriting history on the `main` branch**
 > of our repository. In a _production_ environment, this
@@ -64,7 +64,7 @@ instructions on how to use the `vim` editor.
 1. Enter the `exercise_1/vim_cheatsheet` repository and have a look at its
    **commit history**.
 
-   > ✨ **Tip:** if you are using (or would like to use) `vim` as an editor in
+   > **✨ Tip:** if you are using (or would like to use) `vim` as an editor in
    > Git, you can have a look at the content of the files in the repository to
    > learn about some useful `vim` commands.
    >
@@ -112,10 +112,10 @@ instructions on how to use the `vim` editor.
     8. Command mode: add more commands
    ```
 
-   > 🦉 **Reminder:** in the interactive rebase file, the order of commits
+   > **🦉 Reminder:** in the interactive rebase file, the order of commits
    > is oldest to newest, from top to bottom.
 
-   > 🌈 **Note:** re-ordering commits is only possible if they are independent
+   > **🌈 Note:** re-ordering commits is only possible if they are independent
    > from each other.
    >
    > In this exercise, we are re-ordering commits that affect completely
@@ -165,7 +165,7 @@ pick 41de087 # 8. Command mode: add more commands
 
    To get rid of them, **rebase `dev` on `main`**, then return to `main`.
 
-   > 🌈 **Note:** after the rebase completed, you should observe that Git
+   > **🌈 Note:** after the rebase completed, you should observe that Git
    > automatically **skipped the duplicated commits** on `dev`, because they
    > have the exact same content as their counterparts on `main`. Git lets us
    > know that the commits were skipped via the following warning:
@@ -217,11 +217,11 @@ Make the following changes to the repo history:
 * 1. Initial commit of vim cheat-sheet project. Add README file
 ```
 
-> 🔥 **Important:** note that the commit message for the second commit is
+> **🔥 Important:** note that the commit message for the second commit is
 > a new message. You will thus need to **edit the commit message** during
 > the rebase.
 
-> 🌈 **Note:** after the rebase, the `README.md` file will still have 2
+> **🌈 Note:** after the rebase, the `README.md` file will still have 2
 > commits - because its first commit is also the initial commit of the repo
 > (that initial commit is slightly more difficult to change).
 
@@ -285,7 +285,7 @@ git log --all --decorate --oneline --graph
 You will see that, again, **`dev` and `main` have diverged** with
 **duplicated commits**.
 
-> 🔥 **Important:** at this point, please temporarily save the hash of
+> **🔥 Important:** at this point, please temporarily save the hash of
 > the commit to which `dev` is currently pointing - you will need it shortly.
 
 To get rid of the duplicated commits, we need to **rebase `dev` on `main`**.
@@ -301,7 +301,7 @@ simply drop these commits in an interactive rebase:
 1. Do an **interactive rebase** of `dev` on `main`, and instruct Git to
    **drop the duplicated commits**.
 
-    > 🦉 **Reminder:** to instruct Git to drop a commit in an interactive
+    > **🦉 Reminder:** to instruct Git to drop a commit in an interactive
     > rebase, we can either use the **`d / drop`** instruction, or delete the
     > line of the commit.
 
@@ -358,14 +358,14 @@ git switch main
 git log --all --decorate --oneline --graph
 ```
 
-> 🌈 **Note:** an alternative approach would be to make a regular rebase,
+> **🌈 Note:** an alternative approach would be to make a regular rebase,
 > and run `git rebase --skip` each time there is a conflict to tell Git to
 > skip the conflicting commit.
 
 </details>
 <br>
 
-### 🔮 Additional Task: fixup commits
+### 🔮 Additional task - Fixup commits
 
 Since we are cleaning things up, let's also **fix a small bug** in the
 `README.md` and `normal_mode.md` files. Proceed as follows:
@@ -380,7 +380,7 @@ Since we are cleaning things up, let's also **fix a small bug** in the
 * Rebase `main` using the **`--autosquash`** option, so that Git
   automatically squashes the `--fixup` commits into the correct commits.
 
-> 🎯 **Hints**
+> **🎯 Hints:**
 >
 > * To learn about the `--fixup` and `--autosquash` options, look at the
 >   supplementary material slides of the course (or ask the trainer).
@@ -418,7 +418,7 @@ git rebase --autosquash HEAD~5
 git log --all --decorate --oneline --graph
 ```
 
-> 🌈 **Note:** since we made `--fixup` commits, we do not necessarily have
+> **🌈 Note:** since we made `--fixup` commits, we do not necessarily have
 > to use the `--interactive / -i` option of rebase, because `--autosquash`
 > will do the work of squashing them for us anyway.
 >
@@ -431,7 +431,7 @@ git log --all --decorate --oneline --graph
 
 As we have once more modified `main`, **rebase `dev` on `main`** again.
 
-> 🎯 **Hint:** to easily skip a commit, you can either use interactive
+> **🎯 Hint:** to easily skip a commit, you can either use interactive
 > rebase as earlier, or use a regular rebase and run **`git rebase --skip`**
 > when a conflict arises (see also the message that Git is printing when a
 > conflict is detected).
@@ -488,7 +488,7 @@ git switch dev
 git commit --amend -m "Add xkcd comic image file"
 ```
 
-> 🌈 **Note:** rewriting the first commit of the repo changes the hash of all
+> **🌈 Note:** rewriting the first commit of the repo changes the hash of all
 > commits on `main`. As a result, `dev` and `main` no longer share any commit
 > (you can see this with `git adog`). To fix this, rebase `dev` on `main` with
 > an interactive rebase, and drop all commits except the last 2, as we did
@@ -502,7 +502,7 @@ git commit --amend -m "Add xkcd comic image file"
 
 ## Exercise 2 - The big reset [40 min]
 
-🚀 **Objective:** get familiar with `git reset --hard`.
+**🚩 Objective:** get familiar with `git reset --hard`.
 
 > **Command summary**  
 > Here are the main commands you will need for this exercise.
@@ -513,7 +513,7 @@ git commit --amend -m "Add xkcd comic image file"
 > git reset --hard              # Reset everything: HEAD, index and the working tree.
 > ```
 
-> 💡 **Disclaimer:** in order to show you some use cases of `git reset`, we will
+> **💡 Disclaimer:** in order to show you some use cases of `git reset`, we will
 > in this exercise **intentionally make some mistakes** along the way, so that
 > we can then correct them. So don't be unsettled by the fact that this
 > exercise keeps asking you to change things: _it's by design_ !
@@ -543,7 +543,7 @@ and then clone it to our local computer. This is what we will do here:
 
    <br>
 
-   > 🌈 **Note:** since we enabled the **Add README** option, GitHub will
+   > **🌈 Note:** since we enabled the **Add README** option, GitHub will
    > directly initialize a new Git repo and add an initial commit that contains
    > a `README.md` file. This allows us to immediately clone the repo.
 
@@ -553,7 +553,7 @@ and then clone it to our local computer. This is what we will do here:
    access token) at the time when you clone the repo (because read access is
    private).
 
-   > 🦉 **Reminder:** the command to clone a repo is `git clone` followed by
+   > **🦉 Reminder:** the command to clone a repo is `git clone` followed by
    > the URL of your repository on GitHub/GitLab.
 
 4. You should now have a directory named **`the-big-reset`** in your working
@@ -599,14 +599,14 @@ mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
    commit creates a new one. In our case, the new commit has a different
    commit message and was made at a different time.
 
-   > 🌈 **Note:** the optimal way to do this is using `git commit --amend`.
+   > **🌈 Note:** the optimal way to do this is using `git commit --amend`.
    > But if you want, you can also experiment with `git reset --soft` and
    > `git reset --mixed`.
 
 4. Oh, one more thing: let's also add the `chuck_norris_quotes.txt` to our
    last commit (do _not_ create a new commit but _amend_ the last one).
 
-   > ✨ **Tip:** when amending a commit but don't want to modify its commit
+   > **✨ Tip:** when amending a commit but don't want to modify its commit
    > message, you can add the `--no-edit` option so that Git does not ask
    > you for a new commit message.
 
@@ -639,7 +639,7 @@ git show   # You should now see the chuck_norris_quotes.txt file being part of t
 git push
 ```
 
-> 🌈 **Note:** to amend the last commit, we could also have used
+> **🌈 Note:** to amend the last commit, we could also have used
 > `git reset --soft` or `git reset --mixed`.
 >
 > Since we want to change the commit message (but not the actual content), we
@@ -712,7 +712,7 @@ But wait - Git has a solution for us: **branches** ! 🌱
    where the `my_quotes.md` file was still empty and switch to it. Verify that
    `my_quotes.md` does indeed not contain any quotes.
 
-   > 🦉 **Reminder:** by default, new branches are created at the
+   > **🦉 Reminder:** by default, new branches are created at the
    > current **`HEAD`** position. But you can also create them at any arbitrary
    > commit by passing the reference to that commit:
    >
@@ -821,7 +821,7 @@ as could be.
 Can we fix it? _Yes, we can !_
 
 * Reset the repository to its state before the merge.
-  > 🎯 **Hint:** time to put that `--hard` option to good use !
+  > **🎯 Hint:** time to put that `--hard` option to good use !
 * Rebase `second-choice` on `main`, before merging `second-choice` into
   `main`.
 <br>
@@ -878,9 +878,9 @@ more.
   git push
   ```
 
-* ❓ **Question:** you should see that this does _not_ work 💥 ! Why is that ?
+* **❓ Question:** you should see that this does _not_ work 💥 ! Why is that ?
 
-  <details><summary><b>✅ Answer</b></summary>
+  <details><summary><b>✅ Solution</b></summary>
 
   The problem is that the branch we are trying to push (here `main`) has
   diverged from its counterpart on the remote. In other words, the history
@@ -905,7 +905,7 @@ the `main` branch on the remote by doing a **force** push:
   git push --force-with-lease
   ```
 
-> 🌈 **Note:** since you are working on this repo alone, there is in principle
+> **🌈 Note:** since you are working on this repo alone, there is in principle
 > no risk for you to overwrite by mistake new commits added to `main` by
 > someone else (unless you work on the repo from multiple machines).
 >
@@ -914,10 +914,10 @@ the `main` branch on the remote by doing a **force** push:
 
 <br>
 
-### 🔮 Additional Task: delete branches on the remote
+### 🔮 Additional task - Delete branches on the remote
 
 * **Push the branch `second-choice`** to the remote.
-  > 🎯 **Hint:** remember that the first time you push a branch to a remote,
+  > **🎯 Hint:** remember that the first time you push a branch to a remote,
   > you must set its upstream branch with the `-u / --set-upstream` option.
 
 * **Go to the GitHub/GitLab page** of your repo, and check that the branch has
@@ -931,9 +931,9 @@ the `main` branch on the remote by doing a **force** push:
   git fetch --prune
   ```
 
-  ❓ **Question:** what does the `--prune` option do ?
+  **❓ Question:** what does the `--prune` option do ?
 
-  <details><summary><b>✅ Answer</b></summary>
+  <details><summary><b>✅ Solution</b></summary>
 
   `--prune` tells Git to **remove remote-tracking branches** that no longer
   exist on the remote. In other words, if a branch was deleted on the remote,
@@ -956,7 +956,7 @@ the `main` branch on the remote by doing a **force** push:
   Run `git log --all --decorate --oneline --graph` (`git adog`) to verify
   that the remote-tracking branch is deleted.
 
-  > ✨ **Note:** when deleting a remote branch via the command line, git
+  > **🌈 Note:** when deleting a remote branch via the command line, git
   > automatically also deletes the remote tracking branch. There is thus no
   > need to run `git fetch --prune`.
 
@@ -985,7 +985,7 @@ git push origin --delete second-choice
 
 ## Exercise 3 - The backport [30 min]
 
-🚀 **Objective:** learn to use `git stash` and `git tag`. Understand the
+**🚩 Objective:** learn to use `git stash` and `git tag`. Understand the
 **detached HEAD** mode.
 
 > **Command summary**  
@@ -1011,7 +1011,7 @@ a problem never comes alone, they need this _right now_ !
 1. **Change into `exercise_3/backport.git`** and have a look at the Git
    repository's history. Note the different branches and tags.
 
-   > 🦉 **Reminder:** you can use `git log --all --decorate --oneline --graph`
+   > **🦉 Reminder:** you can use `git log --all --decorate --oneline --graph`
    > to display the entire repo's history - or `git adog`, if you have created
    > this alias.
 
@@ -1036,8 +1036,8 @@ a problem never comes alone, they need this _right now_ !
    Then go back to version `1.0.1` of the project using the `git checkout`
    command.
 
-    * ❓ **Question 1:** where is the `HEAD` pointer now ?
-    * ❓ **Question 2:** has anything else changed in the repository's history ?
+    * **❓ Question 1:** where is the `HEAD` pointer now ?
+    * **❓ Question 2:** has anything else changed in the repository's history ?
 
    <details><summary><b>✅ Solution</b></summary>
 
@@ -1084,7 +1084,7 @@ a problem never comes alone, they need this _right now_ !
    > Warning: you are leaving 1 commit behind, not connected to any of
    > your branches.
 
-    * ❓ **Question:** what would happen to our latest commit if we
+    * **❓ Question:** what would happen to our latest commit if we
       "leave it behind" ?
     * Take Git's advice and create a new branch named `backport` that points to
       the commit we just left behind.
@@ -1107,7 +1107,7 @@ a problem never comes alone, they need this _right now_ !
      git tag v1.0.1b 1a2fa0c
     ```
 
-   **Question answer:** "orphaned" commits (i.e. commits not part of any
+   **❓ Question answer:** "orphaned" commits (i.e. commits not part of any
    branch or tag), will eventually be pruned (i.e. deleted) by Git at some
    point. So it's not a safe option for commits that we want to keep.
 
@@ -1183,7 +1183,7 @@ a problem never comes alone, they need this _right now_ !
 
 <br>
 
-### 🔮 Additional Task: update main
+### 🔮 Additional task - Update main
 
 Update the `main` branch with the new commits from `dev`:
 
@@ -1233,10 +1233,10 @@ git log --all --decorate --oneline --graph
 
 ## Exercise 4 - The treasure hunt [120 min]
 
-🚀 **Objective:** collaborative exercise to review the Git commands and
+**🚩 Objective:** collaborative exercise to review the Git commands and
 concepts seen during the course.
 
-> 👩‍🎓 **ECTS credits:** for participants who wish to receive ECTS credits for
+> **👩‍🎓 ECTS credits:** for participants who wish to receive ECTS credits for
 > attending the course, this exercise also serves as **exam**. Please see the
 > instructions at the end of the exercise on how to submit your work.
 
@@ -1260,7 +1260,7 @@ In your quests throughout this exercise, you will be asked to follow a
   team member to add their work, before merging it into `main`.
 * Each **new release** of your work will be indicated by **a tag**.
 
-> 🦉 **Reminder**
+> **🦉 Reminder:**
 >
 > If a divergence in the `main` branch occurs between your local repo and the
 > remote, you can either:
@@ -1293,7 +1293,7 @@ In your quests throughout this exercise, you will be asked to follow a
 >   git reset --hard origin/main
 >   ```
 
-> 🔥 **Important:** please pay particular attention to the following points.
+> **🔥 Important:** please pay particular attention to the following points.
 >
 > * Keep a **clean history** by avoiding unnecessary merges. Rebase branches
 >   to be merged before merging them whenever possible (unless explicitly
@@ -1305,7 +1305,7 @@ In your quests throughout this exercise, you will be asked to follow a
 >   for each section, before starting the work.
 > * **Please ask for help** if you are stuck at any point, especially if you
 >   cannot solve one of the riddles (the objective is not to test your
->   puzzle-solving abilities :bulb:).
+>   puzzle-solving abilities 💡).
 
 <br>
 
@@ -1342,7 +1342,7 @@ should be carried-out **only by 1 member of the team**:
 * In your browser, login to [GitHub](https://github.com) and then go to the
   public repository: <https://github.com/sibgit/treasure-hunt>
 
-  > 🦜 **Note:** you only have read-access to that repository, but for this
+  > **🦜 Note:** you only have read-access to that repository, but for this
   > exercise, you and your team will need a repository where you are allowed
   > to both read and write.
   >
@@ -1353,7 +1353,7 @@ should be carried-out **only by 1 member of the team**:
 * **Fork the "treasure-hunt" repository** using the instructions given in the
   **helper slides of exercise 4**.
 
-  > 🔥 **Important:** when forking the repo, make sure to **copy all branches**.
+  > **🔥 Important:** when forking the repo, make sure to **copy all branches**.
   > For this you must **uncheck "Copy the main branch only"** option, which is
   > enabled by default.
 
@@ -1368,10 +1368,10 @@ All team members can now go into the `exercise_4/` directory (which should
 be empty), and **clone the "treasure-hunt" repository** that your team just
 setup on GitHub.
 
-> 🔥 **Important:** make sure to clone the newly forked repository of your
+> **🔥 Important:** make sure to clone the newly forked repository of your
 > team, and _not_ the original repo.
 
-> 🔥 **Important: Windows users only**
+> **🔥 Important: Windows users only**
 >
 > Windows users (Linux/Mac users skip this step) must run the following
 > command _inside_ the Git repository:
@@ -1404,7 +1404,7 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
       (Captain), `add-crew-qm` (Quartermaster) and `add-crew-fm` (First-mate)
       respectively.
 
-      > 🦜 **Note:** if one person of the group has the role of multiple
+      > **🦜 Note:** if one person of the group has the role of multiple
       > pirates (because there are < 3 people in the team), then they should
       > create only a single personal branch and do the work for all of their
       > roles on that branch. This applies for all quests in this exercise.
@@ -1412,7 +1412,7 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
     * On your personal branch, sign the pirate code by replacing `NAME HERE`
       with your name (on the line that is matching your rank).
 
-      > 🔥 **Important:** only sign for yourself, not for others!
+      > **🔥 Important:** only sign for yourself, not for others!
 
     * Make a commit with a **meaningful commit message**.
     * In addition, the **First-mate** should make some changes to article I of
@@ -1431,7 +1431,7 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
     * Inform other team members that they can now pull the changes on `main`
       (so that everyone stays in sync).
 
-    > ✨ **Tip:** the best practice when merging changes into a shared branch
+    > **✨ Tip:** the best practice when merging changes into a shared branch
     > such as `main` is to always fetch/pull changes on the branch before
     > merging, to make sure that you are up-to-date. This is because in the
     > real world, team members will not be contacting each other each time
@@ -1469,7 +1469,7 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
       your entire repo history along with tags.
 
 5. Each pirate can now **delete their personal branch** in their local repo.
-    > 🦉 **Reminder:** if you pushed your personal branch to the remote, you
+    > **🦉 Reminder:** if you pushed your personal branch to the remote, you
     > can delete it on the remote with `git push origin --delete <branch name>`.
 
 That's it, the paperwork is done! Let's get on that ship and sail 🏴‍☠️ !
@@ -1511,7 +1511,7 @@ This is how you should proceed:
     ./ask_a_pirate.sh
     ```
 
-   > 🎯 **Hints**
+   > **🎯 Hints:**
    > * **Locations in hints given by local pirates correspond to commits!**
    >   Look at the history of the `port-royal`, `blackbird-castle`, and
    >   `oyster-bay` branches to find the commit where an item is hidden (based
@@ -1519,7 +1519,7 @@ This is how you should proceed:
    > * Each item to find corresponds to a file: **`ship.ascii`**,
    >   **`flag.ascii`** and **`rhum.ascii`**. They are
    >   **located in a subdirectory named `supplies/`**.
-   > * 🦉 **Reminder:** to see the content of a commit, you can:
+   > * **🦉 Reminder:** to see the content of a commit, you can:
    >   * Use **`git checkout <commit ref>`** to checkout the content of the
    >     commit. You then enter **detached HEAD mode**, which you can leave by
    >     switching back to a regular branch (e.g. your personal work branch).
@@ -1532,7 +1532,7 @@ This is how you should proceed:
    to the remote. Use the same procedure as in the first part of the quest -
    see **point 2** of _Treasure hunt part one: the pirate code_ if you need a
    refresher.
-    > 🔥 **Important:** if needed, make sure to **rebase your branch** before
+    > **🔥 Important:** if needed, make sure to **rebase your branch** before
     > merging it (to keep a cleaner history).
 
 5. After all pirates have added their commit and updated their repo, everyone's
@@ -1606,7 +1606,7 @@ recollection of where Longsilver has hidden his treasure ?
 
    <br>
 
-    > 🎯 **Hint:** after the rebase, the part of the `skull-rock-island`
+    > **🎯 Hint:** after the rebase, the part of the `skull-rock-island`
     > branch diverging from `main` should look like this (commit IDs will
     > differ):
     >
@@ -1635,7 +1635,7 @@ you can run `ls -l` to list the content of the current directory.
 To bring the treasure chest aboard your ship, **one person in the team**
 should do the following:
 
-> 🔥 **Important:** only one pirate should perform this task, otherwise your
+> **🔥 Important:** only one pirate should perform this task, otherwise your
 > `main` branch will diverge.
 
  1. **Merge `skull-rock-island` into `main`**. This will add the treasure chest
@@ -1653,7 +1653,7 @@ The other team members can now update their local repos with the changes to
 `main`. At this point everyone should be synchronized on their `main` branch
 and have the treasure onboard.
 
-> 🌟 **Bonus:** if you want, you can also sync the `skull-rock-island` branch
+> **🌟 Bonus:** if you want, you can also sync the `skull-rock-island` branch
 > across the team:
 >
 > * The pirate who did the merge should push their changes to
@@ -1697,7 +1697,7 @@ open it, run:
 
 _Shiver me timbers!_ We are missing **the keys** to open the lock !
 
-> 🦜 **Note:** If you are running out of time, you can finish this last part
+> **🦜 Note:** If you are running out of time, you can finish this last part
 > of the exercise on your own. You simply have to find the 3 keys for the
 > treasure.
 
@@ -1710,7 +1710,7 @@ We are now looking for the **3 keys to open the 3 locks of the chest**.
 As before, this can be done as teamwork and each pirate retrieves one of the
 keys.
 
-> 🦜 **Note:** for this last quest, to save time (and because we believe that
+> **🦜 Note:** for this last quest, to save time (and because we believe that
 > by now you have understood the principle), you may add your commits directly
 > to the `main` branch, without creating a temporary working branch -
 > _crazy !_ , I know 😎.
@@ -1739,7 +1739,7 @@ To find where the keys are hidden, listen to the parrot's hints:
 Then go back to `port-royal`, `blackbird-castle` and `oyster-bay` to find the
 keys.
 
-> 🎯 **Hints - please read this carefully _before_ you begin**
+> **🎯 Hints - please read this carefully _before_ you begin**
 >
 > * Unlike in the previous quest, the locations that the parrot gives in its
 >   hints correspond here to **directories** on disk - _not_ to commits.
@@ -1750,10 +1750,10 @@ keys.
 > * The **keys** are files that have the name of the object that contains them
 >   or is near them. E.g. a file named `candle` would be a "key" file if you
 >   think that the key is near a candle.
->   * **Tip:** you can use `ls -l` to list the content of a directory.
+>   * **✨ Tip:** you can use `ls -l` to list the content of a directory.
 > * To open the treasure, each key file must be placed in the correct lock
 >   directory, and renamed to the correct name (more details below).
-> * 💣 **Warning: do not modify the content of the key files** in any way,
+> * **💣 Warning: do not modify the content of the key files** in any way,
 >   this would destroy them.
 
 <br>
@@ -1767,7 +1767,7 @@ you should:
     git restore --source=<branch name> <path/to/file-to-retrieve>
     ```
 
-    > 🔥 **Important:** for this exercise, you must run the command while
+    > **🔥 Important:** for this exercise, you must run the command while
     > **located at the root** of the working tree (i.e. at the root of
     > `treasure-hunt`). Also, make sure to be on `main` before running the
     > command.

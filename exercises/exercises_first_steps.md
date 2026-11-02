@@ -4,16 +4,16 @@
 
 ## Before you start 📣
 
-* 📚 **Exercise material setup:** download the
+* **📚 Exercise material setup:** download the
   [exercises_first_steps.zip](../exercises/exercises_first_steps.zip) file to
   your local computer and unzip it.
 
-* 🔮 **Additional Tasks:** some exercises have **Additional Task** sections
+* **🔮 Additional Tasks:** some exercises have **Additional Task** sections
   that you can complete if you still have time after having completed the main
   part of the exercise. These will in principle _not_ be corrected in class,
   but their solution is given in this document.
 
-* ✅ **Exercise solutions:** all exercises have their solution embedded in this
+* **✅ Exercise solutions:** all exercises have their solution embedded in this
   document. You can reveal them by clicking on the drop-down menu, as shown
   below.
 
@@ -25,7 +25,7 @@
   solve the exercise without it. Remember you can always ask the course
   instructors for help.
 
-* ✨ **Table of content:** when viewing this document on GitHub, you can
+* **✨ Table of content:** when viewing this document on GitHub, you can
   display a table of content by clicking on the "Outline" button at the top
   right.
 
@@ -70,7 +70,7 @@ git config --list --show-origin
 
 ## Exercise 1 - Your first commit [30 min]
 
-🚀 **Objective:** learn how to create a new Git repository, add files to it,
+**🚩 Objective:** learn how to create a new Git repository, add files to it,
 and make commits.
 
 Welcome to the first exercise of this Git course !  
@@ -123,7 +123,7 @@ to do.
      ls -la   
      ```
 
-   > 🔥 **Important:** the `.git` directory is where Git stores the entire
+   > **🔥 Important:** the `.git` directory is where Git stores the entire
    > history of your repository (as well as various settings). If you delete
    > it, all your version control history (and settings) for this repository
    > **will be permanently lost** (there is no "undo"!).
@@ -135,7 +135,7 @@ to do.
 
 3. **Display the status of files** in the project's working tree:
    * Run the command `git status`.
-   * ❓ **Question:** what is the status of the files in your working
+   * **❓ Question:** what is the status of the files in your working
      directory ?
      <br>
 
@@ -164,7 +164,7 @@ to do.
    `tests/output.csv` and `tests/tests.py` (all files except the `*.pyc`
    files - these are "python cache" files that we don't want to track).
 
-   > 🦉 **Reminders**
+   > **🦉 Reminders:**
    > * _Staging_ a file is a synonym for _adding to the Git index_.
    > * The command to stage files is: `git add <files or directories>`.
    >   For instance, `git add README.md` will stage the file `README.md`.
@@ -245,12 +245,12 @@ to do.
 
    * **`git show`**: to have a look at the content of your commit.
 
-      > 🌈 **Note:** when the amount of text to be printed by `git show`
+      > **🌈 Note:** when the amount of text to be printed by `git show`
       > exceeds one screen, the content is shown with the GNU program `less`.
       > In `less`, you can use your keyboard arrow keys to move up/down, and
       > **press `q` to exit** and return to the shell.
 
-      ❓ **Question:** why are the details of the `doc/user-guide.pdf` file
+      **❓ Question:** why are the details of the `doc/user-guide.pdf` file
       not displayed by `git show`?
 
       <details><summary><b>✅ Solution</b></summary>
@@ -272,7 +272,7 @@ to do.
 
    <br>
 
-   > ✨ **Tip: interactive commit messages**
+   > **✨ Tip: interactive commit messages**
    >
    > To create a commit with a multi-line commit message, we can run the
    > command **`git commit`** with no additional arguments.
@@ -345,11 +345,11 @@ create a new commit that adds the change we made to our Git repo.
 3. **Commit the changes** you just made.
    * Add/stage the changes made to `README.md` with **`git add`**.
 
-     > 🦉 **Reminder:** remember that each time you modify a file and want to
+     > **🦉 Reminder:** remember that each time you modify a file and want to
      > include these changes into your next commit, you have to `git add` that
      > file again.
 
-     > ✨ **Tip:** to stage all modified files at once, you can use the
+     > **✨ Tip:** to stage all modified files at once, you can use the
      > shortcut **`git add -u`**. Here it does not make a lot of difference as
      > there is only 1 modified file, but if there are many of them, this
      > command can be convenient.
@@ -395,7 +395,7 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
     *.pyc
     ```
 
-   > ✨ **Tip**: you can create the `.gitignore` in any text editor you like,
+   > **✨ Tip:** you can create the `.gitignore` in any text editor you like,
    > but you can also easily generate it with a shell command:
    >
    > ```sh
@@ -405,7 +405,7 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
     <br>
 
 2. **Run `git status`**: you should see that you still have an untracked
-   file: the `.gitignore` file you just created :sweat_smile: !
+   file: the `.gitignore` file you just created 😅 !
 
    Since the ignore rules defined in the `.gitignore` file are useful to all
    users of the repository, this file should be added to the repo.
@@ -448,7 +448,7 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
     git log --all --decorate --oneline --graph  # Shows commits for all branches.
     ```
 
-    > 🌈 **Note** that with the current history of our git repo, the output of
+    > **🌈 Note:** with the current history of our git repo, the output of
     > `git log --all --decorate --oneline --graph` is the same as
     > `git log --oneline`.
     >
@@ -473,12 +473,12 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
       * da59f94 Initial commit for test project
       ```
 
-   > ✨ **Tip:** to list your Git aliases, use:
+   > **✨ Tip:** to list your Git aliases, use:
    > `git config --list | grep ^alias`
 
 <br>
 
-### 🔮 Additional Tasks
+### 🔮 Additional task - Unstage, ignore, restore and remove files
 
 For some of the next steps, we will need an additional file named
 `personal_notes.md`, as well as a change in the `script.py` file.
@@ -516,7 +516,7 @@ so **let's unstage them**.
 * Unstage the entire file `personal_notes.md`, using either
   **`git restore --staged`** or **`git rm --cached`**.
 
-  > 🦉 **Reminder:** the difference between `git rm --cached` and
+  > **🦉 Reminder:** the difference between `git rm --cached` and
   > `git restore --staged` is that `git rm --cached`
   > **deletes the entire file from the index**, while `git restore --staged`
   > **reverts it to the version in the last commit** (`HEAD` commit).
@@ -529,7 +529,7 @@ so **let's unstage them**.
   > resetting it back to its version from the latest commit (since it is
   > absent from the latest commit).
   >
-  > ⚠️ **Warning**: be careful to _not_ run `git rm` instead of
+  > **⚠️ Warning:** be careful to _not_ run `git rm` instead of
   > `git rm --cached`, as this would not only remove the file from the
   > Git index, but also delete it from your working tree!
 
@@ -591,7 +591,7 @@ working directory. Now we would like to stage only the modified file
 
 <br>
 
-> 🌈 **Summary**
+> **💫 Summary:**
 >
 > * `git add --update`: only adds/stages files that are **already tracked** in
 >   Git. Does _not_ stage any new, untracked files.
@@ -645,7 +645,7 @@ We can achieve this by adding the file name to `.git/info/exclude`:
 
 <br>
 
-> 🌈 **Summary**
+> **💫 Summary:**
 >
 > In Git, files/patterns to ignore only in your local repo should be added
 > to **`.git/info/exclude`** (rather than `.gitignore`). This is a text file
@@ -680,7 +680,7 @@ version of `script.py` as found in the Git index or the previous commit.
 
 <br>
 
-> ⚠️ **Warning**
+> **⚠️ Warning:**
 >
 > As you have just experienced, `git restore <file>` really overwrites
 > uncommitted modifications in your files. Use this command carefully to
@@ -723,7 +723,7 @@ would like to delete it from both our repo and working tree.
 
 <br>
 
-> 🌈 **Note:** while we have deleted the file `output.csv` from the Git index
+> **🌈 Note:** while we have deleted the file `output.csv` from the Git index
 > and the last commit, a copy of it still remains in the history of our
 > repository.
 
@@ -757,7 +757,7 @@ Let's imagine that, for some reason, we want to retrieve the file
   git restore --source <commit ref> tests/output.csv
   ```
 
-  > ✨ **Tip:** you can also use `HEAD~1` to refer to the second-to-last
+  > **✨ Tip:** you can also use `HEAD~1` to refer to the second-to-last
   > commit.
 
 <br>
@@ -781,7 +781,7 @@ git restore --source HEAD~1 tests/output.csv
 
 ## Exercise 2 - The Git reference web page  [30 min]
 
-🚀 **Objective:** learn to use a basic branched workflow.
+**🚩 Objective:** learn to use a basic branched workflow.
 
 Well done! Your burgeoning Git skills have landed you a job as a junior
 web-developer at _Scamazone Inc._, where you have been assigned the gratifying
@@ -795,7 +795,7 @@ Let's get started:
 3. Explore the content of the Git repo using the `git log`, `git status` and
    `git branch` commands.
 
-❓ **Questions:**
+**❓ Questions:**
 
 * How many commits have already been made in the repo ?
 * How many branches are present in the repo? How are they named ?
@@ -852,7 +852,7 @@ Let's get to work:
    "ProGit" book. After saving your changes, reload the page in your web
    browser to check that the link now works.
 
-   > 🎯 **Hint:** to fix the link, add `https://` in front of the URL.
+   > **🎯 Hint:** to fix the link, add `https://` in front of the URL.
 
 5. **Stage** your changes, and then **create a new commit**. Please
    **use a meaningful commit message**.
@@ -969,7 +969,7 @@ you want to learn everything about Git!
 </details>
 <br>
 
-### B) 🔮 Additional Task: add new links
+### 🔮 Additional task - Add new links
 
 In this second part of the exercise, you are tasked with adding a couple of new
 links to the Git reference page.
@@ -992,7 +992,7 @@ Here is what you should do:
 3. **Stage** and then **commit** your changes:
     * Use **`git diff`** and **`git diff --cached`** to look at your edits in
       the HTML file, before and after staging them.
-    * ❓**Question:** what is the difference between `git diff` and
+    * **❓ Question:** what is the difference between `git diff` and
       `git diff --cached` ?
 
 <br>
@@ -1015,7 +1015,7 @@ git diff --cached
 git commit -m "Add two new books to Git reference page"
 ```
 
-**Question answer:** the difference between `git diff` and `git diff --cached`
+**❓ Question answer:** the difference between `git diff` and `git diff --cached`
 is that the former will display the difference between the working tree
 (files on disk) and the git index, while the latter shows the difference
 between the git index and the latest commit.
@@ -1023,7 +1023,7 @@ between the git index and the latest commit.
 </details>
 <br>
 
-### C) 🔮 Additional Task: add a logo
+### 🔮 Additional task - Add a logo
 
 In this last part of the exercise, we further improve our webpage by adding
 a logo.
@@ -1088,7 +1088,7 @@ git branch -d dev
 
 ## Exercise 3 - The crazy peak sorter script [30 min]
 
-🚀 **Objective:** get familiar with rebasing branches, solving conflicts and
+**🚩 Objective:** get familiar with rebasing branches, solving conflicts and
 cherry-picking.
 
 <br>
@@ -1107,7 +1107,7 @@ completed.
     git clone https://github.com/sibgit/peak_sorter.git
     ```
 
-  > 🦉 **Reminder:** `git clone` creates (downloads) a local copy of a Git
+  > **🦉 Reminder:** `git clone` creates (downloads) a local copy of a Git
   > repository from an online source (typically on GitHub or GitLab). It is
   > probably the most common way of starting to work on a repository.
 
@@ -1162,7 +1162,7 @@ as follows:
   `main`, would we ? 😇.
 2. **Cherry-pick** the commit that contains Jimmy's fix onto your `hotfix`
    branch.
-   * 🎯 **Hint:** to identify the commit to cherry-pick, display the history
+   * **🎯 Hint:** to identify the commit to cherry-pick, display the history
      of the repo and search for the commit message shown above.
 
 3. When the cherry-pick is completed, test run the `peak_sorter.sh` script to
@@ -1181,7 +1181,7 @@ as follows:
    This shows us that the cherry-picked commit has indeed added the expected
    feature to our code - well done 😻 !
 
-    > 🌈 **Note:** you can have a look at the changes introduced by the
+    > **🌈 Note:** you can have a look at the changes introduced by the
     > cherry-picking by running `git show HEAD` (or simply `git show`). This
     > will display the content of the last commit on the current branch,
     > which is the one we just cherry-picked.
@@ -1214,7 +1214,7 @@ as follows:
 
    We find that the commit ID we are looking for is: `8e0d4fe`
 
-   > ✨ **Tip:** if the history was very long and we did not want to manually
+   > **✨ Tip:** if the history was very long and we did not want to manually
    > search through it (or if we are just lazy...), we can extract the line
    > of our target commit by using simple shell commands:
    >
@@ -1277,7 +1277,7 @@ Let's start by having a look at that branch:
 * **Checkout (switch to)** the `feature-dahu` branch and display the history
   of the repo (so you can see the history of branches relative to each other).
 
-   > 🌈 **Note:** when switching to a branch that already exists on a remote,
+   > **🌈 Note:** when switching to a branch that already exists on a remote,
    > there is no need to add the `-c/--create` option to `git switch`.
    >
    > Here, this means that you can simply run `git switch feature-dahu` and
@@ -1327,7 +1327,7 @@ Let's start with the rebase:
 
 * **Rebase the `feature-dahu` branch on `main`**.
 
-  > 🔥 **Important:** in this exercise, should any conflict arise during the
+  > **🔥 Important:** in this exercise, should any conflict arise during the
   > rebase, always keep the version of the code that is coming from the
   > `feature-dahu` branch (the version that is _not_ coming from `HEAD`).
 
@@ -1375,7 +1375,7 @@ git log --all --decorate --oneline --graph
 Now that we are confident that the Dahu count feature is correctly implemented,
 you can **merge `feature-dahu` into the `main` branch**.
 
-* ❓ **Question:** do you expect any conflicts to occur during this merge?
+* **❓ Question:** do you expect any conflicts to occur during this merge?
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
@@ -1390,7 +1390,7 @@ git merge feature-dahu  # This is now a fast-forward merge -> no conflicts.
 ./peak_sorter.sh
 ```
 
-**Question answer:** since we have rebased the branch `feature-dahu` on
+**❓ Question answer:** since we have rebased the branch `feature-dahu` on
 `main`, the merge will be **fast-forward** and there will be no conflicts.
 </details>
 <br>
@@ -1429,7 +1429,7 @@ git log --all --decorate --oneline --graph
 
 <br>
 
-🌈 **Notes**
+**🌈 Notes:**
 
 * In this exercise, the rebase of `feature-dahu` resulted in lots of conflicts.
   This was done on purpose, so that you can practice conflict resolution.
@@ -1458,7 +1458,7 @@ git log --all --decorate --oneline --graph
 
 ## Exercise 4 - The Awesome Animal Awareness Project [60 min]
 
-🚀 **Objective:** learn to collaborate with others on a project hosted on
+**🚩 Objective:** learn to collaborate with others on a project hosted on
 a remote (e.g. on GitHub or GitLab).
 
 Congratulations! Your improving Git skills have not gone unnoticed, and you are
@@ -1473,7 +1473,7 @@ Each team will contribute a web page about a specific - and awesome - animal.
 At the end of the exercise, the page created by your team will be integrated
 into the [Awesome Animal Awareness website](https://sibgit.github.io).
 
-> 🔥 **Important**
+> **🔥 Important:**
 >
 > * Please follow the **naming convention for branches** tightly,
 >   as our company's internal Git policies are **very strict**.
@@ -1512,7 +1512,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
    Example branch names: `tiger-dev`, `yeti-dev`, `sunfish-dev`,
    `pallas-cat-dev`, ...
 
-   > 🎯 **Hint**: remember that when pushing a local branch to a remote
+   > **🎯 Hint:** remember that when pushing a local branch to a remote
    > **for the first time**, we have to indicate an "upstream" remote branch
    > for the branch we are pushing.
    >
@@ -1531,7 +1531,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 4. Other team members can now **fetch changes** from the repo and
    **checkout the new team branch** that was just pushed to the remote.
 
-    > 🔥 **Important**
+    > **🔥 Important:**
     >
     > Other team members should _not_ create the team branch locally
     > themselves. They should check it out from the remote.
@@ -1549,7 +1549,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
    this branch does not necessarily have to be pushed to the remote: it's your
    personal work branch, so it can stay local.
 
-   > 🌈 **Note:** in a real application, you would probably want to push your
+   > **🌈 Note:** in a real application, you would probably want to push your
    > personal branch to the remote as a backup (depending on how long-lived
    > your branch is), but this is not necessary for this exercise.
 
@@ -1623,7 +1623,7 @@ animal.
        into `<img src="?? image-filename">`,
        e.g. `<img src="img/tiger_image.png">`.
 
-       > 🔥 **Important:** make sure to add the image file to your commit.
+       > **🔥 Important:** make sure to add the image file to your commit.
 
 3. **Verify the rendering of your HTML file** by opening it with your browser.
 
@@ -1659,20 +1659,20 @@ as a **coordinated iterative process**, where each member will in turn:
 1. **Do a `git pull`** on the team's main development branch to make sure their
    local copy is up-to-date.
 
-   > 🔥 **Important:** verify that you are on the correct branch before
+   > **🔥 Important:** verify that you are on the correct branch before
    > running `git pull`.
 
-   > 🌈 **Note:** in situations where you are not sure whether a remote branch
+   > **🌈 Note:** in situations where you are not sure whether a remote branch
    > has diverged from your local copy, you can do a `git fetch` + `git status`
    > before running `git pull`. In this way you will see whether the merge
    > that will be done by `git pull` will be fast-forward or not.
 
-   > 🦉 **Reminder:** `git pull` is a shortcut for
+   > **🦉 Reminder:** `git pull` is a shortcut for
    > `git fetch` + `git merge <upstream>`.
 
 2. **Rebase their personal branch** on the team's main development branch.
 
-   > 🌈 **Note:** the first person to add their changes will in principle
+   > **🌈 Note:** the first person to add their changes will in principle
    > _not_ need to rebase, since their personal branch will already be rooted
    > at the latest commit of the team's main development branch.
 
@@ -1761,7 +1761,7 @@ project's `main` branch.
    be able to see your animal's page on the
    [Awesome Animal Awareness website](https://sibgit.github.io) 😻 !
 
-   > 🌈 **Note:** it takes a few minutes before the changes become live
+   > **🌈 Note:** it takes a few minutes before the changes become live
      on the website.
 
 3. After the pull request is merged, each team member can
@@ -1794,7 +1794,7 @@ git pull
 </details>
 <br>
 
-### E) 🔮 Additional Task: branch cleanup
+### 🔮 Additional task - Branch cleanup
 
 Now that your team branch is merged into `main`, you can delete your team
 branch and personal branches (since they have been merged).
@@ -1819,12 +1819,12 @@ branch and personal branches (since they have been merged).
     git fetch --prune
     ```
 
-    > 🦉 **Reminder:** A **remote-tracking branch** (like `origin/main`) is a
+    > **🦉 Reminder:** A **remote-tracking branch** (like `origin/main`) is a
     > local pointer showing the position of a branch on the remote at the
     > last time that data was fetched from the remote (i.e. the last time
     > that `git fetch` or `git pull` was run).
 
-    > 🌈 **Note:** the **`--prune`** option in **`git fetch --prune`**
+    > **🌈 Note:** the **`--prune`** option in **`git fetch --prune`**
     > **deletes remote-tracking branches** that no longer exist on the remote.
     >
     > The `--prune` option can also be passed to the `git pull` command:
