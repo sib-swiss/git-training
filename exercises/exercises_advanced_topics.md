@@ -56,7 +56,7 @@
 ### A) Re-ordering commits in history
 
 Believe it or not, you have just been hired for a clean-up job 🕵️! No, not
-the movie kind, but don't worry, this will still be great.
+the movie kind - but don't worry, this will still be great.
 
 Your task is to clean up the history of a Git repository that contains
 instructions on how to use the `vim` editor.
@@ -82,9 +82,9 @@ instructions on how to use the `vim` editor.
     cat *.md                                    # Display the content of all .md files.
 
     # If we want to also look at the "dev" branch:
-    git switch dev   # Switch to `dev` branch.
-    ls -l            # List the content of the directory (now in `dev` branch).
-    git switch main  # Go back to branch `main`.
+    git switch dev   # Switch to "dev" branch.
+    ls -l            # List the content of the directory (now in "dev" branch).
+    git switch main  # Go back to branch "main".
     ```
 
     </details>
@@ -102,14 +102,14 @@ instructions on how to use the `vim` editor.
    newest):
 
    ```txt
-    1. First commit of the vim cheat-sheet project. Add README file
-    2. Edit README file
-    3. Edit README file: add open file example
-    4. Add 'normal_mode' file: commands for vim's normal mode
-    5. Edit 'normal_mode' file: add 'dd' and 'yy' commands
-    6. Edit 'normal_mode' file: add more commands
-    7. Add 'command_mode' file: commands for vim's command mode
-    8. Edit 'command_mode' file: add more commands
+    1. Initial commit of vim cheat-sheet project. Add README file
+    2. README: add vim modes info
+    3. README: add open file example
+    4. Normal mode: add commands for vim's normal mode
+    5. Normal mode: add 'dd' and 'yy' commands
+    6. Normal mode: add more commands
+    7. Command mode: add commands for vim's command mode
+    8. Command mode: add more commands
    ```
 
    > 🦉 **Reminder:** in the interactive rebase file, the order of commits
@@ -129,22 +129,22 @@ instructions on how to use the `vim` editor.
 Start the interactive rebase with the following command:
 
 ```sh
-git rebase -i a818d5a
+git rebase -i b1444ee
 ```
 
 Edit the interactive rebase commit list. It should look like this (blank
 lines are optional):
 
 ```txt
-pick 91aa2f3 2. Edit README file
-pick 21d712d 3. Edit README file: add open file example
+pick f486267 # 2. README: add vim modes info
+pick 6329720 # 3. README: add open file example
 
-pick 9c7f8b4 4. Add 'normal_mode' file: commands for vim's normal mode
-pick be7f832 5. Edit 'normal_mode' file: add 'dd' and 'yy' commands
-pick ac17969 6. Edit 'normal_mode' file: add more commands
+pick 43594fa # 4. Normal mode: add commands for vim's normal mode
+pick 74d2a40 # 5. Normal mode: add 'dd' and 'yy' commands
+pick 115e492 # 6. Normal mode: add more commands
 
-pick c110031 7. Add 'command_mode' file: commands for vim's command mode
-pick d95eb3d 8. Edit 'command_mode' file: add more commands
+pick 0f32d64 # 7. Command mode: add commands for vim's command mode
+pick 41de087 # 8. Command mode: add more commands
 ```
 
 </details>
@@ -154,12 +154,12 @@ pick d95eb3d 8. Edit 'command_mode' file: add more commands
    repo:
 
     ```sh
-     # You can also use `git adog` if you created this alias.
+     # You can also use "git adog" if you created this alias.
      git log --all --decorate --oneline --graph
     ```
 
    You should see that branch `dev` still contains the two "old" commits
-   (`9c7f8b4` and `c110031`) from the shared history it had with the `main`
+   (`43594fa` and `0f32d64`) from the shared history it had with the `main`
    branch before the rebase. These two commits are now duplicated between the
    two branches.
 
@@ -171,23 +171,23 @@ pick d95eb3d 8. Edit 'command_mode' file: add more commands
    > know that the commits were skipped via the following warning:
    >
    > ```txt
-   > warning: skipped previously applied commit 9c7f8b4
-   > warning: skipped previously applied commit c110031
+   > warning: skipped previously applied commit 43594fa
+   > warning: skipped previously applied commit 0f32d64
    > ```
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
 
 ```sh
-# Rebase `dev` on `main`. This automatically gets rid of the duplicated
-# commits that are left on `dev`.
+# Rebase "dev" on "main". This automatically gets rid of the duplicated
+# commits that are left on "dev".
 git switch dev
 git rebase main
 
 # Display history of repo to see how it looks like after the rebase.
 git log --all --decorate --oneline --graph
 
-# Return on branch `main`.
+# Return on branch "main".
 git switch main
 ```
 
@@ -204,29 +204,33 @@ Make the following changes to the repo history:
 
 * **For each file, squash/merge the different commits** so that your history
   looks like what is shown below (the oldest commit is listed at the bottom).
-* **Change** the commit message of the commit adding the README file to:
-  `README: add vim modes and open file example`.
+  You can recognize which commit affects which file by looking at its commit
+  message prefix: `README:` for the `README.md` file, `Normal mode:` for
+  `normal_mode.md` and `Command mode:` for `command_mode.md`.
+* **Change** the commit message of the commit editing the README file to:
+  `2. README: add vim modes info and open file example`.
 
-    ```txt
-    * 7. Add 'command_mode' file: commands for vim's command mode
-    * 4. Add 'normal_mode' file: commands for vim's normal mode
-    * 2. README: add vim modes and open file example
-    * 1. First commit of the vim cheat-sheet project. Add README file
-    ```
+```txt
+* 7. Command mode: add commands for vim's command mode
+* 4. Normal mode: add commands for vim's normal mode
+* 2. README: add vim modes info and open file example
+* 1. Initial commit of vim cheat-sheet project. Add README file
+```
 
-   > 🔥 **Important:** note that the commit message for the second commit is
-   > a new message. You will thus need to
-   > **edit the commit message during the rebase**.
+> 🔥 **Important:** note that the commit message for the second commit is
+> a new message. You will thus need to **edit the commit message** during
+> the rebase.
 
-   > 🌈 **Note:** the `README.md` file still has 2 commits - because its first
-   > commit is also the first commit of the repo (and that first commit is more
-   > difficult - but not impossible - to change).
+> 🌈 **Note:** after the rebase, the `README.md` file will still have 2
+> commits - because its first commit is also the initial commit of the repo
+> (that initial commit is slightly more difficult to change).
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
 
 To merge the different commits for each file, we again run an interactive
-rebase on the first commit `git rebase -i HEAD~7` (or `git rebase -i a818d5a`).
+rebase on the initial commit: `git rebase -i HEAD~7`
+(or `git rebase -i b1444ee`).
 
 To merge and rename the commits 2 and 3, there are two possibilities:
 
@@ -238,32 +242,32 @@ To merge and rename the commits 2 and 3, there are two possibilities:
   and `f` is for `fixup`):
 
   ```txt
-  pick 9cf4b60 2. Edit README file
-  s fa952bb 3. Edit README file: add open file example
-  pick 32d2385 4. Add 'normal_mode' file: commands for vim's normal mode
-  f f4001cc 5. Edit 'normal_mode' file: add 'dd' and 'yy' commands
-  f 21a503e 6. Edit 'normal_mode' file: add more commands
-  pick 87dc1eb 7. Add 'command_mode' file: commands for vim's command mode
-  f 62c8c02 8. Edit 'command_mode' file: add more commands
+  pick fd6f177 # 2. README: add vim modes info
+  s    694bd7f # 3. README: add open file example
+  pick ff1e163 # 4. Normal mode: add commands for vim's normal mode
+  f    d46d9cc # 5. Normal mode: add 'dd' and 'yy' commands
+  f    29c7a6b # 6. Normal mode: add more commands
+  pick 2151527 # 7. Command mode: add commands for vim's command mode
+  f    586e41f # 8. Command mode: add more commands
   ```
 
 * **Use the command `fixup/f`** to automatically discard the message of the
   commit being squashed into its parent. In this case we have to use
   **`reword / r`** for the first commit of the list, since we were explicitly
   asked in the exercise to change the commit message for this
-  commit to `README: add vim modes and open file example`.
+  commit to `README: add vim modes info and open file example`.
 
   The edited rebase instructions should look like this (`r` is for `reword`
   and `f` is for `fixup`):
 
   ```txt
-  r 9cf4b60 2. Edit README file
-  f fa952bb 3. Edit README file: add open file example
-  pick 32d2385 4. Add 'normal_mode' file: commands for vim's normal mode
-  f f4001cc 5. Edit 'normal_mode' file: add 'dd' and 'yy' commands
-  f 21a503e 6. Edit 'normal_mode' file: add more commands
-  pick 87dc1eb 7. Add 'command_mode' file: commands for vim's command mode
-  f 62c8c02 8. Edit 'command_mode' file: add more commands
+  r    fd6f177 # 2. README: add vim modes info
+  f    694bd7f # 3. README: add open file example
+  pick ff1e163 # 4. Normal mode: add commands for vim's normal mode
+  f    d46d9cc # 5. Normal mode: add 'dd' and 'yy' commands
+  f    29c7a6b # 6. Normal mode: add more commands
+  pick 2151527 # 7. Command mode: add commands for vim's command mode
+  f    586e41f # 8. Command mode: add more commands
   ```
 
 </details>
@@ -274,7 +278,7 @@ To merge and rename the commits 2 and 3, there are two possibilities:
 If you **display the history** of your repo:
 
 ```sh
-# You can also use `git adog` if you created this alias.
+# You can also use "git adog" if you created this alias.
 git log --all --decorate --oneline --graph
 ```
 
@@ -282,7 +286,7 @@ You will see that, again, **`dev` and `main` have diverged** with
 **duplicated commits**.
 
 > 🔥 **Important:** at this point, please temporarily save the hash of
-> the commit to which `dev` is currently pointing - you will need shortly.
+> the commit to which `dev` is currently pointing - you will need it shortly.
 
 To get rid of the duplicated commits, we need to **rebase `dev` on `main`**.
 However, in this case, a regular rebase will _not_ be able to automatically
@@ -320,24 +324,24 @@ simply drop these commits in an interactive rebase:
    repo should look like this (commit ID values will differ):
 
     ```txt
-    * be67a87 (dev) Maybe we should all switch to emacs...
-    * 7c5827f Add image file showing a visual overview of vim modes
-    * c778c05 (HEAD -> main) 7. Add 'command_mode' file: commands for vim's command mode
-    * 8186e45 4. Add 'normal_mode' file: commands for vim's normal mode
-    * c454a04 2. README: add vim modes and open file example
-    * a818d5a 1. First commit of the vim cheat-sheet project. Add README file
+    * af8115d (HEAD -> dev) Maybe we should all switch to emacs...
+    * 03498c7 Add image file showing a visual overview of vim modes
+    * 4112f72 (main) 7. Command mode: add commands for vim's command mode
+    * bf871ba 4. Normal mode: add commands for vim's normal mode
+    * 5e16a5a 2. README: add vim modes info and open file example
+    * b1444ee 1. Initial commit of vim cheat-sheet project. Add README file
     ```
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
 
 ```sh
-# 1. Rebase `dev` on `main`.
+# 1. Rebase "dev" on "main".
 git switch dev
 git rebase -i main
 ```
 
-The rebase instructions list to only keep the 2 non-duplicated commits
+Edit the rebase instructions to only keep the 2 non-duplicated commits. It
 should look like this:
 
 ```txt
@@ -346,10 +350,10 @@ pick be67a87 Maybe we should all switch to emacs...
 ```
 
 ```sh
-# 2. Make sure the output of `git diff` is empty.
+# 2. Make sure the output of "git diff" is empty.
 git diff <hash before rebase>
 
-# 3. Switch back to `main` and display repo history.
+# 3. Switch back to "main" and display repo history.
 git switch main
 git log --all --decorate --oneline --graph
 ```
@@ -381,16 +385,16 @@ Since we are cleaning things up, let's also **fix a small bug** in the
 > * To learn about the `--fixup` and `--autosquash` options, look at the
 >   supplementary material slides of the course (or ask the trainer).
 >
-> * _Before_ the interactive rebase, your history on the `main` branch should
+> * _Before_ the rebase, your history on the `main` branch should
 >   look like this (note the 2 `fixup!` commits):
 >
 >    ```txt
->    * 542f88d (HEAD -> main) fixup! Add 'command_mode' file: commands for vim's command mode
->    * f0d33d7 fixup! README: add vim modes and open file example
->    * c778c05 7. Add 'command_mode' file: commands for vim's command mode
->    * 8186e45 4. Add 'normal_mode' file: commands for vim's normal mode
->    * c454a04 2. README: add vim modes and open file example
->    * a818d5a 1. First commit of the vim cheat-sheet project. Add README file
+>    * ed548d0 (HEAD -> main) fixup! 4. Normal mode: add commands for vim's normal mode
+>    * 6faaecf fixup! 2. README: add vim modes info and open file example
+>    * 4112f72 7. Command mode: add commands for vim's command mode
+>    * bf871ba 4. Normal mode: add commands for vim's normal mode
+>    * 5e16a5a 2. README: add vim modes info and open file example
+>    * b1444ee 1. Initial commit of vim cheat-sheet project. Add README file
 >    ```
 
 <br>
@@ -402,10 +406,12 @@ Since we are cleaning things up, let's also **fix a small bug** in the
 git status
 
 # Commit changes to these files in two different "fixup" commits:
-git commit --fixup=HEAD~2 README.md
-git commit --fixup=HEAD~1 normal_mode.md
+# Note: The hash values of your --fixup commits will differ.
+git commit --fixup=5e16a5a README.md
+git commit --fixup=bf871ba normal_mode.md
 
 # Perform the rebase with the "--autosquash" option enabled.
+# Note: on Git versions < 2.44, one must run: git rebase -i --autosquash HEAD~5
 git rebase --autosquash HEAD~5
 
 # To check the result.
@@ -414,7 +420,7 @@ git log --all --decorate --oneline --graph
 
 > 🌈 **Note:** since we made `--fixup` commits, we do not necessarily have
 > to use the `--interactive / -i` option of rebase, because `--autosquash`
-> will do to work of squashing them for us anyway.
+> will do the work of squashing them for us anyway.
 >
 > Nevertheless, we could also have run
 > `git rebase --interactive --autosquash HEAD~5` had we wanted to double check
@@ -434,12 +440,12 @@ After the rebase, switch back to the `main` branch and display the history
 of your repository. It should look like this (commit ID values will differ):
 
 ```txt
-* 062a1e2 (dev) Maybe we should all switch to emacs...
-* 07e7d86 Add image file showing a visual overview of vim modes
-* 9a0188b (HEAD -> main) 7. Add 'command_mode' file: commands for vim's command mode
-* 4c17a23 4. Add 'normal_mode' file: commands for vim's normal mode
-* 3becef8 2. Edit README file: add vim modes and open file example
-* a818d5a 1. First commit of the vim cheat-sheet project. Add README file
+* f9dcdf3 (dev) Maybe we should all switch to emacs...
+* 29e28a5 Add image file showing a visual overview of vim modes
+* a27b824 (HEAD -> main) 7. Command mode: add commands for vim's command mode
+* 5760c2d 4. Normal mode: add commands for vim's normal mode
+* e7dbc02 2. README: add vim modes info and open file example
+* b1444ee 1. Initial commit of vim cheat-sheet project. Add README file
 ```
 
 <br>
@@ -449,7 +455,7 @@ of your repository. It should look like this (commit ID values will differ):
 # Switch to the branch to rebase.
 git switch dev
 
-# Interactive rebase of `dev` on `main`.
+# Interactive rebase of "dev" on "main".
 # Important: discard all duplicated commits in the rebase file.
 git rebase -i main
 
@@ -477,10 +483,16 @@ Finally, there are 2 more things you can try:
 # Merge the first two commits.
 git rebase -i --root main
 
-# Change the commit message of latest `dev` commit.
+# Change the commit message of latest "dev" commit.
 git switch dev
 git commit --amend -m "Add xkcd comic image file"
 ```
+
+> 🌈 **Note:** rewriting the first commit of the repo changes the hash of all
+> commits on `main`. As a result, `dev` and `main` no longer share any commit
+> (you can see this with `git adog`). To fix this, rebase `dev` on `main` with
+> an interactive rebase, and drop all commits except the last 2, as we did
+> earlier.
 
 </details>
 
@@ -501,7 +513,7 @@ git commit --amend -m "Add xkcd comic image file"
 > git reset --hard              # Reset everything: HEAD, index and the working tree.
 > ```
 
-> 💡 **Disclaimer:** in order show you some use cases of `git reset`, we will
+> 💡 **Disclaimer:** in order to show you some use cases of `git reset`, we will
 > in this exercise **intentionally make some mistakes** along the way, so that
 > we can then correct them. So don't be unsettled by the fact that this
 > exercise keeps asking you to change things: _it's by design_ !
@@ -523,8 +535,8 @@ and then clone it to our local computer. This is what we will do here:
 1. **Go to [GitHub](https://github.com)** and login to your user account.
 
 2. **Create a new repository**, with the following settings:
-   * **Repository name:** the-big-reset
-   * **Description:** A test repo with Chuck Norris quotes
+   * **Repository name:** `the-big-reset`
+   * **Description:** `A project where we make mistakes, so we can fix them!`
    * **Visibility:** Private (only you will be able to read and write to it).
    * **Add README:** On (enable the setting).
    * All other settings can be left at their default values.
@@ -532,10 +544,10 @@ and then clone it to our local computer. This is what we will do here:
    <br>
 
    > 🌈 **Note:** since we enabled the **Add README** option, GitHub will
-   > directly initialize a new Git repo and add a first commit that contains
+   > directly initialize a new Git repo and add an initial commit that contains
    > a `README.md` file. This allows us to immediately clone the repo.
 
-3. Enter the `exercise_2/` directory and **Clone your newly created repo**.
+3. Enter the `exercise_2/` directory and **clone your newly created repo**.
    Note that, because we set the visibility of the repo to **private**, you
    will already be asked for your GitHub/GitLab credentials (username and
    access token) at the time when you clone the repo (because read access is
@@ -557,7 +569,7 @@ and then clone it to our local computer. This is what we will do here:
 ```sh
 # Clone the repo.
 cd exercise_2
-git clone https://...
+git clone https://github.com/<your user name>/the-big-reset.git
 
 # Move files inside the newly cloned repo.
 mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
@@ -573,13 +585,14 @@ mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
    * The repo already contains 1 commit: the one made by GitHub/GitLab when
      it initialized the repo with the `README` file.
    * There are 2 untracked files: `my_quotes.md` and `chuck_norris_quotes.txt`.
+     These are the two files we moved into the directory just before.
 
 2. Stage `my_quotes.md`, and **make a new commit** with the message:
    > `Add a file to keep track of quotes`.
 
 3. Wait, that last commit message is not nearly dramatic enough for what is
    about to unfold in this exercise. Let's change it to:
-   `"Starting The Big Reset"`.
+   `"Starting the Big Reset"`.
 
    **Compare your commit ID (hash)** before and after the amending of the
    commit: you should see that the value has changed, because amending a
@@ -593,11 +606,11 @@ mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
 4. Oh, one more thing: let's also add the `chuck_norris_quotes.txt` to our
    last commit (do _not_ create a new commit but _amend_ the last one).
 
-   > ✨ **Tip:** when amend a commit but don't want to modify its commit
+   > ✨ **Tip:** when amending a commit but don't want to modify its commit
    > message, you can add the `--no-edit` option so that Git does not ask
    > you for a new commit message.
 
-5. Push the changes to the `main` branch to your remote. Go to the webpage
+5. Push the changes on the `main` branch to your remote. Go to the webpage
    of your repo to verify the changes are really there.
 
 <br>
@@ -609,20 +622,20 @@ cd the-big-reset
 git log --all --decorate --oneline --graph
 git status
 
-# 2. Make a commit with the `my_quotes.md` file.
+# 2. Make a commit with the "my_quotes.md" file.
 git add my_quotes.md
 git commit -m "Add a file to keep track of quotes"
 
 # 3. Amend the commit message of the last commit.
-git commit --amend -m "Starting The Big Reset"
-git log --all --decorate --oneline --graph      # To check the commits message was changed.
+git commit --amend -m "Starting the Big Reset"
+git log --all --decorate --oneline --graph      # To check the commit message was changed.
 
 # 4. Amend the commit again, this time to add a new file.
 git add chuck_norris_quotes.txt
 git commit --amend --no-edit
-git show   # You should not see the chuck_norris_quotes.txt file being part of the commit.
+git show   # You should now see the chuck_norris_quotes.txt file being part of the commit.
 
-# 5. Push your changes on `main` to the remote.
+# 5. Push your changes on "main" to the remote.
 git push
 ```
 
@@ -639,29 +652,29 @@ git push
 >  # Reset the HEAD (and the branch) 1 commit before the current commit.
 >  git reset --soft HEAD~1
 >  # Redo the commit, but with a different message.
->  git commit -m "Starting The Big Reset"
+>  git commit -m "Starting the Big Reset"
 > ```
 >
 > With `git reset --mixed`, we would have to do:
 >
 > ```sh
 >  # Reset the HEAD (and the branch) 1 commit before the current commit.
->  git reset --mixed HEAD~1  # Or "git reset HEAD~1", since --mixed in the default option.
+>  git reset --mixed HEAD~1  # Or "git reset HEAD~1", since --mixed is the default option.
 >
 >  # Re-stage the file to commit.
 >  git add my_quotes.md
 >  # Redo the commit, but with a different message.
->  git commit -m "Starting The Big Reset"
+>  git commit -m "Starting the Big Reset"
 > ```
 
 </details>
 <br>
 
-### B) Add Chuck Norris quotes
+### C) Add Chuck Norris quotes
 
 Alright, amending stuff is fun, but let's try to get some real work done here.
 
-* **Open the `chuck_norris_quotes.txt` file** and chose your 3 favorite
+* **Open the `chuck_norris_quotes.txt` file** and choose your 3 favorite
   quotes.
 * Add each of your 3 quotes **successively** to the `my_quotes.md` file,
   making a new commit **each time** you add a quote.
@@ -673,7 +686,7 @@ Alright, amending stuff is fun, but let's try to get some real work done here.
     * e78e2ab Add 2nd favorite quote
     * 70c65be Add 1st favorite quote
     * c3d7850 Starting the Big Reset
-    * e044feb First commit
+    * e044feb Initial commit
     ```
 
 <br>
@@ -692,7 +705,7 @@ git commit -m "Add 3rd favorite quote" my_quotes.md
 </details>
 <br>
 
-With so many epic quotes to chose from, it a real shame we can chose only 3...
+With so many epic quotes to choose from, it's a real shame we can have only 3...
 But wait - Git has a solution for us: **branches** ! 🌱
 
 1. Create an alternate branch named `second-choice` at the point in history
@@ -700,7 +713,7 @@ But wait - Git has a solution for us: **branches** ! 🌱
    `my_quotes.md` does indeed not contain any quotes.
 
    > 🦉 **Reminder:** by default, new branches are created at the
-   > current **`HEAD`** position. But you also create them at any arbitrary
+   > current **`HEAD`** position. But you can also create them at any arbitrary
    > commit by passing the reference to that commit:
    >
    > ```sh
@@ -713,7 +726,7 @@ But wait - Git has a solution for us: **branches** ! 🌱
 3. Have a look at your repo's history again:
 
     ```sh
-     # You can also use `git adog` if you created this alias.
+     # You can also use "git adog" if you created this alias.
      git log --all --decorate --oneline --graph
     ```
 
@@ -726,19 +739,19 @@ But wait - Git has a solution for us: **branches** ! 🌱
     | * 70c65be Add 1st favorite quote
     |/
     * c3d7850 Starting the Big Reset
-    * e044feb First commit
+    * e044feb Initial commit
     ```
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
 
 ```sh
-# 1. Create a new branch at the second commit. Note that with `switch -c` we
+# 1. Create a new branch at the second commit. Note that with "switch -c" we
 #    create the branch and check it out at the same time.
 git switch -c second-choice HEAD~3
 cat my_quotes.md                    # Verify there are no quotes in the file.
 
-# 3. Add 3 other quotes in a single commit.
+# 2. Add 3 other quotes in a single commit.
 echo -e "Chuck Norris can divide by zero.\n" >> my_quotes.md
 echo -e "Chuck Norris never gets a syntax error. Instead, the language gets \
 a DoesNotConformToChuck error.\n" >> my_quotes.md
@@ -752,10 +765,10 @@ git log --all --decorate --oneline --graph
 </details>
 <br>
 
-### C) Hard reset
+### D) Hard reset
 
 Upon reflection, why not put all of our favorite quotes (who said we could
-have only 3!) into the `my_quotes.md` file on the `main` branch.
+have only 3!) into the `my_quotes.md` file on the `main` branch?
 
 * **Merge the branch `second-choice` into `main`**. This will be a
   **3-way merge** (i.e. a non-fast-forward merge) - so get ready for some
@@ -775,7 +788,7 @@ git merge second-choice
 vim my_quotes.md
 
 # ... after the conflict is solved, we stage the modifications and run
-# `git commit` to finish the merge.
+# "git commit" to finish the merge.
 git add my_quotes.md
 git commit
 
@@ -802,7 +815,7 @@ as could be.
 * | 70c65be Add 1st favorite quote
 |/
 * c3d7850 Starting the Big Reset
-* e044feb First commit
+* e044feb Initial commit
 ```
 
 Can we fix it? _Yes, we can !_
@@ -822,7 +835,7 @@ marvel at your perfectly clean history (commit IDs will differ). 😻
 * e78e2ab Add 2nd favorite quote
 * 70c65be Add 1st favorite quote
 * c3d7850 Starting the Big Reset
-* e044feb First commit
+* e044feb Initial commit
 ```
 
 <details><summary><b>✅ Solution</b></summary>
@@ -854,7 +867,7 @@ git log --all --decorate --oneline --graph
 </details>
 <br>
 
-### D) Force push
+### E) Force push
 
 Finally, we would like to **push our changes on `main`** to the remote once
 more.
@@ -868,6 +881,7 @@ more.
 * ❓ **Question:** you should see that this does _not_ work 💥 ! Why is that ?
 
   <details><summary><b>✅ Answer</b></summary>
+
   The problem is that the branch we are trying to push (here `main`) has
   diverged from its counterpart on the remote. In other words, the history
   of the two branches is no longer the same, and therefore the changes made
@@ -920,11 +934,12 @@ the `main` branch on the remote by doing a **force** push:
   ❓ **Question:** what does the `--prune` option do ?
 
   <details><summary><b>✅ Answer</b></summary>
+
   `--prune` tells Git to **remove remote-tracking branches** that no longer
   exist on the remote. In other words, if a branch was deleted on the remote,
   `git fetch --prune` will clean up your local references to that branch.
 
-  When working on a repo used by multiple people, its good to run
+  When working on a repo used by multiple people, it's good to run
   `git fetch --prune` from time to time to cleanup the remote tracking
   branches in your local copy of the repo.
   </details>
@@ -1078,10 +1093,10 @@ a problem never comes alone, they need this _right now_ !
    <details><summary><b>✅ Solution</b></summary>
 
     ```sh
-     # Switch to the `dev` branch.
+     # Switch to the "dev" branch.
      git switch dev
 
-     # Create a new branch named `backport`.
+     # Create a new branch named "backport".
      git branch backport 1a2fa0c  # Note: your commit ID will differ.
      git switch backport
     
@@ -1094,7 +1109,7 @@ a problem never comes alone, they need this _right now_ !
 
    **Question answer:** "orphaned" commits (i.e. commits not part of any
    branch or tag), will eventually be pruned (i.e. deleted) by Git at some
-   point. So it's not a safe option for commit that we want to keep.
+   point. So it's not a safe option for commits that we want to keep.
 
    </details>
    <br>
@@ -1110,7 +1125,11 @@ a problem never comes alone, they need this _right now_ !
     to use `git branch -d`. We must use `-D` to **force delete**.
 
       ```sh
-      # Force-delete the `backport` branch.
+      # If needed, switch away from the "backport" branch (it's not possible to
+      # delete an active branch).
+      git switch dev
+
+      # Force-delete the "backport" branch.
       git branch -D backport
       ```
 
@@ -1124,7 +1143,7 @@ a problem never comes alone, they need this _right now_ !
       `Improve file import tests`.
    <br>
 
-   At this point, your working tree should be clean and you Git history should
+   At this point, your working tree should be clean and your Git history should
    look like this:
 
     ```txt
@@ -1149,14 +1168,14 @@ a problem never comes alone, they need this _right now_ !
     <details><summary><b>✅ Solution</b></summary>
 
       ```sh
-      # Switch to the `dev` branch.
+      # Switch to the "dev" branch.
       git switch dev
 
       # Restore the content, and commit it.
       git stash pop
       git commit -am "Improve file import tests"
 
-      # Look the commit history.
+      # Look at the commit history.
       git log --all --decorate --oneline --graph
       ```
 
@@ -1243,7 +1262,7 @@ In your quests throughout this exercise, you will be asked to follow a
 
 > 🦉 **Reminder**
 >
-> If a divergence in the `main` branch occurs between you local repo and the
+> If a divergence in the `main` branch occurs between your local repo and the
 > remote, you can either:
 >
 > * **Rebase** your local changes in `main` onto `origin/main` (this is often
@@ -1252,7 +1271,7 @@ In your quests throughout this exercise, you will be asked to follow a
 >
 >   ```sh
 >   git pull --rebase
->   # Which, for the branch `main`, is the same as doing:
+>   # Which, for the branch "main", is the same as doing:
 >   git fetch
 >   git rebase origin/main
 >   ```
@@ -1261,7 +1280,7 @@ In your quests throughout this exercise, you will be asked to follow a
 >
 >   ```sh
 >   git pull --no-rebase
->   # Which, for the branch `main`, is the same as doing:
+>   # Which, for the branch "main", is the same as doing:
 >   git fetch
 >   git merge origin/main
 >   ```
@@ -1305,7 +1324,7 @@ In your quests throughout this exercise, you will be asked to follow a
     * **Quartermaster**
     * **First-mate**
 
-   If your team is less than 3 people, assign one person to multiple roles
+   If your team has fewer than 3 people, assign one person to multiple roles
    (e.g. one person is Captain and the other person is both Quartermaster and First-mate).
 
 <br>
@@ -1358,7 +1377,7 @@ setup on GitHub.
 > command _inside_ the Git repository:
 >
 > ```sh
->  # Do not add the `--global` flag. This change should only affect the current repo.
+>  # Do not add the "--global" flag. This change should only affect the current repo.
 >  git config core.filemode false
 > ```
 >
@@ -1385,7 +1404,7 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
       (Captain), `add-crew-qm` (Quartermaster) and `add-crew-fm` (First-mate)
       respectively.
 
-      > 🦜 **Note:** if one person of the group is having the role of multiple
+      > 🦜 **Note:** if one person of the group has the role of multiple
       > pirates (because there are < 3 people in the team), then they should
       > create only a single personal branch and do the work for all of their
       > roles on that branch. This applies for all quests in this exercise.
@@ -1511,8 +1530,8 @@ This is how you should proceed:
 
 4. **Merge your personal branch into `main`** and push your changes on `main`
    to the remote. Use the same procedure as in the first part of the quest -
-   see **point 2** of _Treasure hunt part one: sign the pirate code_ if you
-   need a refresher.
+   see **point 2** of _Treasure hunt part one: the pirate code_ if you need a
+   refresher.
     > 🔥 **Important:** if needed, make sure to **rebase your branch** before
     > merging it (to keep a cleaner history).
 
@@ -1679,7 +1698,7 @@ _Shiver me timbers!_ We are missing **the keys** to open the lock !
 
 > 🦜 **Note:** If you are running out of time, you can finish this last part
 > of the exercise on your own. You simply have to find the 3 keys for the
-> treasure on your own.
+> treasure.
 
 <br>
 
@@ -1795,7 +1814,7 @@ If you would like to receive credits for the course:
     * The **URL of the remote repo** that you have used for this exercise. The
       repo must be public.
     * The **secret code** you found when opening the chest.
-4. **Make sure you have signed-up for the exam** on the shared online document
+5. **Make sure you have signed-up for the exam** on the shared online document
    of the course by highlighting your name in green.
 
 <br>

@@ -86,7 +86,7 @@ to do.
 
    ```sh
    cd exercise_1/test-project   # Enter the directory.
-   ls -l                        # List files present the directory.
+   ls -l                        # List files present in the directory.
    ```
 
    You should see that it contains files reminiscent of a simple scripting
@@ -165,11 +165,12 @@ to do.
    files - these are "python cache" files that we don't want to track).
 
    > 🦉 **Reminders**
-   > * _Staging_ a file is synonym of _adding to the Git index_.
+   > * _Staging_ a file is a synonym for _adding to the Git index_.
    > * The command to stage files is: `git add <files or directories>`.
    >   For instance, `git add README.md` will stage the file `README.md`.
 
    <br>
+
    To make sure that you have staged the files correctly, run the command
    **`git status`**. The output of the command should look like this:
 
@@ -273,19 +274,19 @@ to do.
 
    > ✨ **Tip: interactive commit messages**
    >
-   > To crate a commit with a multi-line commit message, we can run the
-   > command **`git commit`** with no addition arguments.
+   > To create a commit with a multi-line commit message, we can run the
+   > command **`git commit`** with no additional arguments.
    >
    > This opens a text editor (by default `vim`) where one can manually enter
    > the commit message. The convention for multi-line messages is to have a
    > summary on the first line, followed by a blank line, followed by one or
-   > more lines describing. Here is an example:
+   > more lines describing the changes. Here is an example:
    >
    > ```txt
    > Initial commit for test project
    >
    > This is the first commit for test-project.
-   > Can't want to add more!
+   > Can't wait to add more!
    > ```
    >
    > If you want to add even more structure to your commit messages, have
@@ -313,7 +314,7 @@ create a new commit that adds the change we made to our Git repo.
 
       Untracked files:
           script.pyc
-          tests/
+          tests/tests.pyc
       ```
 
    <br>
@@ -343,8 +344,6 @@ create a new commit that adds the change we made to our Git repo.
 
 3. **Commit the changes** you just made.
    * Add/stage the changes made to `README.md` with **`git add`**.
-     Remember that each time you modify a file and want to include these
-     changes into your next commit, you have to `git add` that file again.
 
      > 🦉 **Reminder:** remember that each time you modify a file and want to
      > include these changes into your next commit, you have to `git add` that
@@ -366,11 +365,11 @@ create a new commit that adds the change we made to our Git repo.
       git commit -m "Make README file more cheerful"
 
       # Alternative: stage all modified files with "git add -u". Since only
-      # README.md was modified, this is in the same as staging README.md.
+      # README.md was modified, this is the same as staging README.md.
       git add -u
       git commit -m "Make README file more cheerful"
 
-      # Alternative: use a "git commit" shortcuts to stage + commit in a single
+      # Alternative: use a "git commit" shortcut to stage + commit in a single
       # command.
       git commit -m "Make README file more cheerful" README.md
 
@@ -414,7 +413,7 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
    * Stage the `.gitignore` file.
    * Make a new commit with commit message `Add *.pyc to ignore list`.
 
-   Your working tree should now be "clean". Running `git status`, should
+   Your working tree should now be "clean". Running `git status` should
    output:
 
       ```txt
@@ -512,7 +511,7 @@ The status of your files should look like:
 Actually, we do _not_ want to add all these changes to the repository,
 so **let's unstage them**.
 
-* Unstage the changes to `script.py` using the command: **`git restore --staged`**
+* Unstage the changes to `script.py` using the command: **`git restore --staged`**.
 
 * Unstage the entire file `personal_notes.md`, using either
   **`git restore --staged`** or **`git rm --cached`**.
@@ -628,10 +627,10 @@ other people. Therefore we would like to **ignore** it. However, since this
 file is specific to our own local setup, it should only be ignored by our
 local Git repo, and not by everyone else.
 
-We can achieve this by adding the file name `.git/info/exclude`:
+We can achieve this by adding the file name to `.git/info/exclude`:
 
 * Edit the file **`.git/info/exclude`** to ignore `personal_notes.md`.
-  you can do this with a regular text editor, or using the following
+  You can do this with a regular text editor, or using the following
   shell command:
 
   ```sh
@@ -648,7 +647,7 @@ We can achieve this by adding the file name `.git/info/exclude`:
 
 > 🌈 **Summary**
 >
-> in Git, files/patterns to ignore only in your local repo should be added
+> In Git, files/patterns to ignore only in your local repo should be added
 > to **`.git/info/exclude`** (rather than `.gitignore`). This is a text file
 > that is automatically present in every `.git` repo.
 
@@ -710,7 +709,7 @@ However, all things considered, this file is not really needed, and we now
 would like to delete it from both our repo and working tree.
 
 * Delete the file using the command **`git rm`**.
-* Run `git status`: you should see that the was was deleted, and that this
+* Run `git status`: you should see that the file was deleted, and that this
   deletion is already staged.
 
   ```txt
@@ -720,11 +719,11 @@ would like to delete it from both our repo and working tree.
   ```
 
 * Make a new commit that removes this file from the repo. You can use the
-  commit message `"Remove test output"`
+  commit message `"Remove test output"`.
 
 <br>
 
-> 🌈 **Note:** while we have delete the file `output.csv` from the Git index
+> 🌈 **Note:** while we have deleted the file `output.csv` from the Git index
 > and the last commit, a copy of it still remains in the history of our
 > repository.
 
@@ -790,7 +789,7 @@ task of fixing bugs in their website.
 
 Let's get started:
 
-1. Change directory into `/exercise_2`. You will see that it already contains
+1. Change directory into `exercise_2/`. You will see that it already contains
    a Git repository, as well as an HTML page named `references.html`.
 2. Open the `references.html` page in your web browser.
 3. Explore the content of the Git repo using the `git log`, `git status` and
@@ -903,10 +902,10 @@ you want to learn everything about Git!
      git add references.html
      git commit -m "Add Git logo placeholder to the Git reference webpage"
 
-     # Alternatively, we can also use these shortcut to stage and commit in
-     # a singe command.
+     # Alternatively, we can also use these shortcuts to stage and commit in
+     # a single command.
      git commit -m "Add Git logo placeholder to the Git reference webpage" references.html
-     # or (this works because only the `references.html` file was modified).
+     # or (this works because only the "references.html" file was modified).
      git commit -am "Add Git logo placeholder to the Git reference webpage"
 
      git status  # There are no more uncommitted changes.
@@ -1018,7 +1017,7 @@ git commit -m "Add two new books to Git reference page"
 
 **Question answer:** the difference between `git diff` and `git diff --cached`
 is that the former will display the difference between the working tree
-(files on disk) and the git index, while the later shows the difference
+(files on disk) and the git index, while the latter shows the difference
 between the git index and the latest commit.
 
 </details>
@@ -1030,7 +1029,7 @@ In this last part of the exercise, we further improve our webpage by adding
 a logo.
 
 1. **Edit** the `references.html` webpage, replacing the placeholder line
-   that starts with `<!-- Add Git logo placeholder` by
+   that starts with `<!-- Add Git logo placeholder` with
    `<img src="git_logo.png">`.
 
    Make sure to check that you did a proper job by reloading the HTML page
@@ -1043,7 +1042,7 @@ a logo.
 
 4. **Run `git log --all --decorate --oneline --graph`** to display your entire
    repository history. It should look like this (commit ID values will differ
-   and commit message may be different):
+   and commit messages may be different):
 
    ```txt
     * ba4687a (HEAD -> main, dev) Add git logo
@@ -1094,8 +1093,8 @@ cherry-picking.
 
 <br>
 
-The stakes are raising! You are now taking the lead developer position of the
-"peak sorter" project - a mesmerizing bash script that sorts all of the Alp's
+The stakes are rising! You are now taking the lead developer position of the
+"peak sorter" project - a mesmerizing bash script that sorts all of the Alps'
 4000 m summits in order of decreasing elevation (i.e. highest to lowest). It
 also displays the name and elevation of the highest summit in the Alps when
 completed.
@@ -1211,7 +1210,7 @@ as follows:
 
    And searching for the commit message:
 
-   > peak_sorter: add check that input table has the ALTITUDE and PEAK columns"
+   > peak_sorter: add check that input table has the ALTITUDE and PEAK columns
 
    We find that the commit ID we are looking for is: `8e0d4fe`
 
@@ -1250,7 +1249,7 @@ as follows:
      # Verify that "hotfix" and "main" now point to the same commit.
      git log --all --decorate --oneline --graph
 
-     # Test-run the script and delete the temporary "hotfix" branch.
+     # Test-run the script.
      ./peak_sorter.sh
     ```
 
@@ -1267,7 +1266,7 @@ as follows:
 
 Your next task is to add a new feature to the `peak_sorter.sh` script. This new
 feature - which will take the peak sorter script to new heights - should add
-the number of [Dahus](https://en.wikipedia.org/wiki/Dahu) observations made on
+the number of [Dahu](https://en.wikipedia.org/wiki/Dahu) observations made on
 each alpine peak to the output of the script.
 
 Again, you're in luck, because this feature has already been developed in a
@@ -1304,7 +1303,7 @@ Let's start by having a look at that branch:
 <details><summary><b>✅ Solution</b></summary>
 
 ```sh
-# Checkout the `feature-dahu` branch and display repo history.
+# Checkout the "feature-dahu" branch and display repo history.
 git switch feature-dahu
 git log --all --decorate --oneline --graph
 
@@ -1330,7 +1329,7 @@ Let's start with the rebase:
 
   > 🔥 **Important:** in this exercise, should any conflict arise during the
   > rebase, always keep the version of the code that is coming from the
-  > `feature-dahu` branch (the the version that is _not_ coming from `HEAD`).
+  > `feature-dahu` branch (the version that is _not_ coming from `HEAD`).
 
 * After completing the rebase, **run the peak-sorter script** again:
 
@@ -1340,12 +1339,12 @@ Let's start with the rebase:
 
   It should still display the number of observed Dahus as it did before the
   rebase. It should also display the data integrity check message
-  `### Running data integrity check...OK` that we added to `main` earlier
+  `Running data integrity check...OK` that we added to `main` earlier
   (because our `feature-dahu` branch now also contains the latest commits of
   `main`).
 
   Look again at your repo's history (`git adog`). Compare it to what you had
-  before the merge (scroll up in your shell), to visually see how the rebase
+  before the rebase (scroll up in your shell), to visually see how the rebase
   operation changed the history. Note how the hashes of the commits in the
   `feature-dahu` branch have changed.
 
@@ -1353,7 +1352,7 @@ Let's start with the rebase:
 <details><summary><b>✅ Solution</b></summary>
 
 ```sh
-# Start the rebase of `feature-dahu` on `main`.
+# Start the rebase of "feature-dahu" on "main".
 git rebase main
 
 # There are 3 conflicts, so repeat the steps below 3 times.
@@ -1365,8 +1364,8 @@ git rebase --continue
 # everything is still working after the rebase.
 ./peak_sorter.sh
 
-# Display the repo history. You should see that `feature-dahu` is now
-# rooted on the latest commit of `main`.
+# Display the repo history. You should see that "feature-dahu" is now
+# rooted on the latest commit of "main".
 git log --all --decorate --oneline --graph
 ```
 
@@ -1384,7 +1383,7 @@ you can **merge `feature-dahu` into the `main` branch**.
 Merge `feature-dahu` into `main`.
 
 ```sh
-git checkout main
+git switch main
 git merge feature-dahu  # This is now a fast-forward merge -> no conflicts.
 
 # Test run to see if everything is still working after the merge.
@@ -1433,8 +1432,8 @@ git log --all --decorate --oneline --graph
 🌈 **Notes**
 
 * In this exercise, the rebase of `feature-dahu` resulted in lots of conflicts.
-  This was here done by design - so that you can train conflicts resolution.
-  In real application conflicts do generally not happen so frequently 🍀.
+  This was done on purpose, so that you can practice conflict resolution.
+  In real applications, conflicts generally do not happen so frequently 🍀.
 * In a real application, you would regularly push your changes on `main` to the
   remote repository on GitHub with the **`git push`** command. In this exercise
   however, you do not have write permission on the remote repository to perform
@@ -1551,8 +1550,8 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
    personal work branch, so it can stay local.
 
    > 🌈 **Note:** in a real application, you would probably want to push your
-   > personal branch to the remote as a backup (depending on how long-lived your
-   > branch is), but this is not necessary for this exercise.
+   > personal branch to the remote as a backup (depending on how long-lived
+   > your branch is), but this is not necessary for this exercise.
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
@@ -1578,7 +1577,7 @@ git switch -c yeti-dev       # Create the team branch and switch to it.
 git push -u origin yeti-dev  # Push the branch to the remote.
 ```
 
-Other team members can now pull the new team branch `yeti-dev` and switch
+Other team members can now fetch the new team branch `yeti-dev` and switch
 to it.
 
 ```sh
@@ -1587,6 +1586,14 @@ git switch yeti-dev
 
 # Display repo history and branches.
 git log --all --decorate --oneline --graph
+```
+
+Each team member creates their personal work branch, rooted on the same commit
+as the team branch. The example here is for `Alice`, working in team `yeti`.
+
+```sh
+# Create a new personal branch and switch to it.
+git switch -c yeti-alice
 ```
 
 </details>
@@ -1625,12 +1632,11 @@ animal.
 <br>
 <details><summary><b>✅ Solution</b></summary>
 
-Each team member creates their personal work branch. The example here is for
-`Alice`, working in team `yeti`.
+The example here is for `Alice`, working in team `yeti`.
 
 ```sh
-# Create a new branch and switch to it.
-git switch -c yeti-alice
+# If not already done, switch to your personal branch.
+git switch yeti-alice
 
 # Edit the web page.
 vim yeti.html
@@ -1780,7 +1786,7 @@ repository.
 git fetch
 git status
 
-# Update your local `main` branch with the changes.
+# Update your local "main" branch with the changes.
 git switch main
 git pull
 ```
