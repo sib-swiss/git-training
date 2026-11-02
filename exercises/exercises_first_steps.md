@@ -1444,10 +1444,10 @@ git log --all --decorate --oneline --graph
   If you wanted to delete the `feature-dahu` branch, you would need to use the
   `-D` option to **force-delete** the branch: `git branch -D feature-dahu`.
 * If you wanted to push changes in `feature-dahu` to the remote, you would
-  need to use `git push --force` to overwrite the branch's history on the
-  remote. This is because **rebasing a branch modifies its history**: after the
-  rebase, the history of the local and remote instance of `feature-dahu` have
-  **diverged**.
+  need to use `git push --force-with-lease` (or `git push --force`) to
+  overwrite the branch's history on the remote. This is because
+  **rebasing a branch modifies its history**: after the rebase, the history of
+  the local and remote instance of `feature-dahu` have **diverged**.
 * To see this divergence in history, you can run
   `git log --all --decorate --oneline --graph` and look at the
   `feature-dahu` and `origin/feature-dahu` branches.

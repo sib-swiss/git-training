@@ -1657,13 +1657,14 @@ and have the treasure onboard.
 > across the team:
 >
 > * The pirate who did the merge should push their changes to
->   `skull-rock-island` to the remote. Note that, because of the rebase we did
->   on that branch earlier, the local and remote version of the branch have
->   diverged, and therefore you need to add the **`--force`** option when
->   pushing it to the remote:
+>   `skull-rock-island` to the remote. However, because of the rebase you did
+>   on that branch earlier, the local and remote versions of the branch have
+>   diverged, and therefore you need to add the **`--force-with-lease`** option
+>   when pushing it to the remote:
 >
 >   ```sh
->   git push --force
+>   # Overwrite the remote with your local version of the branch.
+>   git push --force-with-lease
 >   ```
 >
 > * The other pirates can then **reset** their local copy of

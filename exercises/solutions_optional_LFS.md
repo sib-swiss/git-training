@@ -20,7 +20,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
 1. Initialize a new Git repository and make a first commit that adds the
    `README.md` file:
-    ```yaml
+
+    ```sh
     cd exercise_lfs/test_lfs.git
     git init
     git add README.md
@@ -29,7 +30,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
 2. We start by telling Git LFS which files should be tracked. Then we add/stage
    all files and commit:
-    ```yaml
+
+    ```sh
     # Tell Git LFS which files its should track.
     git lfs track logo.png "*.fasta" "db/db_file.txt"
 
@@ -42,7 +44,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    store the files either as regular files or as LFS files.
 
 3. Verify that the correct files are being tracked.
-    ```yaml
+
+    ```sh
     git lfs ls-files
     #  d6c210aeaf * db/db_file.txt
     #  34804bc7cb * logo.png
@@ -74,7 +77,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
 1. Explore the `arctic_animals.git` repository. We can see that there are 2
    branches, `main` and `dev`.
-    ```yaml
+
+    ```sh
     cd exercise_lfs/arctic_animals.git
     git log --all --decorate --oneline --graph
     ```
@@ -86,7 +90,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    ignored).
 
    What are the respective sizes of the `.git` and `.git/objects` repositories?
-    ```yaml
+
+    ```sh
     du -sh .git/
     #    61M  .git/
     du -sh .git/objects/
@@ -95,7 +100,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
 2. Migrate all `.tif` and `.jpg` files to Git LFS throughout the entire history
    of the Git repo.
-    ```yaml
+
+    ```sh
     # We print the current history of the repo, so we can later compare it
     # to the history after the migration.
     git log --all --decorate --oneline --graph
@@ -111,22 +117,26 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    working tree. The reason for this is because the file content has been
    replaced by the content of the pointer, e.g. `mammals/animal_walrus.tif` now
    contains:
-    ```
+
+    ```txt
     version https://git-lfs.github.com/spec/v1
     oid sha256:3e45f949e2234094fd2946875a7e8b3a0ff9b182f85f0e4538471e59a00b5c81
     size 7994968
     ```
 
    To restore the files in the working tree, we run:
-    ```yaml
+
+    ```sh
     git lfs checkout
     ```
+
    Now the walrus image is back!
 
    To list all files that are tracked by Git LFS, we use:
    `git lfs ls-files --all`.  
    The files with a `*` are those that are currently checked-out.
-    ```
+
+    ```sh
     git lfs ls-files --all
     ea67d4f8a5 * birds/animal_atlantic_puffin.tif
     8c92a37ac7 * birds/animal_snowy_owl.jpg
@@ -146,7 +156,7 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    Git LFS object store [`.git/lfs/objects`] and in the Git database
    [`.git/objects`].
 
-    ```yaml
+    ```sh
     du -sh .git
     #    133M  .git
     du -sh .git/objects
@@ -159,21 +169,24 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    collection of all the commits from the old history, and the copy of the
    files present in `.git/objects` will be removed.  
    To force immediate removal of the files, you can run:
-    ```yaml
+
+    ```sh
     git reflog expire --expire-unreachable=now --all
     git gc --prune=now
     ```
 
    The garbage collection has now reduced the size of the Git object store down
    to 40 KB !!
-    ```yaml
+
+    ```sh
     du -sh .git/objects/
     #    28K  .git/objects/
     ```
 
 4. Adding the humpback whale image as a LFS-tracked file. Since the humpback
    whale is a mammal, we store it in the `mammals` sub-directory.
-    ```yaml
+
+    ```sh
     git switch dev
     cp ../animal_humpback_whale.bmp mammals/
     git lfs track "*.bmp"       # The ".bmp" is a new file type,
@@ -191,8 +204,10 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 6. Now that we have an empty GitHub repo named `arctic_animals`, we can push
    the content of our local repo to it. First we add the URL of the remote,
    then we push our two branches.
-   *Note:* the URL in the solution below depends on your GitHub username.
-    ```yaml
+
+   **Note:** the URL in the solution below depends on your GitHub username.
+
+    ```sh
     git remote add origin https://github.com/<GitHub user name>/arctic_animals.git
     git switch main
     git push -u origin main
@@ -204,7 +219,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    `git lfs prune` command. As can be seen below, there are 2 files that can
    be deleted, allowing us to reclaim 14 MB of disk space (83 - 69 = 14 MB).
    After clearing of the cache, the size of the local LFS cache is 69 MB.
-    ```yaml
+
+    ```sh
     git lfs prune --dry-run
     #    prune: 10 local object(s), 8 retained, done.
     #    prune: 2 file(s) would be pruned (8.4 MB), done.
@@ -223,7 +239,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 8. Let's clone our `arctic_animals` repository at a different location, and see
    how much data is downloaded (this simulates another person cloning the
    repository).
-    ```yaml
+
+    ```sh
     cd ..
     git clone https://github.com/<GitHub user name>/arctic_animals.git arctic_animals_COPY
     cd arctic_animals_COPY
@@ -250,7 +267,8 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
    the modified `birds/birds_list.txt` file, and since the commit we wish to
    modify is the latest one on the current branch, we can simply use the
    `--amend --no-edit` options of `git commit`.
-    ```yaml
+
+    ```sh
     git switch main
 
     # Edit file birds/birds_list.txt: remove the last 2 lines.
@@ -260,17 +278,19 @@ Similarly, `git switch -c` (create + switch branch) must be replaced by
 
     Since this introduces a change in the history of branch `main`, we need to
     rebase `dev` on `main`. We can then push our changes on `dev` to the
-    remote. Note that we must use the `--force` option of `git push` since we
-    are re-writing history.
-    ```yaml
+    remote. Note that we must use the `--force-with-lease` (or `--force`)
+    option of `git push` since we are re-writing history.
+
+    ```sh
     git switch dev
     git rebase main
-    git push --force
+    git push --force-with-lease
     ```
 
-    Finally we can do the same `--force` push on branch `main`, so that our
-    local and remote repo are perfectly synchronized.
-    ```yaml
+    Finally we can do the same `--force-with-lease` push on branch `main`, so
+    that our local and remote repo are perfectly synchronized.
+
+    ```sh
     git switch main
-    git push --force
+    git push --force-with-lease
     ```
