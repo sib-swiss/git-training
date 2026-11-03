@@ -33,24 +33,26 @@ this repository by running the git command:
 git clone https://github.com/sib-swiss/git-training.git
 ```
 
-### Course slides
+### Course slides and documentation
 
-* Day 1: [First steps with Git](slides/slides_git_first_steps.pdf)
-* Day 2: [Git advanced topics](slides/slides_git_advanced_topics.pdf)
-* Git commands: a summary of all commands seen during the course. Available
-  as [PDF document](doc/git_command_summary.pdf),
-  and [markdown](doc/git_command_summary.md) for online viewing.
-* [Git optional modules](slides/slides_git_optional_modules.pdf). These are
-  more specialized Git commands and features that go beyond the scope of the
-  course and will not be covered in class but can be discussed upon request.
+* [First steps with Git](https://github.com/sib-swiss/git-training/raw/main/slides/slides_git_first_steps.pdf)
+* [Git advanced topics](https://github.com/sib-swiss/git-training/raw/main/slides/slides_git_advanced_topics.pdf)
+* [Git command summary](doc/git_command_summary.md) - a summary of all commands
+  seen during the course.  
+  A [PDF version](https://github.com/sib-swiss/git-training/raw/main/doc/git_command_summary.pdf)
+  is also available.
+* [Git optional modules](https://github.com/sib-swiss/git-training/raw/main/slides/slides_git_optional_modules.pdf).
+  These are more specialized Git commands and features that go beyond the scope
+  of the course and will not be covered in class but can be discussed upon
+  request.
 
 ### Exercise instructions
 
 Exercise instructions are best viewed in a web browser. Simply click on the
 link below to display them.
 
-* Day 1: [exercises first steps](exercises/exercises_first_steps.md)
-* Day 2: [exercises advanced topics](exercises/exercises_advanced.md)
+* [Exercises first steps](exercises/exercises_first_steps.md)
+* [Exercises advanced topics](exercises/exercises_advanced.md)
 * Optional modules (not covered in class):
   * [optional exercise CI/CD](exercises/exercises_optional_cicd.md)
   * [optional exercise submodules](exercises/exercises_optional_submodules.md)
@@ -61,8 +63,8 @@ link below to display them.
 Please download the following `.zip` files and decompress them on your local
 machine.
 
-* Day 1: [exercises_first_steps.zip](exercises/exercises_first_steps.zip)
-* Day 2: [exercises_advanced.zip](exercises/exercises_advanced.zip)
+* [exercises_first_steps.zip](exercises/exercises_first_steps.zip)
+* [exercises_advanced.zip](exercises/exercises_advanced.zip)
 * Optional modules (not covered in class):
   [exercises_optional_modules.zip](exercises/exercises_optional_modules.zip)
 
@@ -73,8 +75,8 @@ to **not look at the solutions too quickly**. Try to solve the exercises
 without them, and remember that you can always ask the course instructors
 for help.
 
-* Day 1: solutions are integrated in the exercise instructions.
-* Day 2: solutions are integrated in the exercise instructions.
+* Exercises first steps and advanced: solutions are integrated in the exercise
+  instructions.
 * Optional modules:
   * Solutions CI/CD - solutions are integrated in the exercise instructions.
   * [Solutions submodules](exercises/solutions_optional_submodules.md)

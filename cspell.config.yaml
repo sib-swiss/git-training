@@ -5,23 +5,64 @@ dictionaries: []
 words:
   - adog
   - autosquash
+  - bfseries
+  - bigskip
   - blockquotes
+  - cftaftertoctitleskip
+  - cftbeforesecskip
+  - cftbeforetoctitleskip
+  - commandchars
+  - contentsname
   - Dahus
   - dary
+  - definecolor
+  - droptitle
+  - fancyvrb
   - filemode
   - gitventure
+  - gmatch
+  - gsub
   - Longsilver
   - manul
+  - newcommand
+  - newenvironment
+  - newpage
   - octocat
   - officializing
+  - oldtableofcontents
   - oneline
   - Otocolobus
+  - pagebreak
+  - pandoc
+  - postauthor
+  - posttitle
+  - preauthor
   - reflog
+  - renewcommand
   - rhum
   - Scamazone
   - SERI
+  - setbox
+  - setlength
+  - setmonofont
+  - shadecolor
   - sibgit
+  - snugshade
+  - tableofcontents
+  - textasciigrave
+  - textasciitilde
+  - textbackslash
+  - textbf
+  - textcolor
+  - textgreater
+  - textit
+  - textless
+  - textquotesingle
+  - thedate
+  - tocloft
   - unstaging
+  - usepackage
+  - xelatex
   - YGYG
 ignoreWords:
   - enate
