@@ -188,13 +188,11 @@ animals in different formats.
    <br>
 
 5. We would now like to push this repository to GitHub. For this you will first
-   need to **create a new empty repo on GitHub**.
+   need to **create a new repository on GitHub**.
 
    Go to your GitHub account and create a new **private repo** named
-   `arctic_animals`. If needed, you can have a look at the help slides for
-   exercise 4 to get detailed instructions on how to do this. Since we will be
-   importing an existing repo, don't add any file upon initialization of the
-   repo on GitHub.
+   `arctic_animals`. Since we will be importing an existing repo, don't add any
+   file upon initialization of the repo on GitHub.
 
 6. **Push your changes on both `main` and `dev` to the remote**. Remember that
    for this you will need to:

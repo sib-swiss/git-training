@@ -1456,7 +1456,494 @@ git log --all --decorate --oneline --graph
 <br>
 <br>
 
-## Exercise 4 - The Awesome Animal Awareness Project [60 min]
+## Exercise 4 - The markdown cheat-sheet [30 min]
+
+**🚩 Objective:** learn to create a repo on GitHub, and practice the basic
+commands to interact with a remote: `git push`, `git pull`, and `git fetch`.
+
+<br>
+
+Looking good so far! It's now time to add a new moving piece: working
+with **remote repositories**.
+
+In this exercise, we will work on a small - and incomplete - cheat-sheet for
+the **[Markdown language](https://www.markdownguide.org) syntax**. As you
+probably sensed, this is a project of prime importance, and therefore we will
+want to set up a **remote repository** for the project on GitHub, so that we
+can:
+
+* Have a backup of our work on GitHub.
+* Make it available to everyone out there.
+
+> **🔥 Important:**
+>
+> * **Before you start** this exercise, make sure you created a
+>   **personal access token (PAT)** on GitHub. This will be needed to push
+>   commits to your repo on GitHub. A demo on how to create a PAT will be made
+>   in the class (if this has not been done yet, please kindly remind the
+>   teacher to do so 😇 - thank you).
+>
+>   If you are doing the exercise on your own, instructions on how to create
+>   a PAT can also be found in the course slides.
+
+<br>
+
+### A) Create a new repo on GitHub
+
+1. In your web browser, connect to your GitHub account and
+   **create a new repository** with the following characteristics:
+   * **Repository name:** `test-markdown-guide`
+   * **Repository description:**
+     `Test repository to learn working with remotes`
+   * **Visibility:** public (anyone has read access).
+   * **Add README** switch: on.
+
+   <br>
+
+   > **🌈 Note:** if needed, you can find instructions on how to create a new
+   > repository in the course slides.
+
+2. On your computer, enter the directory `exercise_4/` and
+   **clone your new repository**.
+
+    ```sh
+     # Note: replace <user name> with your GitHub user name.
+     git clone https://github.com/<user name>/test-markdown-guide.git
+    ```
+
+   The **`git clone`** command downloads a copy of the entire remote repo
+   to your computer, and also sets the repo on GitHub as the **remote** of
+   your local repo. By default, this remote is named **`origin`** - this is
+   why e.g. the pointer to the `main` branch on the remote is named
+   `origin/main`.
+
+3. **Enter the directory** you just cloned and list its content:
+
+    ```sh
+     cd test-markdown-guide
+     ls -l
+    ```
+
+   You should see that all it contains is a `README.md` file. This file was
+   automatically added by GitHub because we asked it to do so when configuring
+   the new repo.
+
+4. **Display the content** of the README file with the command:
+
+   ```sh
+   cat README.md
+   ```
+
+<br>
+
+### B) Push commits to the remote
+
+Let's now modify the content of the `README.md` file and push those changes
+to the remote.
+
+1. **Change the content of `README.md`** to the following text (you can copy
+   the text using the icon on the top-right of the text block).
+
+    ```md
+    # A short primer on markdown syntax ! 💫
+
+    Markdown is a lightweight markup language that you can use to add
+    formatting to plain text documents. Markdown is one of the most
+    popular markup languages.
+
+    Markdown files with a `.md` extension - such as this README file -
+    are automatically rendered by Git hosting services (e.g. GitHub or GitLab).
+    ```
+
+2. **Run `git diff` and `git status`** to display changes you made to
+   `README.md`.
+
+3. **Make a new commit** with your changes (use a meaningful commit message).
+
+   <details><summary><b>✅ Solution</b></summary>
+
+    ```sh
+     # Stage the README file, then create a new commit.
+     git add README.md
+     git commit -m "Update markdown guide title"
+
+     # Alternatively, we could also stage and commit in a single command.
+     git commit -m "Update markdown guide title" README.md
+    ```
+
+    </details>
+    <br>
+
+4. **Display the history** of your repo with the command (or use
+   the `git adog` alias, if you created it):
+
+    ```sh
+    git log --all --decorate --oneline --graph
+    ```
+
+    You should have 2 commits (commit ID values will differ):
+
+    ```txt
+    * 65efd2c (HEAD -> main) Update markdown guide title
+    * 88f9dea (origin/main, origin/HEAD) Initial commit
+    ```
+
+   What you should pay attention to is the respective positions of the
+   **`main`** and **`origin/main`** branches:
+
+   * **`main`** (in green) shows the position of the `main` branch in
+     our **local repo**. It is pointing to the 2nd commit, the one we just
+     added (`65efd2c` in the example above).
+   * **`origin/main`** (in red) shows the position of the `main` branch on
+     the **remote**. Currently, `origin/main` is still pointing to the initial
+     commit (`88f9dea`), because we have not pushed our new changes (commits)
+     to the remote.
+
+   <br>
+
+   > **🌈 Note:** to be completely accurate, we should say that `origin/main`
+   > shows the **last known position of the `main` branch** on the remote.
+   > Remember that synchronization between a local and remote repo is _not_
+   > automatic.
+
+   <br>
+
+   In this situation, the local `main` branch is said to be **ahead** of the
+   remote: the new commit we just made (`65efd2c`) is only present on our
+   local computer. If we lost access to our computer just now (e.g. it gets
+   stolen while we enjoy one too many beers at the bar - true story), we would
+   permanently lose the work we did in that last commit.
+
+   > **✨ Tip:** running the command:
+   >
+   > ```sh
+   > git status
+   > ```
+   >
+   > also warns us about the discrepancy between `main` and `origin/main` -
+   > see the 2nd line of the output below:
+   >
+   > ```txt
+   > On branch main
+   > Your branch is ahead of 'origin/main' by 1 commit.
+   >   (use "git push" to publish your local commits)
+   >
+   > nothing to commit, working tree clean
+   > ```
+
+    <br>
+
+5. **Push your changes on `main` to the remote** with the command:
+
+    ```sh
+    git push
+    ```
+
+   Then display the history of your repo again. You should now see that both
+   `main` and `origin/main` point to the latest commit.
+
+    ```txt
+    * 65efd2c (HEAD -> main, origin/main, origin/HEAD) Update markdown guide title
+    * 88f9dea Initial commit
+    ```
+
+    Likewise, running **`git status`** now tells us that our local `main` is
+    up to date with the remote (2nd line of the output below).
+
+    ```txt
+    On branch main
+    Your branch is up to date with 'origin/main'.
+
+    nothing to commit, working tree clean
+    ```
+
+    <br>
+
+6. At this point, our **local and remote repositories are perfectly in sync**:
+   all commits that we have locally are also present on the remote and vice
+   versa.
+
+   To convince yourself that this is indeed the case, go to your project home
+   page on GitHub: you will see that the updated version of the `README.md`
+   file is displayed.
+
+<br>
+
+### C) Pull changes from the remote
+
+In this exercise you are working on your project alone - no one else is pushing
+changes to your remote. To simulate content being added to the remote, we will
+therefore use a small trick: you will add a commit to your repo via the
+GitHub **web interface**.
+
+1. **Go to the home page** of your project on GitHub and click on the
+   **Edit file** button (the small pencil icon displayed at the top-right
+   of the `README.md` file - make sure you are signed in).
+
+2. The `README.md` file is now in edit mode:
+   **copy-paste the following content** at the end of the file - do not remove
+   what is already in the file, just add to it:
+
+    ```md
+    ## Bold and italic text
+
+    * To render text **in bold**, surround it with `**` or `__`.
+
+      Example: `**this is important**` ---> **this is important**
+
+    * To render text _in italic_, surround it with `_` or `*`.
+
+      Example: `this is *really great*` ---> this is _really great_
+
+    ## Titles
+
+    To create a title in markdown, add one (or more) `#` signs at the start
+    of the line:
+    * `#` = level 1 title (largest font).
+    * `##` = level 2 title.
+    * `###` = level 3 title.
+    * `####` = level 4 title.
+    * `#####` = level 5 title.
+    * `######` = level 6 title (smallest font).
+
+    Examples:
+    ### This is a level 3 title...
+    ##### This is a level 5 title...
+    ```
+
+   Then click on the **"Commit changes..."** button to create a new commit on
+   the `main` branch with the commit message:
+
+   > Add bold, italic and titles to markdown guide
+
+   After the changes are committed, you will see that the README file on
+   your project's home page on GitHub gets updated with the new content.
+
+   <br>
+
+3. **Sync the local and remote repos.**
+
+   At this point, the new changes are **only present on the remote**. To
+   convince yourself, you can try to run:
+
+   ```sh
+   cat README.md
+   ```
+
+   You will see that your local README's content has not been updated (because
+   Git does not automatically sync a local and remote repo - it's a manual
+   operation).
+
+   Let's now **sync our local repo** with the new content from the remote. Run
+   the command:
+
+   ```sh
+   git fetch
+   ```
+
+   This retrieves (downloads) all new content from the remote to our local
+   repo. However, it will _not_ update the local `main` branch. To verify
+   this, display your repo history, which should look like this:
+
+    ```txt
+    * efe768e (origin/main, origin/HEAD) Add bold, italic and titles to markdown guide
+    * 65efd2c (HEAD -> main) Update markdown guide title
+    * 88f9dea Initial commit
+    ```
+
+   > **🌈 Note:**
+   >
+   > The new commit we made on the remote (`efe768e` in the example above)
+   > has been downloaded to our local repo: the data is now present on our
+   > computer and our history has 3 commits.
+   >
+   > However, our local `main` branch is still pointing at the 2nd commit
+   > (`65efd2c`) - the new commit was _not_ merged into the local `main`.
+   >
+   > You can try to run the command `cat README.md` to display the content of
+   > the README file: you will see that it does _not_ yet contain the new text
+   > that we added on GitHub.
+
+   <br>
+
+4. **Let's update our local `main` branch**: run the command: **`git pull`**,
+   then display your repo history again:
+
+    ```txt
+    * efe768e (HEAD -> main, origin/main, origin/HEAD) Add bold, italic and titles to markdown guide
+    * 65efd2c Update markdown guide title
+    * 88f9dea Initial commit
+    ```
+
+   As you can see, the local `main` is now pointing to the same commit as
+   `origin/main`. At this point, our local and remote repositories are
+   completely in sync.
+
+   If you run `cat README.md` again, you will see that the README file now
+   contains the updates we made via the GitHub web interface.
+
+   <br>
+
+> **💫 Summary:**
+>
+> * Synchronization between a local and a remote repo is _not_ automatic.
+>   We must trigger it with `git fetch` or `git pull`.
+> * **`git pull`** is simply a shortcut for `git fetch` + `git merge`. In this
+>   example we ran both commands one after the other (to illustrate how their
+>   effect differs), but you can also directly run `git pull`.
+> * **`git fetch`** always downloads data for all branches. It can be run
+>   from any branch.
+> * **`git pull`** also downloads data for all branches, but it
+>   only updates (merges from the upstream) the currently active branch.
+>   Make sure to be on the correct branch (the one to update) before running
+>   `git pull`.
+
+<br>
+<details><summary><b>✅ Solution</b></summary>
+
+```sh
+# Download/retrieve new content from the remote (does not update the local branch).
+git fetch
+git log --all --decorate --oneline --graph
+git status
+cat README.md
+
+# Download/retrieve new content and update the local branch.
+git pull
+git log --all --decorate --oneline --graph
+git status
+cat README.md
+```
+
+</details>
+<br>
+
+### 🔮 Additional task - Push a new branch to a remote
+
+1. **Create a new branch named `add-more-content`** and switch to it.
+
+2. On the new branch, **make a new commit** that adds the content below to
+   the `README.md` file. Then **push the new branch** to the remote using
+   **`git push -u origin add-more-content`**.
+
+   Content for commit:
+
+    ```md
+    ## Bulleted lists
+
+    **Bulleted lists** are created by adding a **`- `** or **`* `** in front
+    of a line. For instance:
+
+    `- Item 1  (or * Item 1)`  
+    `- Item 2  (or * Item 2)`  
+    `- ...`
+
+    will render as:
+
+    - Item 1
+    - Item 2
+    - ...
+
+    ```
+
+   > **🌈 Notes:**
+   > * An **upstream branch** is a remote branch that your local branch is
+   >   linked to for **`git pull`** and **`git push`**.
+   >   When you set an upstream branch for a local branch, Git remembers where
+   >   the local branch should push to and pull from.
+   > * The `-u`/`--set-upstream` option in
+   >   `git push -u origin <branch>` sets an **upstream branch**, linking
+   >   the local branch to the remote. This allows future `git push` and
+   >   `git pull` commands to work without specifying each time the remote
+   >   and branch name.
+   > * **It is recommended** to use this option when pushing a branch for the
+   >   first time.
+   > * If you switch to a branch that **already exists on the remote** (e.g.
+   >   created by someone else), Git will
+   >   **automatically set the upstream branch** when you check it out. In this
+   >   case, you don't need to use `-u`/`--set-upstream`, even when pushing
+   >   for the first time.
+
+   <br>
+
+3. **Add another commit** to the `add-more-content` branch with the following
+   content, and **push it to the remote**.
+
+   Content for second commit:
+
+   ```md
+   ## Code blocks
+
+   * To render text as `inline code`, surround it with single backticks **\`**.
+   * To render text as a code block, use triple backticks **\`\`\`**
+   ```
+
+   <br>
+
+4. **Go to the GitHub homepage** of your project, and verify that the content
+   of the README file **on the `add-more-content` branch** has been updated.
+   Be aware that, by default, GitHub shows the version of the README file from
+   `main`, so you need to switch to the `add-more-content` branch in the GitHub
+   interface. This is done using the **drop-down menu** near the top of the
+   page.
+
+<br>
+<details><summary><b>✅ Solution</b></summary>
+
+```sh
+# 1. Create a new branch and switch to it.
+git switch -c add-more-content
+
+# 2. Make a first commit on the new branch, and then push it to the remote.
+git commit -m "Add lists to markdown guide" README.md
+git push -u origin add-more-content
+
+# 3. Make a second commit, then push to the remote again.
+git commit -m "Add code blocks to markdown guide" README.md
+git push
+```
+
+</details>
+<br>
+
+### 🔮 Additional task - Branch cleanup
+
+Now that our new content is ready, we can **merge it** into the `main` branch,
+and then **delete the `add-more-content` branch** on our local and remote
+repositories.
+
+Perform the following tasks:
+
+1. **Merge** `add-more-content` into `main`.
+2. **Push** the changes to `main` to the remote.
+3. **Delete** the branch `add-more-content` from your local repo.
+4. **Delete** the branch `add-more-content` from the remote.
+
+<br>
+<details><summary><b>✅ Solution</b></summary>
+
+```sh
+# 1. Merge 'add-more-content' into 'main'.
+git switch main
+git merge add-more-content
+
+# 2. Push changes on 'main' to the remote.
+git push
+
+# 3. Delete 'add-more-content' from the local repo.
+git branch -d add-more-content
+
+# 4. Delete 'add-more-content' from the remote.
+git push origin --delete add-more-content
+```
+
+</details>
+
+<br>
+<br>
+<br>
+
+## Exercise 5 - The Awesome Animal Awareness Project [60 min]
 
 **🚩 Objective:** learn to collaborate with others on a project hosted on
 a remote (e.g. on GitHub or GitLab).
@@ -1475,13 +1962,14 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 
 > **🔥 Important:**
 >
-> * Please follow the **naming convention for branches** tightly,
->   as our company's internal Git policies are **very strict**.
-> * **Before you start:** make sure that you created a
->   **personal access token (PAT)** on GitHub. This will be needed in
->   order to allow you to push changes to the remote. Please refer to the
->   course slides for instructions on how to create the token (a demo might
->   also be made in the class before the exercise).
+> * **Before you start** this exercise, make sure you created a
+>   **personal access token (PAT)** on GitHub. This will be needed to push
+>   commits to your repo on GitHub. A demo on how to create a PAT will be made
+>   in the class (if this has not been done yet, please kindly remind the
+>   teacher to do so 😇 - thank you).
+>
+>   If you are doing the exercise on your own, instructions on how to create
+>   a PAT can also be found in the course slides.
 
 <br>
 
@@ -1497,7 +1985,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
       your machine.
    <br>
 
-2. Change into `exercise_4/`. **Clone** the Awesome Animal Awareness project
+2. Change into `exercise_5/`. **Clone** the Awesome Animal Awareness project
    repo and enter it.
 
     ```sh
@@ -1511,6 +1999,9 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 
    Example branch names: `tiger-dev`, `yeti-dev`, `sunfish-dev`,
    `pallas-cat-dev`, ...
+
+   > **🔥 Important:** as we are many people working on the same repo, please
+   > follow the branch naming convention tightly.
 
    > **🎯 Hint:** remember that when pushing a local branch to a remote
    > **for the first time**, we have to indicate an "upstream" remote branch
@@ -1559,7 +2050,7 @@ into the [Awesome Animal Awareness website](https://sibgit.github.io).
 Clone the Awesome Animal Awareness Project repo.
 
 ```sh
-cd exercise_4/
+cd exercise_5/
 git clone https://github.com/sibgit/sibgit.github.io.git
 cd sibgit.github.io
 ```
@@ -1794,7 +2285,7 @@ git pull
 </details>
 <br>
 
-### 🔮 Additional task - Branch cleanup
+### 🔮 Additional task - Team branch cleanup
 
 Now that your team branch is merged into `main`, you can delete your team
 branch and personal branches (since they have been merged).
