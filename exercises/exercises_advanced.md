@@ -36,13 +36,18 @@
 
 **🚩 Objective:** learn to use **interactive rebase**.
 
-> **Command summary**  
+> **🦉 Command summary**
+>
 > Here are the main commands you will need for this exercise.
 >
 > ```sh
-> git rebase                 # Rebase a branch.
-> git rebase --interactive   # Interactively rebase a branch.
-> git switch                 # Switch to a different branch.
+> git commit --amend           # Amend the latest commit.
+> git commit --amend --no-edit # Amend the latest commit, keeping the same commit message.
+> git commit --fixup           # Create a commit that fixes an earlier commit.
+> git rebase                   # Rebase a branch.
+> git rebase --interactive     # Interactively rebase a branch.
+> git rebase --autosquash      # Automatically squash fixup commits during a rebase.
+> git switch                   # Switch to a different branch.
 > ```
 
 > **💡 Disclaimer:**
@@ -504,13 +509,17 @@ git commit --amend -m "Add xkcd comic image file"
 
 **🚩 Objective:** get familiar with `git reset --hard`.
 
-> **Command summary**  
+> **🦉 Command summary**
+>
 > Here are the main commands you will need for this exercise.
 >
 > ```sh
 > git commit --amend            # Amend the latest commit.
 > git commit --amend --no-edit  # Amend the latest commit, without changing its commit message.
 > git reset --hard              # Reset everything: HEAD, index and the working tree.
+> git push --force-with-lease   # Overwrite the history of a branch on the remote (safely).
+> git push origin --delete      # Delete a branch on the remote.
+> git fetch --prune             # Fetch and remove remote-tracking branches deleted on the remote.
 > ```
 
 > **💡 Disclaimer:** in order to show you some use cases of `git reset`, we will
@@ -988,7 +997,8 @@ git push origin --delete second-choice
 **🚩 Objective:** learn to use `git stash` and `git tag`. Understand the
 **detached HEAD** mode.
 
-> **Command summary**  
+> **🦉 Command summary**
+>
 > Here are the main commands you will need for this exercise.
 >
 > ```sh
@@ -996,6 +1006,8 @@ git push origin --delete second-choice
 > git stash pop   # Remove changes from the stash and apply them to the working tree.
 > git checkout    # Populate the working tree with an earlier version of the repo.
 > git tag         # Add a tag to a commit.
+> git branch -d   # Delete a branch that has been merged.
+> git branch -D   # Force-delete a branch (even if it is not merged).
 > ```
 
 <br>

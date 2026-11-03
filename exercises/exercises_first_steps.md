@@ -783,6 +783,19 @@ git restore --source HEAD~1 tests/output.csv
 
 **🚩 Objective:** learn to use a basic branched workflow.
 
+> **🦉 Command summary**
+>
+> Here are the main commands you will need for this exercise.
+>
+> ```sh
+> git branch         # List, create or delete branches.
+> git switch         # Switch to a different branch.
+> git switch -c      # Create a new branch and switch to it.
+> git merge          # Merge a branch into the current branch.
+> git diff           # Show changes that are not yet staged.
+> git diff --cached  # Show changes that are staged.
+> ```
+
 Well done! Your burgeoning Git skills have landed you a job as a junior
 web-developer at _Scamazone Inc._, where you have been assigned the gratifying
 task of fixing bugs in their website.
@@ -1090,6 +1103,18 @@ git branch -d dev
 
 **🚩 Objective:** get familiar with rebasing branches, solving conflicts and
 cherry-picking.
+
+> **🦉 Command summary**
+>
+> Here are the main commands you will need for this exercise.
+>
+> ```sh
+> git clone              # Download a copy of a remote repository.
+> git cherry-pick        # Apply the changes of an existing commit to the current branch.
+> git rebase             # Rebase the current branch onto another branch.
+> git rebase --continue  # Continue a rebase after resolving a conflict.
+> git merge              # Merge a branch into the current branch.
+> ```
 
 <br>
 
@@ -1460,6 +1485,18 @@ git log --all --decorate --oneline --graph
 
 **🚩 Objective:** learn to create a repo on GitHub, and practice the basic
 commands to interact with a remote: `git push`, `git pull`, and `git fetch`.
+
+> **🦉 Command summary**
+>
+> Here are the main commands you will need for this exercise.
+>
+> ```sh
+> git clone    # Download a copy of a remote repository.
+> git push     # Upload local commits to the remote.
+> git fetch    # Download new commits from the remote, without updating local branches.
+> git pull     # Download new commits and merge them into the current branch.
+> git push -u  # Push a new branch to the remote and set its upstream branch.
+> ```
 
 <br>
 
@@ -1947,6 +1984,21 @@ git push origin --delete add-more-content
 
 **🚩 Objective:** learn to collaborate with others on a project hosted on
 a remote (e.g. on GitHub or GitLab).
+
+> **🦉 Command summary**
+>
+> Here are the main commands you will need for this exercise.
+>
+> ```sh
+> git fetch                 # Fetch (download) all new content from the remote.
+> git fetch --prune         # Fetch and delete remote-tracking branches that no longer exist.
+> git pull                  # Download new commits and merge them into the current branch.
+> git push                  # Push new commits on the current branch to the remote.
+> git push -u               # Push a new branch to the remote and set its upstream branch.
+> git push origin --delete  # Delete a branch on the remote.
+> git merge                 # Merge a branch into the current branch.
+> git rebase                # Rebase the current branch onto another branch.
+> ```
 
 Congratulations! Your improving Git skills have not gone unnoticed, and you are
 now hired by our agile startup to work on the
