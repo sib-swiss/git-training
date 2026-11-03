@@ -15,7 +15,7 @@ Please complete the setup instructions given in this document
 
 <br>
 
-## 1. Installing Git on your computer
+## Installing Git on your computer
 
 To install Git, please refer to the relevant section below depending on your
 operating system. More details are available on the
@@ -36,7 +36,7 @@ You can easily install Git using your distribution's official package manager.
 For other linux distributions, please consult the
 [official documentation](https://git-scm.com/install/linux).
 
-### MacOS 🌱
+### macOS 🍏
 
 The easiest way to install Git on MacOS is using the Homebrew package manager:
 `brew install git`
@@ -44,7 +44,7 @@ The easiest way to install Git on MacOS is using the Homebrew package manager:
 For more details, please see the
 [official documentation](https://git-scm.com/install/mac).
 
-### Windows 🐳
+### Windows 🪟
 
 Download Git from [the official download page](https://git-scm.com/install/win)
 and follow the installation instructions.  
@@ -56,7 +56,7 @@ with Git and a few other basic GNU-Linux tools installed (e.g. the `vim` and
 
 <br>  
 
-## 2. Create a GitHub account :octocat:
+## Create a GitHub account :octocat:
 
 [GitHub](https://www.github.com) is a commercial hosting platform for Git
 repositories, currently owned by Microsoft.  
