@@ -86,7 +86,7 @@ a test to see if we can get a workflow to be picked-up by GitHub and run.
    display the details of the job. You should see that the job has printed
    `Hello World!` to the terminal.
 
-Well done - congrats on running your first GitHub Actions workflow 🎉 !
+Well done - congrats on running your first GitHub Actions workflow 🎉!
 
 <br>
 
@@ -150,7 +150,7 @@ Let's do this one step at a time and add only the first job for now:
 3. **Commit** your new workflow **and push** to the remote.
 
 4. Go to the **Actions tab** of your repo on GitHub and watch as your
-   workflow is created 🐣 ... runs 🐆 ... and hopelessly fails 💔 !
+   workflow is created 🐣 ... runs 🐆 ... and hopelessly fails 💔!
 
 5. What a bummer!! Yes, there is a format problem in the `simple_script.py`
    file... and we can identify it by **clicking on the workflow in GitHub**,
@@ -487,7 +487,7 @@ a test to see if we can get a pipeline to be picked-up by GitLab and run.
    the details of the job. You should see that the job has printed
    `Hello World!` to the terminal.
 
-Well done - congrats on running your first GitLab CI/CD pipeline 🎉 !
+Well done - congrats on running your first GitLab CI/CD pipeline 🎉!
 
 <br>
 
@@ -559,7 +559,7 @@ Let's do this one step at a time and add only the first job for now:
    remote.
 
 4. Go to **Build > Pipelines tab** of your repo on GitLab and watch as your
-   pipeline is created 🐣 ... runs 🐆 ... and hopelessly fails 💔 !
+   pipeline is created 🐣 ... runs 🐆 ... and hopelessly fails 💔!
 
 5. What a bummer!! Yes, there is a format problem in the `simple_script.py`
    file... and we can identify it by **clicking on the pipeline in GitLab**,

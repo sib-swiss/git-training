@@ -161,7 +161,7 @@
     ```
 
    The garbage collection has now reduced the size of the Git object store down
-   to about 32 KB !!
+   to about 32 KB!!
 
     ```sh
     du -sh .git/objects/

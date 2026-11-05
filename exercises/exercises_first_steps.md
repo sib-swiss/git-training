@@ -73,7 +73,7 @@ git config --list --show-origin
 **🚩 Objective:** learn how to create a new Git repository, add files to it,
 and make commits.
 
-Welcome to the first exercise of this Git course !  
+Welcome to the first exercise of this Git course!  
 This is a warm-up, so you will be guided step-by-step on exactly what you need
 to do.
 
@@ -136,7 +136,7 @@ to do.
 3. **Display the status of files** in the project's working tree:
    * Run the command `git status`.
    * **❓ Question:** what is the status of the files in your working
-     directory ?
+     directory?
      <br>
 
       <details><summary><b>✅ Solution</b></summary>
@@ -405,7 +405,7 @@ to **permanently ignore** them, so that they stop being listed as _untracked_.
     <br>
 
 2. **Run `git status`**: you should see that you still have an untracked
-   file: the `.gitignore` file you just created 😅 !
+   file: the `.gitignore` file you just created 😅!
 
    Since the ignore rules defined in the `.gitignore` file are useful to all
    users of the repository, this file should be added to the repo.
@@ -796,6 +796,8 @@ git restore --source HEAD~1 tests/output.csv
 > git diff --cached  # Show changes that are staged.
 > ```
 
+<br>
+
 Well done! Your burgeoning Git skills have landed you a job as a junior
 web-developer at _Scamazone Inc._, where you have been assigned the gratifying
 task of fixing bugs in their website.
@@ -810,8 +812,8 @@ Let's get started:
 
 **❓ Questions:**
 
-* How many commits have already been made in the repo ?
-* How many branches are present in the repo? How are they named ?
+* How many commits have already been made in the repo?
+* How many branches are present in the repo? How are they named?
 * Are there any uncommitted changes?
 
 <details><summary><b>✅ Solution</b></summary>
@@ -1006,7 +1008,7 @@ Here is what you should do:
     * Use **`git diff`** and **`git diff --cached`** to look at your edits in
       the HTML file, before and after staging them.
     * **❓ Question:** what is the difference between `git diff` and
-      `git diff --cached` ?
+      `git diff --cached`?
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
@@ -1184,7 +1186,7 @@ To apply this commit on the `main` branch of the `peak_sorter` script, proceed
 as follows:
 
 1. **Create a new `hotfix` branch** - we wouldn't want to work directly on
-  `main`, would we ? 😇.
+  `main`, would we? 😇
 2. **Cherry-pick** the commit that contains Jimmy's fix onto your `hotfix`
    branch.
    * **🎯 Hint:** to identify the commit to cherry-pick, display the history
@@ -1204,7 +1206,7 @@ as follows:
     > Running data integrity check...OK
 
    This shows us that the cherry-picked commit has indeed added the expected
-   feature to our code - well done 😻 !
+   feature to our code - well done 😻!
 
     > **🌈 Note:** you can have a look at the changes introduced by the
     > cherry-picking by running `git show HEAD` (or simply `git show`). This
@@ -1582,7 +1584,7 @@ to the remote.
    the text using the icon on the top-right of the text block).
 
     ```md
-    # A short primer on markdown syntax ! 💫
+    # A short primer on markdown syntax! 💫
 
     Markdown is a lightweight markup language that you can use to add
     formatting to plain text documents. Markdown is one of the most
@@ -1985,9 +1987,8 @@ git push origin --delete add-more-content
 **🚩 Objective:** learn to collaborate with others on a project hosted on
 a remote (e.g. on GitHub or GitLab).
 
-> **🦉 Command summary**
->
-> Here are the main commands you will need for this exercise.
+> **🦉 Command summary:** here are the main commands you will need for this
+> exercise.
 >
 > ```sh
 > git fetch                 # Fetch (download) all new content from the remote.
@@ -2000,9 +2001,11 @@ a remote (e.g. on GitHub or GitLab).
 > git rebase                # Rebase the current branch onto another branch.
 > ```
 
+<br>
+
 Congratulations! Your improving Git skills have not gone unnoticed, and you are
 now hired by our agile startup to work on the
-**Awesome Animal Awareness Project** !
+**Awesome Animal Awareness Project**!
 
 Your mission - should you choose to accept it - is to help us build a new
 website. This is a **collaborative effort**, and you will be working in teams
@@ -2302,7 +2305,7 @@ project's `main` branch.
 
 2. Once management approved your work and merged it into `main`, you should
    be able to see your animal's page on the
-   [Awesome Animal Awareness website](https://sibgit.github.io) 😻 !
+   [Awesome Animal Awareness website](https://sibgit.github.io) 😻!
 
    > **🌈 Note:** it takes a few minutes before the changes become live
      on the website.

@@ -71,12 +71,10 @@ instructions on how to use the `vim` editor.
 
    > **✨ Tip:** if you are using (or would like to use) `vim` as an editor in
    > Git, you can have a look at the content of the files in the repository to
-   > learn about some useful `vim` commands.
-   >
-   > Of course this only scratches the surface. If you have too much time
-   > on your hands, you can also try
-   > [vim-adventures](https://vim-adventures.com) to learn `vim` commands
-   > by playing.
+   > learn about some useful `vim` commands. Of course this only scratches the
+   > surface. If you have too much time on your hands, you can also try
+   > [vim-adventures](https://vim-adventures.com) to learn `vim` commands by
+   > playing.
 
     <br>
     <details><summary><b>✅ Solution</b></summary>
@@ -104,7 +102,7 @@ instructions on how to use the `vim` editor.
 
    Using **interactive rebase**, your first task is to **re-order the commits**
    on the `main` branch in the following order (here listed from oldest to
-   newest):
+   newest). To help you, each commit message starts with a number:
 
    ```txt
     1. Initial commit of vim cheat-sheet project. Add README file
@@ -226,9 +224,10 @@ Make the following changes to the repo history:
 > a new message. You will thus need to **edit the commit message** during
 > the rebase.
 
-> **🌈 Note:** after the rebase, the `README.md` file will still have 2
-> commits - because its first commit is also the initial commit of the repo
-> (that initial commit is slightly more difficult to change).
+> **🌈 Note:** in principle we could have done the re-ordering of commits
+> (which we did in the first part of the exercise) and the squashing (which
+> we are doing now) in a single rebase operation. Here we did it in two steps
+> to make each rebase slightly simpler.
 
 <br>
 <details><summary><b>✅ Solution</b></summary>
@@ -522,17 +521,17 @@ git commit --amend -m "Add xkcd comic image file"
 > git fetch --prune             # Fetch and remove remote-tracking branches deleted on the remote.
 > ```
 
-> **💡 Disclaimer:** in order to show you some use cases of `git reset`, we will
-> in this exercise **intentionally make some mistakes** along the way, so that
-> we can then correct them. So don't be unsettled by the fact that this
-> exercise keeps asking you to change things: _it's by design_ !
+> **💡 Disclaimer:** in order to show you some use cases of `git reset`, we
+> will **intentionally make some mistakes** along the way, so that we can then
+> correct them. So don't be unsettled by the fact that this exercise keeps
+> asking you to change things: _it's by design_.
 
 <br>
 
 In this exercise, we will build a Git repo to keep track of our favorite
 [Chuck Norris](https://en.wikipedia.org/wiki/Chuck_Norris) quotes. 🎉
 
-Will this really be as useless as it sounds ? Let's find out!
+Will this really be as useless as it sounds? Let's find out!
 
 <br>
 
@@ -597,7 +596,7 @@ mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
      These are the two files we moved into the directory just before.
 
 2. Stage `my_quotes.md`, and **make a new commit** with the message:
-   > `Add a file to keep track of quotes`.
+   > `Add a file to keep track of Chuck Norris quotes`.
 
 3. Wait, that last commit message is not nearly dramatic enough for what is
    about to unfold in this exercise. Let's change it to:
@@ -615,7 +614,7 @@ mv my_quotes.md chuck_norris_quotes.txt the-big-reset/
 4. Oh, one more thing: let's also add the `chuck_norris_quotes.txt` to our
    last commit (do _not_ create a new commit but _amend_ the last one).
 
-   > **✨ Tip:** when amending a commit but don't want to modify its commit
+   > **✨ Tip:** when you amend a commit but don't want to modify its commit
    > message, you can add the `--no-edit` option so that Git does not ask
    > you for a new commit message.
 
@@ -698,6 +697,8 @@ Alright, amending stuff is fun, but let's try to get some real work done here.
     * e044feb Initial commit
     ```
 
+* Finally, push you changes to the remote.
+
 <br>
 <details><summary><b>✅ Solution</b></summary>
 
@@ -709,13 +710,16 @@ echo -e "When Chuck Norris throws exceptions, it’s across the room.\n" >> my_q
 git commit -m "Add 2nd favorite quote" my_quotes.md
 echo -e "'I don't always test my code. But when I do, I do in production' - Chuck Norris\n" >> my_quotes.md
 git commit -m "Add 3rd favorite quote" my_quotes.md
+
+# Push the new commits to the remote.
+git push
 ```
 
 </details>
 <br>
 
 With so many epic quotes to choose from, it's a real shame we can have only 3...
-But wait - Git has a solution for us: **branches** ! 🌱
+But wait - Git has a solution for us: **branches**! 🌱
 
 1. Create an alternate branch named `second-choice` at the point in history
    where the `my_quotes.md` file was still empty and switch to it. Verify that
@@ -827,16 +831,17 @@ as could be.
 * e044feb Initial commit
 ```
 
-Can we fix it? _Yes, we can !_
+Can we fix it? _Yes, we can!_
 
-* Reset the repository to its state before the merge.
-  > **🎯 Hint:** time to put that `--hard` option to good use !
+* Reset the repository to its state before the merge. **🎯 Hint:** time to put
+  that `--hard` option to good use!
 * Rebase `second-choice` on `main`, before merging `second-choice` into
   `main`.
+
 <br>
 
-When you are done, run `git log --all --decorate --oneline --graph` and
-marvel at your perfectly clean history (commit IDs will differ). 😻
+When you are done, run `git log --branches --decorate --oneline --graph` and
+marvel at your perfectly clean history 😻 (commit IDs will differ).
 
 ```txt
 * 9f554ad (HEAD -> main, second-choice) Add alternate favorite quotes
@@ -846,6 +851,9 @@ marvel at your perfectly clean history (commit IDs will differ). 😻
 * c3d7850 Starting the Big Reset
 * e044feb Initial commit
 ```
+
+> **🌈 Note:** we here use the `git log --branches` option instead of
+> `git log --all`, so that remote branches are not displayed.
 
 <details><summary><b>✅ Solution</b></summary>
 
@@ -870,7 +878,7 @@ git switch main
 git merge second-choice
 
 # Display history of repo:
-git log --all --decorate --oneline --graph
+git log --branches --decorate --oneline --graph
 ```
 
 </details>
@@ -879,40 +887,32 @@ git log --all --decorate --oneline --graph
 ### E) Force push
 
 Finally, we would like to **push our changes on `main`** to the remote once
-more.
+more. Let's first try with a regular push:
 
-* Let's first try with a regular push:
+```sh
+git push
+```
 
-  ```sh
-  git push
-  ```
+You should see that this does _not_ work 💥!  
 
-* **❓ Question:** you should see that this does _not_ work 💥 ! Why is that ?
+The problem is that the branch we are trying to push (here `main`) has diverged
+from its counterpart on the remote. In other words, the history of the two
+branches is no longer the same, and therefore the changes made locally to
+`main` cannot be pushed with a regular `git push` any longer.
 
-  <details><summary><b>✅ Solution</b></summary>
+When there is a divergence, Git by default refuses to overwrite the remote
+history to prevent accidental data loss. We must then either:
 
-  The problem is that the branch we are trying to push (here `main`) has
-  diverged from its counterpart on the remote. In other words, the history
-  of the two branches is no longer the same, and therefore the changes made
-  locally to `main` cannot be pushed with a regular `git push` any longer.
-
-  When there is a divergence, Git by default refuses to overwrite the remote
-  history to prevent accidental data loss. We must then either:
-  
-  * Locally reconcile the histories of the local and remote branch.
-  * Or - and this is what we will do here next - **overwrite** the history
-    of the branch on the remote.
-
-  </details>
-
-<br>
+* Locally reconcile the histories of the local and remote branch.
+* Or - and this is what we will do here next - **overwrite** the history
+  of the branch on the remote.
 
 To get the push to complete, we must allow Git to overwrite the history of
 the `main` branch on the remote by doing a **force** push:
 
-  ```sh
-  git push --force-with-lease
-  ```
+```sh
+git push --force-with-lease
+```
 
 > **🌈 Note:** since you are working on this repo alone, there is in principle
 > no risk for you to overwrite by mistake new commits added to `main` by
@@ -940,7 +940,7 @@ the `main` branch on the remote by doing a **force** push:
   git fetch --prune
   ```
 
-  **❓ Question:** what does the `--prune` option do ?
+  **❓ Question:** what does the `--prune` option do?
 
   <details><summary><b>✅ Solution</b></summary>
 
@@ -1018,7 +1018,7 @@ of input data onto an old version of the pipeline (version `1.0.1`).
 
 You try to argue that this is an old version with security vulnerabilities,
 and that they should not use it anymore... but they _just don't care_. As
-a problem never comes alone, they need this _right now_ !
+a problem never comes alone, they need this _right now_!
 
 1. **Change into `exercise_3/backport.git`** and have a look at the Git
    repository's history. Note the different branches and tags.
@@ -1048,8 +1048,8 @@ a problem never comes alone, they need this _right now_ !
    Then go back to version `1.0.1` of the project using the `git checkout`
    command.
 
-    * **❓ Question 1:** where is the `HEAD` pointer now ?
-    * **❓ Question 2:** has anything else changed in the repository's history ?
+    * **❓ Question 1:** where is the `HEAD` pointer now?
+    * **❓ Question 2:** has anything else changed in the repository's history?
 
    <details><summary><b>✅ Solution</b></summary>
 
@@ -1097,7 +1097,7 @@ a problem never comes alone, they need this _right now_ !
    > your branches.
 
     * **❓ Question:** what would happen to our latest commit if we
-      "leave it behind" ?
+      "leave it behind"?
     * Take Git's advice and create a new branch named `backport` that points to
       the commit we just left behind.
     * While we are at it, let's also add a **tag** `v1.0.1b` to our new commit.
@@ -1256,11 +1256,11 @@ concepts seen during the course.
 
 ### Introductory notes
 
-**We have saved the best for last !** In this collaborative exercise, you will
+**We have saved the best for last!** In this collaborative exercise, you will
 **team-up with two fellow pirates** in order to retrieve the lost treasure of
 the feared pirate
 [John Longsilver](https://en.wikipedia.org/wiki/Long_John_Silver) ☠️.
-Get ready for a quest that will be _legend_ ... wait for it ... _dary !!_
+Get ready for a quest that will be _legend_ ... wait for it ... _dary!!_
 
 In your quests throughout this exercise, you will be asked to follow a
 **collaborative workflow** that uses the following branches:
@@ -1383,19 +1383,16 @@ setup on GitHub.
 > **🔥 Important:** make sure to clone the newly forked repository of your
 > team, and _not_ the original repo.
 
-> **🔥 Important: Windows users only**
->
-> Windows users (Linux/Mac users skip this step) must run the following
-> command _inside_ the Git repository:
+> **🔥 Important - Windows users only:** run the following command _inside_ the
+> Git repository. This will instruct Git to ignore differences in
+> _execution permissions_ of files, and is needed because Windows does not use
+> the same file permission system as Linux/macOS (Linux/macOS users should not
+> run the command).
 >
 > ```sh
 >  # Do not add the "--global" flag. This change should only affect the current repo.
 >  git config core.filemode false
 > ```
->
-> This will instruct Git to ignore differences in _execution permissions_ of
-> files, and is needed because Windows does not use the same file permission
-> system as Linux/MacOS.
 
 <br>
 
@@ -1484,13 +1481,13 @@ repo. Pay **particular attention to articles VIII, IX and X** of the contract!
     > **🦉 Reminder:** if you pushed your personal branch to the remote, you
     > can delete it on the remote with `git push origin --delete <branch name>`.
 
-That's it, the paperwork is done! Let's get on that ship and sail 🏴‍☠️ !
+That's it, the paperwork is done! Let's get on that ship and sail 🏴‍☠️!
 
 <br>
 
 ### D) Treasure hunt part two: gear-up 🏴‍☠️
 
-Wait... did I just say "get on that ship" ? Well, the problem is that...
+Wait... did I just say "get on that ship"? Well, the problem is that...
 there is no ship... yet! And we will need a flag too! And rum of course, lots
 of rum for this long journey.
 
@@ -1583,20 +1580,20 @@ This is how you should proceed:
 
 The ship is loaded and the flag is flying - now we're talking! All hands on
 deck and keep the powder dry - get ready for the final step of this
-_gitventure_: finding **the treasure** ! 🐳
+_gitventure_: finding **the treasure**! 🐳
 
 <br>
 
 ### E) Treasure hunt part three: Skull Rock island 🏝️
 
-We're setting sail on `skull-rock-island` ! The island was home to
+We're setting sail on `skull-rock-island`! The island was home to
 **John Longsilver** - a fearsome pirate with a healthy appetite for treasures.
 Unfortunately, pirate lives do sometimes take a turn for the shorter, and so
 did Longsilver's.
 
 While Longsilver is no more, his **trusty parrot** - a talkative bird if there
 ever was one 🦜! - is still very much alive. Maybe that bird has some
-recollection of where Longsilver has hidden his treasure ?
+recollection of where Longsilver has hidden his treasure?
 
 1. **Switch** to the `skull-rock-island` branch and hear what the parrot has
    to say:
@@ -1607,7 +1604,7 @@ recollection of where Longsilver has hidden his treasure ?
 
 2. As you can see, the parrot isn't being helpful... But this is Git, we
    can **rewrite history** and make the bird more cooperative with a
-   little... **rebasing !** 😀
+   little... **rebasing!** 😀
 
    Run an **interactive rebase** on the last 4 commits of `skull-rock-island`,
    and make the following changes:
@@ -1651,7 +1648,7 @@ should do the following:
 > `main` branch will diverge.
 
  1. **Merge `skull-rock-island` into `main`**. This will add the treasure chest
-    to the `main` branch - along with your new friend the parrot !  
+    to the `main` branch - along with your new friend the parrot!  
     Since `skull-rock-island` and `main` diverge, you can either:
     * Perform a 3-way merge. In this case, use the message
       `Bring treasure onboard ship` as merge commit message.
@@ -1707,7 +1704,7 @@ open it, run:
 ./open_chest.sh
 ```
 
-_Shiver me timbers!_ We are missing **the keys** to open the lock !
+_Shiver me timbers!_ We are missing **the keys** to open the lock!
 
 > **🦜 Note:** If you are running out of time, you can finish this last part
 > of the exercise on your own. You simply have to find the 3 keys for the
@@ -1725,11 +1722,11 @@ keys.
 > **🦜 Note:** for this last quest, to save time (and because we believe that
 > by now you have understood the principle), you may add your commits directly
 > to the `main` branch, without creating a temporary working branch -
-> _crazy !_ , I know 😎.
+> _crazy!_, I know 😎.
 >
 > Make sure to check that your `main` branch is up-to-date before you add a
 > commit to it: you don't want any divergence in the `main` branch among the
-> team !
+> team!
 >
 > If your local `main` diverges from `origin/main`, you can fix the issue by
 > rebasing your local `main` on the remote with:
@@ -1807,7 +1804,7 @@ local Git repo copies (everyone has the 3 keys), you can try to
 ```
 
 If the keys are the correct files, are placed in the correct lock, and have
-been correctly renamed, **the treasure should open !** 🎉
+been correctly renamed, **the treasure should open!** 🎉
 
 <br>
 

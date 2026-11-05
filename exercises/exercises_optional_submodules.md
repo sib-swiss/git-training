@@ -84,7 +84,7 @@ and then pull the latest version of the submodule in `useful-tools`.
    Reload the web page `references.html` in your browser, and verify that the
    colors now change more slowly.
 
-   Wait... did we just make a great style even greater? _Yes, we did !_ 🌈
+   Wait... did we just make a great style even greater? _Yes, we did!_ 🌈
 
 2. Let's keep these changes for posterity by committing them to the
    `great-style` submodule and then pushing them to the remote (your forked
