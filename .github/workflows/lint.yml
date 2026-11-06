@@ -1,19 +1,29 @@
-name: Spellcheck, markdown lint and link check
+name: Lint, link check and release
 
 # Checks the markdown course material on every pull request, and on every push
 # to "main".
+# When a tag for a new course edition is pushed, a GitHub release is created
+# if all checks pass.
 #
 # The checks can be run locally with:
 # * npx markdownlint-cli2 "**/*.md"
 # * npx cspell "**/*.md"
 # * docker run --rm -v "$PWD":/input -w /input lycheeverse/lychee \
 #     --include-fragments "**/*.md"
+#
+# To create a new release (tags must have the format "YYYY.MM"):
+#   git tag 2026.11
+#   git push --tags
 
 on:
-  # Run the workflow on pushes to "main" (includes merges of pull request
-  # into main).
   push:
+    # Run the workflow on pushes to "main" (includes merges of pull request
+    # into main).
     branches: [main]
+    # Run the workflow when a tag with format "YYYY.MM" (e.g. "2026.11") is
+    # pushed. Other tags are ignored.
+    tags:
+      - "[0-9][0-9][0-9][0-9].[0-9][0-9]"
   # Run the workflow when a pull request is opened or gets new commits.
   # (The result is shown as a check on the pull request page).
   pull_request:
@@ -24,6 +34,7 @@ on:
 # Limit the workflow's GITHUB_TOKEN to read-only access to the repository
 # content (all other permissions are set to none). The workflow only needs to
 # read files, so a misbehaving step is not allowed to push or modify anything.
+# Only the "release" job is given write access (see below).
 permissions:
   contents: read
 
@@ -33,6 +44,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Stage 1: lint and spellchecks.
   lint:
     name: Spellcheck and markdown lint
     runs-on: ubuntu-latest
@@ -58,3 +70,37 @@ jobs:
         with:
           # "--include-fragments": also check links to headings (e.g. "file.md#title").
           args: --no-progress --include-fragments "**/*.md"
+
+  # Stage 2: release.
+  release:
+    name: Create release
+    # Only run if all checks passed...
+    needs: [lint, links]
+    # ...and only when a tag was pushed (skipped on pushes to "main" and on
+    # pull requests).
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-latest
+    # Creating a release requires write access to the repository content.
+    permissions:
+      contents: write
+    steps:
+      # Create the release with the GitHub CLI ("gh"), which is pre-installed
+      # on GitHub-hosted runners.
+      # GitHub automatically adds the entire content of the repository
+      # (including the PDF and zip files) to the release as "Source code (zip)"
+      # and "Source code (tar.gz)" archives.
+      # * GH_REPO: repository in which to create the release. Needed because
+      #   the repository is not checked-out in this job.
+      # * TAG: the tag name is passed via an environment variable rather than
+      #   inserted directly in the script, so that it cannot be interpreted as
+      #   shell code.
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          gh release create "$TAG" \
+            --verify-tag \
+            --title "Version control with Git: $TAG" \
+            --notes "Release for the Version control with Git SIB course $TAG edition"
