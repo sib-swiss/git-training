@@ -1,4 +1,4 @@
-name: Spellcheck and markdown lint
+name: Spellcheck, markdown lint and link check
 
 # Checks the markdown course material on every pull request, and on every push
 # to "main".
@@ -6,6 +6,8 @@ name: Spellcheck and markdown lint
 # The checks can be run locally with:
 # * npx markdownlint-cli2 "**/*.md"
 # * npx cspell "**/*.md"
+# * docker run --rm -v "$PWD":/input -w /input lycheeverse/lychee \
+#     --include-fragments "**/*.md"
 
 on:
   # Run the workflow on pushes to "main" (includes merges of pull request
@@ -43,3 +45,16 @@ jobs:
         run: npx --yes cspell --no-progress "**/*.md"
       - name: Check 2 - run markdownlint (markdown linter)
         run: npx --yes markdownlint-cli2 "**/*.md"
+
+  links:
+    # Check all links (to external websites, and to files and headings in
+    # this repository) with lychee: https://github.com/lycheeverse/lychee
+    name: Link check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check 3 - run lychee (link checker)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # "--include-fragments": also check links to headings (e.g. "file.md#title").
+          args: --no-progress --include-fragments "**/*.md"
