@@ -1,0 +1,45 @@
+name: Spellcheck and markdown lint
+
+# Checks the markdown course material on every pull request, and on every push
+# to "main".
+#
+# The checks can be run locally with:
+# * npx markdownlint-cli2 "**/*.md"
+# * npx cspell "**/*.md"
+
+on:
+  # Run the workflow on pushes to "main" (includes merges of pull request
+  # into main).
+  push:
+    branches: [main]
+  # Run the workflow when a pull request is opened or gets new commits.
+  # (The result is shown as a check on the pull request page).
+  pull_request:
+  # Allow the CICD pipeline to be run manually, from the "Run workflow" button
+  # in the Actions tab.
+  workflow_dispatch:
+
+# Limit the workflow's GITHUB_TOKEN to read-only access to the repository
+# content (all other permissions are set to none). The workflow only needs to
+# read files, so a misbehaving step is not allowed to push or modify anything.
+permissions:
+  contents: read
+
+# Cancel a running check when new commits are pushed to the same branch.
+concurrency:
+  group: lint-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Spellcheck and markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+      - name: Check 1 - run cspell (spell checker)
+        run: npx --yes cspell --no-progress "**/*.md"
+      - name: Check 2 - run markdownlint (markdown linter)
+        run: npx --yes markdownlint-cli2 "**/*.md"

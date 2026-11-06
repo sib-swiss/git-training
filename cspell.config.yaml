@@ -7,26 +7,34 @@ words:
   - autosquash
   - bfseries
   - bigskip
+  - Bioinformatics
   - blockquotes
   - cftaftertoctitleskip
   - cftbeforesecskip
   - cftbeforetoctitleskip
+  - cheatsheet
+  - cicd
   - commandchars
   - contentsname
+  - dahu
   - Dahus
   - dary
   - definecolor
   - droptitle
+  - ECTS
   - fancyvrb
+  - fasta
   - filemode
   - gitventure
   - gmatch
   - gsub
   - Longsilver
   - manul
+  - Megaptera
   - newcommand
   - newenvironment
   - newpage
+  - novaeangliae
   - octocat
   - officializing
   - oldtableofcontents
@@ -37,6 +45,8 @@ words:
   - postauthor
   - posttitle
   - preauthor
+  - pylint
+  - pytest
   - reflog
   - renewcommand
   - rhum
@@ -63,8 +73,11 @@ words:
   - unstaging
   - usepackage
   - xelatex
+  - xkcd
   - YGYG
 ignoreWords:
+  # Misspelling is part of a CSS variable name in the sibgit/great-style repo.
+  - cicle
   - enate
   - opex
 import: []

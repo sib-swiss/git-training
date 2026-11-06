@@ -695,7 +695,7 @@ syntax-check:
 </details>
 <br>
 
-### E) Add a job that depends on jobs 1 and 2
+### E) Add a pipeline job that depends on jobs 1 and 2
 
 Let's continue improving our `Python code check` pipeline by adding another
 job to it:
