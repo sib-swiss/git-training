@@ -2286,6 +2286,10 @@ git branch -d yeti-alice
 Now that your team branch is all merged and clean, it's time to contribute
 your work to the **`main`** branch of the project.
 
+> **✨ Tip:** as an option step, you can **rebase** your team branch on
+> the `main` branch before contributing it. This will help to make the repo's
+> history cleaner.
+
 Since you do not have the permission to push commits to the remote on the
 `main` branch, you will instead contribute your changes via a **Pull Request**.
 In this way, the top-level management of the Awesome Animal Awareness project

@@ -1500,7 +1500,7 @@ The second part of this quest is therefore to find those 3 items: **a ship**,
 
 This is how you should proceed:
 
-1. As for the first quest (_Signing the pirate code_), each pirate should
+1. As in the first quest (_Signing the pirate code_), each pirate should
    **create a new personal branch** to work on this quest: `add-supplies-cp`
    (Captain), `add-supplies-qm` (Quartermaster) and `add-supplies-fm`
    (First-mate).
