@@ -214,3 +214,25 @@ that you either:
   [SIB Swiss Institute of Bioinformatics](https://www.sib.swiss).
 * Other funding sources include:
   * European Union's Horizon Europe Framework Program (grant number 101080997).
+
+<br>
+
+## License 📜
+
+This course material (slides, exercises and documentation) is licensed under
+the
+[Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0)
+. See the [LICENSE](LICENSE) file for the full license text.
+
+You are free to share and adapt this material provided that you:
+
+* **Give appropriate credit**, provide a link to the license, and indicate if
+  changes were made.
+* **Distribute your contributions under the same license** (CC BY-SA 4.0) if
+  you share adapted versions of the material.
+
+Suggested attribution:
+
+> Robin Engler, *Version control with Git* course material, SIB Swiss Institute
+> of Bioinformatics. <https://github.com/sib-swiss/git-training>.
+> Licensed under CC BY-SA 4.0.
